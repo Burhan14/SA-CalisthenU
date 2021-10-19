@@ -17,6 +17,7 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>Card Content Here</div>
+          <app-locations *ngIf=card.isLocationList></app-locations>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

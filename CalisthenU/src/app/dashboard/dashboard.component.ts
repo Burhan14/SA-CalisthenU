@@ -13,15 +13,15 @@ export class DashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Map', cols: 3, rows: 1 },
-          { title: 'Locations', cols: 3, rows: 1 },
+          { title: 'Map', cols: 3, rows: 1},
+          { title: 'Locations', cols: 3, rows: 1, isLocationList: true  },
           // { title: 'Card 3', cols: 1, rows: 1 }
         ];
       }
 
       return [
         { title: 'Map', cols: 2, rows: 3 },
-        { title: 'Locations', cols: 1, rows: 2 },
+        { title: 'Locations', cols: 1, rows: 2, isLocationList: true  },
         { title: 'Location ...', cols: 1, rows: 1 }
       ];
     })
