@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/CalisthenU",
+    "public": "dist/Calisthen-U",
     "ignore": [
       "firebase.json",
       "**/.*",

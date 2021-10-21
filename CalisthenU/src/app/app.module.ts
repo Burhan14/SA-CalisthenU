@@ -18,6 +18,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LocationsComponent } from './locations/locations.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 // import {environment} from '../environments/environment';
 // import {AngularFireModule} from '@angular/fire/compat';
 // import {AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular/fire/compat/auth';
@@ -76,6 +78,12 @@ import {FormsModule} from '@angular/forms';
     MatCardModule,
     MatMenuModule,
     NgbModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFireAuthModule,
     // FirebaseUIModule.forRoot(firebaseUiAuthConfig)
