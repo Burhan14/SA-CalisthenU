@@ -1,2 +1,6 @@
-<!-- <div #map style="width: 1280px; height: 768px"></div> -->
-<div #map [style.width]="width" [style.height]="height"></div>
+<!-- <div #map [style.width]="width" [style.height]="height"></div> -->
+<div id="map"
+    leaflet
+    (leafletMapReady)="onMapReady($event)"
+    [leafletOptions]="mapOptions">
+</div>
