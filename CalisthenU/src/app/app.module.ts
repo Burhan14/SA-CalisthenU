@@ -20,41 +20,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-// import {environment} from '../environments/environment';
-// import {AngularFireModule} from '@angular/fire/compat';
-// import {AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular/fire/compat/auth';
-// import {firebase, FirebaseUIModule} from 'firebaseui-angular';
-// import * as firebaseui from 'firebaseui';
+import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
-// const firebaseUiAuthConfig: firebaseui.auth.Config = {
-//   signInFlow: 'popup',
-//   signInOptions: [
-//     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//     {
-//       scopes: [
-//         'public_profile',
-//         'email',
-//         'user_likes',
-//         'user_friends'
-//       ],
-//       customParameters: {
-//         'auth_type': 'reauthenticate'
-//       },
-//       provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
-//     },
-//     firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-//     firebase.auth.GithubAuthProvider.PROVIDER_ID,
-//     {
-//       requireDisplayName: false,
-//       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-//     },
-//     firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-//     firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-//   ],
-//   tosUrl: 'https://calisthen-u.web.app/tos.html',
-//   privacyPolicyUrl: 'https://calisthen-u.web.app/pp.html',
-//   credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
-// };
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 @NgModule({
@@ -84,9 +57,16 @@ import { environment } from '../environments/environment';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFireAuthModule,
-    // FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    // AngularFirestoreModule.enablePersistence()
+    
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
