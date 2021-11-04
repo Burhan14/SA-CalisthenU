@@ -20,14 +20,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+// import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
+// import { provideAuth,getAuth } from '@angular/fire/auth';
+// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireAuthModule, PERSISTENCE  } from '@angular/fire/compat/auth';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+
+import { AuthService } from "./shared/services/auth.service";
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
+
 
 
 @NgModule({
@@ -35,7 +44,12 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    LocationsComponent
+    LocationsComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +71,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
+    
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideAuth(() => getAuth()),
+    // provideFirestore(() => getFirestore()),
     // AngularFirestoreModule.enablePersistence()
     
     AngularFireModule.initializeApp(environment.firebase),
@@ -68,7 +83,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AngularFireAuthModule,
 
   ],
-  providers: [],
+  providers: [
+    { provide: PERSISTENCE, useValue: 'session' },
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
