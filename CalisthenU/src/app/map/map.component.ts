@@ -1,54 +1,3 @@
-// import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-
-
-// declare var H: any;
-
-// @Component({
-//   selector: 'app-map',
-//   templateUrl: './map.component.html',
-//   styleUrls: ['./map.component.css']
-// })
-// export class MapComponent implements OnInit {
-
-//   @ViewChild("map")
-//   public mapElement!: ElementRef;
-
-//   @Input()
-//   public _apikey: any;
-
-//   @Input()
-//   public lat: any;
-
-//   @Input()
-//   public lng: any;
-
-//   @Input()
-//   public width: any;
-
-//   @Input()
-//   public height: any;
-
-//   public constructor() { }
-
-//   public ngOnInit() { }
-
-//   public ngAfterViewInit() {
-//       let platform = new H.service.Platform({
-//           "apikey": this._apikey
-//       });
-      
-//       let defaultLayers = platform.createDefaultLayers();
-//       let map = new H.Map(
-//           this.mapElement.nativeElement,
-//           defaultLayers.vector.normal.map,
-//           {
-//               zoom: 10,
-//               center: { lat: this.lat, lng: this.lng }
-//           }
-//       );
-//   }
-// }
-
 import {Component, OnInit} from '@angular/core';
 import {latLng, MapOptions, tileLayer, Map, Marker, icon} from 'leaflet';
 
@@ -76,8 +25,8 @@ export class MapComponent implements OnInit {
 
   private initializeMapOptions() {
     this.mapOptions = {
-      center: latLng(51.505, 0),
-      zoom: 12,
+      center: latLng(50.8503, 4.3517),
+      zoom: 17,
       layers: [
         tileLayer(
           'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -90,7 +39,7 @@ export class MapComponent implements OnInit {
   }
 
   private addSampleMarker() {
-    const marker = new Marker([51.51, 0])
+    const marker = new Marker([50.8503, 4.3517])
       .setIcon(
         icon({
           iconSize: [25, 41],

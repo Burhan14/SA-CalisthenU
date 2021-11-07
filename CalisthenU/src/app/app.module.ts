@@ -1,3 +1,4 @@
+// import { NominatimService } from './services/nominatim-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,13 +18,21 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MapComponent } from './map/map.component';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import { GeocodingComponent } from './geocoding/geocoding.component';
+import { MapPointFormComponent } from './map-point-form/map-point-form.component';
+import { ResultsListComponent } from './results-list/results-list.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    MapComponent
+    MapComponent,
+    GeocodingComponent,
+    MapPointFormComponent,
+    ResultsListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +47,14 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    LeafletModule
+    LeafletModule,
+    HttpClientModule,
+    FormsModule
     
   ],
-  providers: [],
+  providers: [
+    // NominatimService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
