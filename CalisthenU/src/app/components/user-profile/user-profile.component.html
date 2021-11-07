@@ -1,1 +1,8 @@
-<p>user-profile works!</p>
+<div *ngIf="this.authService.userData != undefined" class="container center">
+    <h1>Your Profile</h1>
+    <p>Username: {{this.authService.userData.displayName}}</p>
+    <p>E-mail: {{this.authService.userData.email}}</p>
+    <button class="btn btn-lg btn-outline-danger btn-block" (click)="authService.SignOut()"><i class="fa fa-sign-out"></i>
+      Logout</button>
+  
+  </div>
