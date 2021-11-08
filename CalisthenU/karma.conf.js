@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/CalisthenU'),
+      dir: require('path').join(__dirname, './coverage/Calisthen-U'),
       subdir: '.',
       reporters: [
         { type: 'html' },

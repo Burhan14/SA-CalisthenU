@@ -12,18 +12,14 @@
   </mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <!-- <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button> -->
-      <span>CalisthenU</span>
+      <span><a routerLink="/" style="font-style: normal; text-decoration: none; color: white;">Calisthen-U</a></span>
+      <span class="nav-spacer"></span>
+      <button  mat-icon-button class="account-icon" (click)="goToProfile()" routerLinkActive="active">
+        <i style="font-size: 32px;" class="far fa-user-circle"></i>
+      </button>
     </mat-toolbar>
-    <!-- <app-map _apikey="H2WGIJui2RvCX7PmfJ1vvxsxzcyz_cvFpS5uYH0cTOA" lat="37.7397" lng="-121.4252" width="100%" height="835px"></app-map> -->
-    <app-map></app-map>
+    <router-outlet></router-outlet>
+    <!-- <app-dashboard></app-dashboard> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
 
