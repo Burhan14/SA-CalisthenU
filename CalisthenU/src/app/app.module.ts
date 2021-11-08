@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 // import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
 // import { provideAuth,getAuth } from '@angular/fire/auth';
 // import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -40,6 +41,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { TestComponent } from './components/test/test.component';
+import { MapComponent } from './components/map/map.component';
+import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
 
 
 @NgModule({
@@ -53,7 +56,9 @@ import { TestComponent } from './components/test/test.component';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     UserProfileComponent,
-    TestComponent
+    TestComponent,
+    MapComponent,
+    MapPointFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { TestComponent } from './components/test/test.component';
     MatCardModule,
     MatMenuModule,
     NgbModule,
+    LeafletModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
