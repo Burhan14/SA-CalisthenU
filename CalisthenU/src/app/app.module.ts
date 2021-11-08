@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 // import { NominatimService } from './services/nominatim-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
