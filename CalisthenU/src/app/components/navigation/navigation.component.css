@@ -16,8 +16,12 @@
   z-index: 1;
 }
 
-.mat-toolbar  {
+/* .mat-toolbar  {
   display: flex;
   justify-content: center;
+} */
+
+.nav-spacer{
+  flex: 1 1 auto;
 }
 
