@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from "../services/user";
+import { User } from "./user";
+import { Location } from "../loc/location";
 // import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
@@ -34,7 +35,7 @@ export class AuthService {
   }
 
   // Sign in with email/password
-  SignIn(email: any, password: any) {
+  SignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result: { user: any; }) => {
         this.ngZone.run(() => {
@@ -47,25 +48,27 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email: any, password: any) {
+  SignUp(email: string, password: string) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result: { user: any; }) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
-        //this.SendVerificationMail();
+        this.SendVerificationMail();
         this.SetUserData(result.user);
       }).catch((error: { message: any; }) => {
+        console.log("probleem is in signup")
+        console.log(email + " " + password)
         window.alert(error.message)
       })
   }
 
-  // // Send email verfificaiton when new user sign up
-  // SendVerificationMail() {
-  //   return this.afAuth.currentUser.sendEmailVerification()
-  //   .then(() => {
-  //     this.router.navigate(['verify-email-address']);
-  //   })
-  // }
+  // Send email verfificaiton when new user sign up
+  SendVerificationMail() {
+    return this.afAuth.currentUser.then(u => u!.sendEmailVerification())
+    .then(() => {
+      this.router.navigate(['verify-email-address']);
+    })
+  }
 
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: any) {
@@ -91,6 +94,11 @@ export class AuthService {
   // Sign in with Facebook
   FacebookAuth() {
     return this.AuthLogin(new firebase.auth.FacebookAuthProvider());
+  }
+
+  // Sign in with Facebook
+  GithubAuth() {
+    return this.AuthLogin(new firebase.auth.GithubAuthProvider());
   }
 
   // Auth logic to run auth providers
@@ -125,7 +133,7 @@ export class AuthService {
   }
 
   // Sign out 
-  async SignOut() {
+  SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['dashboard']);

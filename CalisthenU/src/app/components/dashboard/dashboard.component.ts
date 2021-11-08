@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth/auth.service';
+import { LocService } from 'src/app/shared/services/loc/loc.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,7 +29,7 @@ export class DashboardComponent implements OnInit{
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService, public locService: LocService) {}
   currentUser:any = this.authService.userData;
   ngOnInit(): void {
     try {

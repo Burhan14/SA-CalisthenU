@@ -4,18 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { LocationsComponent } from './locations/locations.component';
+import { LocationsComponent } from './components/locations/locations.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -24,6 +24,11 @@ import { environment } from '../environments/environment';
 // import { provideAuth,getAuth } from '@angular/fire/auth';
 // import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
+//Dependecy Injection - Services
+import { AuthService } from "./shared/services/auth/auth.service";
+import { LocService } from "./shared/services/loc/loc.service";
+
+//Components
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -32,11 +37,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-
-import { AuthService } from "./shared/services/auth.service";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-
-
+import { TestComponent } from './components/test/test.component';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
   ],
   providers: [
     { provide: PERSISTENCE, useValue: 'session' },
-    AuthService
+    AuthService,
+    LocService,
   ],
   bootstrap: [AppComponent]
 })

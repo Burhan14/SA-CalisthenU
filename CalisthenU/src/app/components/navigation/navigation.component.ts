@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from "@angular/router";
 
 @Component({
@@ -20,9 +20,7 @@ export class NavigationComponent implements OnChanges {
     );
 
   isLoggedIn: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService, public router: Router) {
-
-  }
+  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService, public router: Router) {}
 
   goToProfile(): void{
     if (this.authService.userData != undefined) {

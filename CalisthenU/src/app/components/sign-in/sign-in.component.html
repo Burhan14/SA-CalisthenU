@@ -11,7 +11,7 @@
       </div>
       <div class="col-xs-2 col-sm-2">
         <a class="btn btn-lg btn-block kpx_btn-google-plus" data-toggle="tooltip" data-placement="top"
-          title="Google Plus" (click)="authService.GoogleAuth()">
+          title="Google" (click)="authService.GoogleAuth()">
           <i class="fa fa-google fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
@@ -38,7 +38,7 @@
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-user" style="margin-top: 10px;"></span></span>
             &nbsp;
-            <input type="text" class="form-control" name="username" placeholder="Username" #userName required>
+            <input type="text" class="form-control" name="email" placeholder="Email" #userMail required>
           </div>
           <hr />
 
@@ -48,7 +48,7 @@
             <input type="password" class="form-control" name="password" placeholder="Password" #userPassword required>
           </div>
           <hr />
-          <button class="btn btn-lg btn-outline-primary btn-block" (click)="authService.SignIn(userName.value, userPassword.value)"><i class="fa fa-sign-in"></i>
+          <button class="btn btn-lg btn-outline-primary btn-block" (click)="authService.SignIn(userMail.value, userPassword.value)"><i class="fa fa-sign-in"></i>
             Login</button>
         </form>
       </div>
