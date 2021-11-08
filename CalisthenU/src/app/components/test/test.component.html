@@ -2,4 +2,6 @@
     <h1 class="text-center">set data in firestore</h1>
     <input type="text" class="form-control" name="content" placeholder="content" #content>
     <button (click)="this.locService.SetLocationData(content.value)" class="btn btn-primary mt-2">add content to test doc</button>
+    <hr>
+    <button (click)="this.locService.GetLocations()" class="btn btn-secondary mt-2">get locations in console</button>
 </div>

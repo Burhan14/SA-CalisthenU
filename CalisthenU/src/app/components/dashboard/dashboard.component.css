@@ -19,3 +19,25 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.body{
+  margin: 1rem;
+}
+
+.card{
+  background-color: #3d3d3d;
+  height: 90vh;
+}
+
+.card-body{
+  padding: 0.625rem;
+}
+
+.col{
+  padding: 0 10px;
+}
+.card-title{
+  text-align: center;
+  
+}
+

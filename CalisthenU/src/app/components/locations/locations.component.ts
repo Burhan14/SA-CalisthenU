@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LocService } from 'src/app/shared/services/loc/loc.service';
 
 
 @Component({
@@ -8,5 +9,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent {
+
+  constructor(public locService: LocService) {
+    
+  }
+
+  
 }
 
