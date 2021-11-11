@@ -1,29 +1,39 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from "../auth/user";
 import { Location } from "../loc/location";
-// import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
 import firebase from 'firebase/compat/app';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { textChangeRangeIsUnchanged } from 'typescript';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocService {
-  locData: any; // Save logged in user data
-  Locations: Location[];
+  
   constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
+    public db: AngularFirestore,   // Inject Firestore service
+    public auth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning
-  ){}
+  ){ }
+
+  //form to create a new location
+  form = new FormGroup({
+    locationName: new FormControl(''),
+  })
+
+  GetLocations(){
+    return this.db.collection("locations").snapshotChanges();
+  }
 
    //test: set data in firestore
    SetLocationData(locName: string) {
-    const locRef: AngularFirestoreDocument<any> = this.afs.doc(`locations/test`);
+    const locRef: AngularFirestoreDocument<any> = this.db.doc(`locations/test`);
     const locationData: Location = {
       name: locName
     };
@@ -32,20 +42,11 @@ export class LocService {
     })
   }
 
-   //test: set data in firestore
-  GetLocations() {
-    // const locRef: AngularFirestoreDocument<any> = this.afs.doc(`locations/test`);
-    // console.log(this.afs.firestore.collectionGroup('locations'))
-
-    // console.log(this.afs
-    // .collection("locations")
-    // .snapshotChanges().subscribe(res => {
-    //   this.Locations = res.map( e => {
-    //     return {
-    //       name: e.payload.doc.data()
-    //     } as Location;
-    //   })
-    // }));
-        
+  CreateLocation(data: any) {
+    return new Promise<any>((resolve, reject) =>  {
+      this.db.collection("locations")
+      .add(data)
+      .then(res => {}, err => reject(err));
+    })
   }
 }
