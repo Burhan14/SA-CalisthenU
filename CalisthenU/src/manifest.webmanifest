@@ -3,9 +3,9 @@
   "short_name": "Calisthen-U",
   "theme_color": "#C2185B",
   "background_color": "#303030",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "./index.html",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
