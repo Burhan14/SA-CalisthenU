@@ -1,0 +1,10 @@
+Calisthen-U TODO's
+
+-firestore CRUD operations
+-firebase Authentication
+-map marker init on user's current position
+-get coordinates of selected location on map
+-fix layout: map acts abnormal when scrolling
+-fix webmanifest
+-locations clickable and navigate/route to location details
+-show locations on map with markers
