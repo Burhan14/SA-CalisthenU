@@ -6,5 +6,5 @@ Calisthen-U TODO's
 -get coordinates of selected location on map
 -fix layout: map acts abnormal when scrolling
 -fix webmanifest
--locations clickable and navigate/route to location details
+-locations clickable and navigate/route to location details (of the clicked location)
 -show locations on map with markers
