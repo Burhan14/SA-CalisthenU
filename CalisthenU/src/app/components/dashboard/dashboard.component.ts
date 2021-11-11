@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit{
   currentUser:any = this.authService.userData;
   ngOnInit(): void {
     try {
-      console.log(this.currentUser);
+      // console.log(this.currentUser);
     } catch (error) {
       console.log(error)
     }

@@ -1,10 +1,13 @@
-<!-- <p>locations works!</p> -->
-
-<mat-list role="list">
-  <mat-list-item role="listitem">location 1</mat-list-item>
+ <mat-list role="list" *ngFor="let loc of locations">
+  <mat-list-item role="listitem">{{ loc.payload.doc.data().locationName }}</mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item role="listitem">location 2</mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item role="listitem">location 3</mat-list-item>
-</mat-list>
-
+ </mat-list>
+ <mat-divider class="pb-5"></mat-divider>
+ <form [formGroup]="this.locService.form">
+   <div class="form-group">
+     <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
+   </div>
+   <button class="btn btn-primary" type="submit" *ngIf='name.value != ""' (click)="onSubmit()">
+    submit
+   </button>
+ </form>
