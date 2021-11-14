@@ -22,6 +22,7 @@
     "@angular/material": "^12.2.10",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
+    "@angular/pwa": "^13.0.2",
     "@angular/router": "~12.2.0",
     "@angular/service-worker": "~12.2.0",
     "@asymmetrik/ngx-leaflet": "^8.1.0",
