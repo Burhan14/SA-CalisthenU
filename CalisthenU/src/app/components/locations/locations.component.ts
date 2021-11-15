@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
@@ -18,6 +19,8 @@ export class LocationsComponent implements OnInit {
     this.GetLocations();
     for (const loc of this.locations) {
       console.log(loc.payload.doc.data().name);
+      console.log(loc.payload.doc.data().latitude);
+      console.log(loc.payload.doc.data().longitude);
     }
   }
 
@@ -28,7 +31,7 @@ export class LocationsComponent implements OnInit {
   GetLocations = () =>
     this.locService
     .GetLocations()
-    .subscribe(res => (this.locations = res));
+    .subscribe(res => (this.locations = res));  
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
   onSubmit() {

@@ -7,7 +7,13 @@
    <div class="form-group">
      <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
    </div>
-   <button class="btn btn-primary" type="submit" *ngIf='name.value != ""' (click)="onSubmit()">
+   <div class="form-group">
+    <input placeholder="Latitude" formControlName="locationLatitude" type="number" class="form-control" #latitude>
+  </div>
+  <div class="form-group">
+    <input placeholder="Longitude" formControlName="locationLongitude" type="number" class="form-control" #longitude>
+  </div>
+   <button class="btn btn-primary" type="submit" *ngIf='name.value != "" && latitude.value != "" && longitude.value != ""' (click)="onSubmit()">
     submit
    </button>
  </form>
