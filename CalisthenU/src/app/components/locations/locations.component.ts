@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Location } from 'src/app/shared/services/loc/location';
-
 
 @Component({
   selector: 'app-locations',
@@ -11,7 +11,7 @@ import { Location } from 'src/app/shared/services/loc/location';
 })
 export class LocationsComponent implements OnInit {
 
-  constructor(public locService: LocService) { }
+  constructor(public locService: LocService, public authService: AuthService) { }
   
   //when component initiated => get locations from db to list them inside card
   ngOnInit(): void {
@@ -33,12 +33,15 @@ export class LocationsComponent implements OnInit {
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
   onSubmit() {
     // this.locService.form.value.locationName = this.locations;
-    let data = this.locService.form.value;
-
-    
-    this.locService.CreateLocation(data);
-    console.log(data);
-    this.locService.form.reset();
+    if (this.authService.userData != undefined) {
+      let data = this.locService.form.value;
+      this.locService.CreateLocation(data);
+      console.log(data);
+      this.locService.form.reset();
+    }
+    else{
+      window.alert("log in to add location")
+    }
   }
 
 }

@@ -33,8 +33,9 @@
   padding: 0.625rem;
 }
 
-.col{
-  padding: 0 10px;
+.card{
+  padding:10px;
+  margin: 1rem 0
 }
 .card-title{
   text-align: center;

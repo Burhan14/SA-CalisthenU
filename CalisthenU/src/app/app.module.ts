@@ -23,9 +23,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
-// import { provideAuth,getAuth } from '@angular/fire/auth';
-// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 //Dependecy Injection - Services
 import { AuthService } from "./shared/services/auth/auth.service";

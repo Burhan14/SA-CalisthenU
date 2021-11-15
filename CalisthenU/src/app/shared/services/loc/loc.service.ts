@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { textChangeRangeIsUnchanged } from 'typescript';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class LocService {
     public db: AngularFirestore,   // Inject Firestore service
     public auth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    public authService: AuthService
   ){ }
 
   //form to create a new location
@@ -43,6 +45,10 @@ export class LocService {
   }
 
   CreateLocation(data: any) {
+
+    //add extra field to data to know who created the location (currently logged in user) 
+    data.createdBy = this.authService.userData.displayName;
+
     return new Promise<any>((resolve, reject) =>  {
       this.db.collection("locations")
       .add(data)

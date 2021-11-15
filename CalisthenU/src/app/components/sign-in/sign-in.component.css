@@ -173,6 +173,9 @@ a:hover {
     color: red;
 }
 
+.auth{
+  padding-top: 1rem;
+}
 	
 @media (min-width: 768px) {
     .kpx_login .kpx_forgotPwd {
