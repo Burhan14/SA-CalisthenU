@@ -27,21 +27,12 @@ export class LocService {
   //form to create a new location
   form = new FormGroup({
     locationName: new FormControl(''),
+    locationLatitude: new FormControl(''),
+    locationLongitude: new FormControl(''),
   })
 
   GetLocations(){
     return this.db.collection("locations").snapshotChanges();
-  }
-
-   //test: set data in firestore
-   SetLocationData(locName: string) {
-    const locRef: AngularFirestoreDocument<any> = this.db.doc(`locations/test`);
-    const locationData: Location = {
-      name: locName
-    };
-    return locRef.set(locationData, {
-      merge: true
-    })
   }
 
   CreateLocation(data: any) {
