@@ -26,7 +26,6 @@
 
 .card{
   background-color: #3d3d3d;
-  height: 90vh;
 }
 
 .card-body{
@@ -37,8 +36,20 @@
   padding:10px;
   margin: 1rem 0
 }
+
+.map-card{
+  height: 85vh;
+}
+
 .card-title{
   text-align: center;
-  
+}
+
+.card-row .card{
+  /* height: 60vh; */
+}
+
+.list-row .card{
+  /* height: 40vh; */
 }
 
