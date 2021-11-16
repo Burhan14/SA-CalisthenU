@@ -17,11 +17,6 @@ export class LocationsComponent implements OnInit {
   //when component initiated => get locations from db to list them inside card
   ngOnInit(): void {
     this.GetLocations();
-    for (const loc of this.locations) {
-      console.log(loc.payload.doc.data().name);
-      console.log(loc.payload.doc.data().latitude);
-      console.log(loc.payload.doc.data().longitude);
-    }
   }
 
   //array of locations, filled in directly on init from db

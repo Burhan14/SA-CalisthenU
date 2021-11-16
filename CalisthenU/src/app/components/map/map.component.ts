@@ -1,7 +1,8 @@
 import { map } from 'rxjs/operators';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
-import {latLng, MapOptions, tileLayer, Map, Marker, icon} from 'leaflet';
+import {latLng, MapOptions, tileLayer, Map, Marker, icon, LeafletMouseEvent} from 'leaflet';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-map',
@@ -9,9 +10,9 @@ import {latLng, MapOptions, tileLayer, Map, Marker, icon} from 'leaflet';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-
-  map!: Map;
-  mapOptions!: MapOptions;
+  
+  map: Map;
+  mapOptions: MapOptions;
 
   constructor(private locService:LocService) {
 
@@ -19,17 +20,20 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.GetLocations();
-    console.log(this.locations);
-    
     this.initializeMapOptions();
-
   }
 
   onMapReady(map: Map) {
     this.map = map;
     // this.addSampleMarker();
     this.addMarkers();
-    console.log(this.locations);
+    map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => { 
+      console.log(e.latlng);
+      // navigator.clipboard.writeText(e.latlng);
+
+      navigator.clipboard.writeText(e.latlng.lat + ',' + e.latlng.lng);
+
+     });
   }
 
   private initializeMapOptions() {
@@ -68,10 +72,9 @@ export class MapComponent implements OnInit {
     .subscribe(res => (this.locations = res));
 
   public addMarkers() {
-    console.table(this.locations);
     for (const loc of this.locations) {
-      console.log(loc);
-      let marker = new Marker([loc.payload.doc.data().locationLatitude, loc.payload.doc.data().locationLongitude])
+      let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0],(loc.payload.doc.data().locationCoordinates).split(',')[1]);
+      let marker = new Marker([coord.lat, coord.lng])
         .setIcon(
           icon({
             iconSize: [25, 41],
@@ -80,7 +83,6 @@ export class MapComponent implements OnInit {
           }));
       marker.addTo(this.map);
       marker.bindPopup(loc.payload.doc.data().locationName).openPopup();
-      console.log(marker.getLatLng());
     }
   }
 }
