@@ -3,19 +3,6 @@
   <mat-divider></mat-divider>
  </mat-list> -->
 
- <!-- <div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist" *ngFor="let loc of locations">
-      <a class="list-group-item list-group-item-action active" id="list-{{loc.payload.doc.data().locationName}}-list" data-toggle="list" href="#list-{{loc.payload.doc.data().locationName}}" role="tab" aria-controls="{{loc.payload.doc.data().locationName}}">{{loc.payload.doc.data().locationName}}</a>
-    </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent" *ngFor="let loc of locations">
-      <div class="tab-pane fade show active" id="list-{{loc.payload.doc.data().locationName}}" role="tabpanel" aria-labelledby="list-{{loc.payload.doc.data().locationName}}-list">{{loc.payload.doc.data().locationLatitude}}, {{loc.payload.doc.data().locationLongitude}}</div>
-    </div>
-  </div>
-</div> -->
-
 <div class="accordion" id="accordionExample">
   <div class="card" *ngFor="let loc of locations">
     <div class="card-header" [attr.id]="'heading-'+loc.payload.doc.data().locationName">
@@ -25,19 +12,16 @@
         </button>
       </h2>
     </div>
-
     <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
       <div class="card-body">
-        {{loc.payload.doc.data().locationLatitude}}, {{loc.payload.doc.data().locationLongitude}}
+        {{loc.payload.doc.data().locationCoordinates}}
       </div>
     </div>
   </div>
-
 </div>
 
  <mat-divider class="pb-5"></mat-divider>
  <form [formGroup]="this.locService.form">
-   
   <div class="form-group">
     <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
   </div>
