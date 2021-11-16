@@ -4,16 +4,21 @@
  </mat-list>
  <mat-divider class="pb-5"></mat-divider>
  <form [formGroup]="this.locService.form">
-   <div class="form-group">
-     <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
-   </div>
-   <div class="form-group">
-    <input placeholder="Latitude" formControlName="locationLatitude" type="number" class="form-control" #latitude>
-  </div>
+   
   <div class="form-group">
-    <input placeholder="Longitude" formControlName="locationLongitude" type="number" class="form-control" #longitude>
+    <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
   </div>
-   <button class="btn btn-primary" type="submit" *ngIf='name.value != "" && latitude.value != "" && longitude.value != ""' (click)="onSubmit()">
+   <div class="form-group">
+    <div class="input-group">
+      <input placeholder="Coordinates" formControlName="locationCoordinates" type="text" class="form-control" #coordinates>
+      <span class="input-group-append bg-white border-left-0">
+          <span class="input-group-text bg-transparent">
+            <i class="fas fa-info-circle" data-toggle="tooltip" title="double click on map to copy coordinates"></i>
+          </span>
+      </span>
+  </div>
+  </div>
+   <button class="btn btn-primary" type="submit" *ngIf='name.value != "" && coordinates.value != "" ' (click)="onSubmit()">
     submit
    </button>
  </form>
