@@ -28,7 +28,7 @@
 
     <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
       <div class="card-body">
-        {{loc.payload.doc.data().locationLatitude}}, {{loc.payload.doc.data().locationLongitude}}
+        {{loc.payload.doc.data().locationCoordinates}}
       </div>
     </div>
   </div>
