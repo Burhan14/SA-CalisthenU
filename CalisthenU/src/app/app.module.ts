@@ -41,6 +41,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MapPointFormComponent } from './components/map-point-form/map-point-for
     TestComponent,
     MapComponent,
     MapPointFormComponent,
+    LocationDetailsComponent,
   ],
   imports: [
     BrowserModule,

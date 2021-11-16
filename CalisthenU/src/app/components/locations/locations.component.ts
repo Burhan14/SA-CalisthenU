@@ -21,6 +21,7 @@ export class LocationsComponent implements OnInit {
 
   //array of locations, filled in directly on init from db
   locations: any = [];
+  test: string = "testo";
 
   //call service to fetch data from db and push into locations array
   GetLocations = () =>

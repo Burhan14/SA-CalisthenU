@@ -9,6 +9,7 @@ import {UserProfileComponent } from './components/user-profile/user-profile.comp
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'location/:id', component: LocationDetailsComponent, outlet: "details" },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 
