@@ -5,9 +5,9 @@ DONE:
 -fix layout: map acts abnormal when scrolling (ok)
 -fix webmanifest (ok)
 -locations clickable and navigate/route to location details (of the clicked location) (ok accordeon)
-
-
-
+-map marker on user's current position (not on init, press button and ask permission before)
+-Tooltip on mobile (ok)
+-Create location page (ok)
 
 
 
@@ -18,9 +18,8 @@ IN PROGRESS:
 
 
 
+
 TODO:
--map marker init on user's current position ()
--Tooltip on mobile (change to button)
 -My location on profile
 -Details locations
 -New location form advanced with other properties (images, descriptions, rating, ...)
