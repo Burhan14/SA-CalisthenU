@@ -5,6 +5,9 @@
     (leafletMapReady)="onMapReady($event)"
     [leafletOptions]="mapOptions">
 </div>
-<button class="btn btn-primary" type="submit" (click)="addMarkers()">
+<button class="btn btn-primary" id="MARKERS" type="submit" (click)="addMarkers()">
     See Locations
+</button>
+<button class="btn btn-primary" type="submit" (click)="GetGeoLocation()">
+    Show my location
 </button>
