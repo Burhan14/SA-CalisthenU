@@ -1,0 +1,24 @@
+<div class="container p-5">
+    <h2 class="text-center">Create New Location</h2>
+    <form [formGroup]="this.locService.form">
+      <div class="form-group">
+        <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <input placeholder="Coordinates" formControlName="locationCoordinates" type="text" class="form-control"
+            #coordinates>
+          <span class="input-group-append bg-white border-left-0">
+            <span class="input-group-text bg-transparent">
+              <a data-toggle="tooltip" data-placement="top" title="double click on map to copy coordinates"><i
+                  class="fas fa-info-circle"></i></a>
+            </span>
+          </span>
+        </div>
+      </div>
+      <button class="btn btn-custom btn-lg btn-block text-white" type="submit"
+        (click)="onSubmit()">
+        Create
+      </button>
+    </form>
+</div>

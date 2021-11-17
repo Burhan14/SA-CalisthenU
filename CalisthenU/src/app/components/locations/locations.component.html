@@ -20,8 +20,11 @@
   </div>
 </div>
 
- <mat-divider class="pb-5"></mat-divider>
- <form [formGroup]="this.locService.form">
+<button class="btn btn-custom btn-lg btn-block mt-5" routerLink="/create-location" *ngIf="this.authService.userData != undefined">Create New Location</button>
+
+<!-- <app-create-location></app-create-location> -->
+
+ <!-- <form [formGroup]="this.locService.form">
   <div class="form-group">
     <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
   </div>
@@ -38,4 +41,4 @@
    <button class="btn btn-primary" type="submit" *ngIf='name.value != "" && coordinates.value != "" ' (click)="onSubmit()">
     submit
    </button>
- </form>
+ </form> -->

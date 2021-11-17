@@ -5,9 +5,7 @@ DONE:
 -fix layout: map acts abnormal when scrolling (ok)
 -fix webmanifest (ok)
 -locations clickable and navigate/route to location details (of the clicked location) (ok accordeon)
-
-
-
+-Tooltip on mobile (change to button)
 
 
 
@@ -15,12 +13,11 @@ IN PROGRESS:
 -firestore CRUD operations ('CR' ok)
 -firebase Authentication ('+-' ok)
 -show locations on map with markers and open accordoen of selected location (+- with button click event, fix : onInit and center map)
+-map marker init on user's current position ()
 
 
 
 TODO:
--map marker init on user's current position ()
--Tooltip on mobile (change to button)
 -My location on profile
 -Details locations
 -New location form advanced with other properties (images, descriptions, rating, ...)

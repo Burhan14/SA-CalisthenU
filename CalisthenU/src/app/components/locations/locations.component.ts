@@ -28,19 +28,19 @@ export class LocationsComponent implements OnInit {
     .GetLocations()
     .subscribe(res => (this.locations = res));  
 
-  //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
-  onSubmit() {
-    // this.locService.form.value.locationName = this.locations;
-    if (this.authService.userData != undefined) {
-      let data = this.locService.form.value;
-      this.locService.CreateLocation(data);
-      console.log(data);
-      this.locService.form.reset();
-    }
-    else{
-      window.alert("log in to add location")
-    }
-  }
+  // //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
+  // onSubmit() {
+  //   // this.locService.form.value.locationName = this.locations;
+  //   if (this.authService.userData != undefined) {
+  //     let data = this.locService.form.value;
+  //     this.locService.CreateLocation(data);
+  //     console.log(data);
+  //     this.locService.form.reset();
+  //   }
+  //   else{
+  //     window.alert("log in to add location")
+  //   }
+  // }
 
 }
 
