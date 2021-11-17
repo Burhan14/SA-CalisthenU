@@ -114,7 +114,7 @@ export class MapComponent implements OnInit {
         'lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude
       )
       this.addCurrentPositionMarker(position.coords.latitude, position.coords.longitude);
-      this.map.setView(L.latLng(position.coords.latitude, position.coords.longitude),17);
+      this.map.flyTo(L.latLng(position.coords.latitude, position.coords.longitude),17);
     });
   }
 
