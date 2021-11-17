@@ -14,7 +14,8 @@
     </div>
     <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
       <div class="card-body">
-        {{loc.payload.doc.data().locationCoordinates}}
+        <a attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps"><i class="fas fa-external-link-alt"></i></a>
+        <!-- {{loc.payload.doc.data().locationCoordinates}} -->
       </div>
     </div>
   </div>
