@@ -3,6 +3,7 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import {latLng, MapOptions, tileLayer, Map, Marker, icon, LeafletMouseEvent} from 'leaflet';
 import * as L from 'leaflet';
+import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 
 @Component({
   selector: 'app-map',
@@ -85,4 +86,17 @@ export class MapComponent implements OnInit {
       marker.bindPopup(loc.payload.doc.data().locationName).openPopup();
     }
   }
+
+  // GetGeoLocation(){
+  //   if (!navigator.geolocation) {
+  //     console.log('location is not supported');
+  //   }
+  //   navigator.geolocation.getCurrentPosition(position) => {
+  //     console.log(
+  //       'lat: ' + position.co 
+  //     )
+  //   }
+  // }
+
+
 }
