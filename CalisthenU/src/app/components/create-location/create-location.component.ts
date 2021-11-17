@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 
@@ -9,7 +10,7 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 })
 export class CreateLocationComponent implements OnInit {
 
-  constructor(public authService: AuthService, public locService: LocService) { }
+  constructor(public authService: AuthService, public locService: LocService, public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,7 @@ export class CreateLocationComponent implements OnInit {
       this.locService.CreateLocation(data);
       console.log(data);
       this.locService.form.reset();
+      this.router.navigate(['dashboard']);
     }
     else{
       window.alert("log in to add location")
