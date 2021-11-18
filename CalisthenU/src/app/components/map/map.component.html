@@ -1,5 +1,8 @@
 <!-- <div #map [style.width]="width" [style.height]="height"></div> -->
 
+<div class="alert alert-primary hide alert-fixed" role="alert">
+    Coordinates copied into clipboard!
+</div>
 <div id="map"
     leaflet
     (leafletMapReady)="onMapReady($event)"

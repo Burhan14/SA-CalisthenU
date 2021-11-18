@@ -45,8 +45,10 @@ export class MapComponent implements OnInit {
       // navigator.clipboard.writeText(e.latlng);
 
       navigator.clipboard.writeText(e.latlng.lat + ',' + e.latlng.lng);
-
+      document.querySelector(".alert").classList.remove("hide");
+      setTimeout(() => { document.querySelector(".alert").classList.add("hide"); }, 3000);
      });
+     map.doubleClickZoom.disable();
 
   }
 
