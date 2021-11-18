@@ -27,6 +27,27 @@
         <textarea placeholder="Tell us more about this place" class="form-control" id="Description" rows="3"></textarea>
       </div>
       
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-11">
+            <select #ex class="form-select form-control form-select-lg" aria-label=".form-select-lg example">
+              <option value="null" selected disabled>Select an exercise to add</option>
+              <option value="Pull-up">Pull-up</option>
+              <option value="Chin-up">Chin-up</option>
+              <option value="Dips">Dips</option>
+              </select>
+          </div>
+          <div class="col-1 d-flex justify-content-end">
+            <button class="btn btn-custom" (click)="addExercise(ex.options[ex.selectedIndex].value)">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <ul class="customListStyle" *ngFor="let e of availableEx">
+          <li #rmThis (click)="removeEx(rmThis.innerHTML)">{{e}}</li>
+        </ul>
+      </div>
+
       <button class="btn btn-custom btn-lg btn-block text-white" type="submit"
         (click)="onSubmit()">
         Create
