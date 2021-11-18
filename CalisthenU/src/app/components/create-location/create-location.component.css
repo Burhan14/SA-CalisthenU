@@ -23,15 +23,21 @@ input[type="file"]{
  } */
 
  ul {
-   list-style: none; /* Remove default bullets */
+   list-style: none; 
  }
  
- ul li::before {
-   content: url('../../../assets/icons/rm.svg');  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-   color: white; /* Change the color */
-   font-weight: bold; /* If you want it to be bold */
-   display: inline-block; /* Needed to add space between the bullet and the text */
-   width: 0.6rem; /* Also needed for space (tweak if needed) */
-   margin-left: -1rem; /* Also needed for space (tweak if needed) */
-   margin-right: 1rem; /* Also needed for space (tweak if needed) */
+ /* ul li::before {
+   content: url('../../../assets/icons/rm.svg'); 
+   color: white; 
+   font-weight: bold;
+   display: inline-block; 
+   width: 0.6rem; 
+   margin-left: -1rem; 
+   margin-right: 1rem;
+ } */
+
+ .rm{
+  cursor: pointer;
+  margin-right: 0.6rem;
+  color: var(--main-color);
  }
