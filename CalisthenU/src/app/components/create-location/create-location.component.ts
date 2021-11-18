@@ -12,7 +12,21 @@ export class CreateLocationComponent implements OnInit {
 
   constructor(public authService: AuthService, public locService: LocService, public router: Router) { }
 
+  availableEx : string[] = new Array();
+
   ngOnInit(): void {
+  }
+
+  public addExercise(ex:string){
+    if (ex != "null" && !this.availableEx.includes(ex)) {
+      this.availableEx.push(ex);
+      console.log(this.availableEx);
+    }
+  }
+
+  public removeEx(ex:string){
+    this.availableEx.splice(this.availableEx.indexOf(ex),1);
+    console.log(this.availableEx);
   }
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
@@ -20,6 +34,7 @@ export class CreateLocationComponent implements OnInit {
     // this.locService.form.value.locationName = this.locations;
     if (this.authService.userData != undefined) {
       let data = this.locService.form.value;
+      data.exercises = this.availableEx;
       this.locService.CreateLocation(data);
       console.log(data);
       this.locService.form.reset();
