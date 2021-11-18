@@ -1,6 +1,25 @@
 /* @import '~firebaseui/dist/firebaseui.css'; */
 
 /* You can add global styles to this file, and also import other style files */
+*{
+    --main-color: #C2185B;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
+.btn-custom{
+    background-color: #C2185B;
+}
+*:not(i){
+    font-family: 'Saira Condensed', sans-serif  !important; font-size: large; 
+}
+h1{
+    /* font-family: 'Permanent Marker', cursive !important;  */
+    /* font-family: 'Bebas Neue', cursive !important; */
+    font-family: 'Saira Condensed', sans-serif  !important;
+    font-weight: 800 !important;
+    font-size: 32px !important;
+}
+h2{
+    font-size: 2rem !important; 
+}

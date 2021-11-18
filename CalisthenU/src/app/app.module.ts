@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 // import { NominatimService } from './services/nominatim-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,9 +23,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
-// import { provideAuth,getAuth } from '@angular/fire/auth';
-// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 //Dependecy Injection - Services
 import { AuthService } from "./shared/services/auth/auth.service";
@@ -43,6 +41,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
+import { CreateLocationComponent } from './components/create-location/create-location.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +57,7 @@ import { MapPointFormComponent } from './components/map-point-form/map-point-for
     TestComponent,
     MapComponent,
     MapPointFormComponent,
+    CreateLocationComponent,
   ],
   imports: [
     BrowserModule,

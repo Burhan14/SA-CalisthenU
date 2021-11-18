@@ -1,7 +1,16 @@
 <!-- <div #map [style.width]="width" [style.height]="height"></div> -->
 
+<div class="alert alert-primary hide alert-fixed" role="alert">
+    Coordinates copied into clipboard!
+</div>
 <div id="map"
     leaflet
     (leafletMapReady)="onMapReady($event)"
     [leafletOptions]="mapOptions">
 </div>
+<button class="btn btn-primary" type="submit" (click)="addMarkers()">
+    See Locations
+</button>
+<button class="btn btn-primary" type="submit" (click)="GetGeoLocation()">
+    Show my location
+</button>

@@ -1,16 +1,14 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <span><a routerLink="/" style="font-style: normal; text-decoration: none; color: white;">Calisthen-U</a></span>
+    <mat-toolbar color="primary" class="px-4">
+      <!-- <span class="nav-spacer"></span> -->
+      <!-- <a routerLink="/"><img src="../../../assets/icons/icon-512x512_themed_white.png" class="logo" alt="Calisthen-u app logo"></a> -->
+      <span><a routerLink="/" style="text-decoration: none; color: white;"><h1>Calisthen-U</h1></a></span>
       <span class="nav-spacer"></span>
-      <button  mat-icon-button class="account-icon" (click)="goToProfile()" routerLinkActive="active">
+      <button mat-icon-button class="account-icon" (click)="goToProfile()" routerLinkActive="active">
         <i style="font-size: 32px;" class="far fa-user-circle"></i>
       </button>
     </mat-toolbar>
     <router-outlet></router-outlet>
-    <!-- <app-dashboard></app-dashboard> -->
-    <!-- <app-map></app-map> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-

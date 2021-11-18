@@ -1,0 +1,43 @@
+input[type="file"]{
+    -webkit-appearance: none;
+    text-align: left;
+    -webkit-rtl-ordering:  left;
+    cursor: pointer;
+ }
+ input[type="file"]::-webkit-file-upload-button{
+    -webkit-appearance: none;
+    float: right;
+    border: 0px ;
+    cursor: pointer;
+    
+ }
+
+ .input-group-append{
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+ }
+
+ /* .customListStyle{
+    list-style: url('../../../assets/icons/rm.svg');
+    
+ } */
+
+ ul {
+   list-style: none; 
+ }
+ 
+ /* ul li::before {
+   content: url('../../../assets/icons/rm.svg'); 
+   color: white; 
+   font-weight: bold;
+   display: inline-block; 
+   width: 0.6rem; 
+   margin-left: -1rem; 
+   margin-right: 1rem;
+ } */
+
+ .rm{
+  cursor: pointer;
+  margin-right: 0.6rem;
+  color: var(--main-color);
+ }

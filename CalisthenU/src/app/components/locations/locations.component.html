@@ -1,13 +1,45 @@
- <mat-list role="list" *ngFor="let loc of locations">
+ <!-- <mat-list role="list" *ngFor="let loc of locations">
   <mat-list-item role="listitem">{{ loc.payload.doc.data().locationName }}</mat-list-item>
   <mat-divider></mat-divider>
- </mat-list>
- <mat-divider class="pb-5"></mat-divider>
- <form [formGroup]="this.locService.form">
+ </mat-list> -->
+
+<div class="accordion" id="accordionExample">
+  <div class="card" *ngFor="let loc of locations">
+    <div class="card-header" [attr.id]="'heading-'+loc.payload.doc.data().locationName">
+      <h2 class="mb-0">
+        <button class="btn btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-'+loc.payload.doc.data().locationName" aria-expanded="true" [attr.aria-controls]="'collapse-'+loc.payload.doc.data().locationName">
+          {{loc.payload.doc.data().locationName}}
+        </button>
+      </h2>
+    </div>
+    <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
+      <div class="card-body">
+        <a attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps"><i class="fas fa-external-link-alt"></i></a>
+        <!-- {{loc.payload.doc.data().locationCoordinates}} -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-custom btn-lg btn-block mt-5" routerLink="/create-location" *ngIf="this.authService.userData != undefined">Create New Location</button>
+
+<!-- <app-create-location></app-create-location> -->
+
+ <!-- <form [formGroup]="this.locService.form">
+  <div class="form-group">
+    <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
+  </div>
    <div class="form-group">
-     <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
-   </div>
-   <button class="btn btn-primary" type="submit" *ngIf='name.value != ""' (click)="onSubmit()">
+    <div class="input-group">
+      <input placeholder="Coordinates" formControlName="locationCoordinates" type="text" class="form-control" #coordinates>
+      <span class="input-group-append bg-white border-left-0">
+          <span class="input-group-text bg-transparent">
+            <a data-toggle="tooltip" data-placement="top" title="double click on map to copy coordinates"><i class="fas fa-info-circle" ></i></a>
+          </span>
+      </span>
+  </div>
+  </div>
+   <button class="btn btn-primary" type="submit" *ngIf='name.value != "" && coordinates.value != "" ' (click)="onSubmit()">
     submit
    </button>
- </form>
+ </form> -->
