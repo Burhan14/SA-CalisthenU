@@ -2,11 +2,13 @@
     <h2 class="text-center">Create New Location</h2>
     <form [formGroup]="this.locService.form">
       <div class="form-group">
-        <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
+        <label for="location">Location</label>
+        <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
       </div>
       <div class="form-group">
+        <label for="coordinates">Coordinates</label>
         <div class="input-group">
-          <input placeholder="Coordinates" formControlName="locationCoordinates" type="text" class="form-control"
+          <input id="coordinates" placeholder="Latitude and Longitude" formControlName="locationCoordinates" type="text" class="form-control"
             #coordinates>
           <span class="input-group-append bg-white border-left-0">
             <span class="input-group-text bg-transparent">
@@ -16,6 +18,15 @@
           </span>
         </div>
       </div>
+      <div class="form-group">
+        <label for="Images">Images</label>
+        <input class="form-control" id="Images" type="file" multiple/>
+      </div>
+      <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea placeholder="Tell us more about this place" class="form-control" id="Description" rows="3"></textarea>
+      </div>
+      
       <button class="btn btn-custom btn-lg btn-block text-white" type="submit"
         (click)="onSubmit()">
         Create
