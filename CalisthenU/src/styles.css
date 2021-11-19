@@ -8,7 +8,7 @@
 html, body { height: 100%; }
 body { margin: 0; }
 .btn-custom{
-    background-color: #C2185B;
+    background-color: var(--main-color);
 }
 *:not(i){
     font-family: 'Saira Condensed', sans-serif  !important; font-size: large; 

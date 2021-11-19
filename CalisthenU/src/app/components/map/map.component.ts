@@ -87,7 +87,7 @@ export class MapComponent implements OnInit {
     this.locService
     .GetLocations()
     .subscribe(res => (this.locations = res));
-    console.table(this.locations);
+    // console.table(this.locations);
   }
     
 
@@ -104,7 +104,6 @@ export class MapComponent implements OnInit {
       marker.addTo(this.map);
       marker.bindPopup(loc.payload.doc.data().locationName);
     }
-    console.log("test");
   }
 
   GetGeoLocation(){
