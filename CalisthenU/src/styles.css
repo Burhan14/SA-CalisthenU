@@ -3,10 +3,16 @@
 /* You can add global styles to this file, and also import other style files */
 *{
     --main-color: #C2185B;
+    
 }
 
 html, body { height: 100%; }
-body { margin: 0; }
+body {
+    margin: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
 .btn-custom{
     background-color: var(--main-color);
 }
