@@ -11,12 +11,10 @@ DONE:
 
 
 
-
 IN PROGRESS:
 -firestore CRUD operations ('CR' ok)
 -firebase Authentication ('+-' ok)
 -show locations on map with markers and open accordoen of selected location (+- with button click event, fix : onInit and center map)
--map marker init on user's current position ()
 
 
 
@@ -25,3 +23,4 @@ TODO:
 -My location on profile
 -Details locations
 -New location form advanced with other properties (images, descriptions, rating, ...)
+-Cache Data (Service Worker PWA, "location data")

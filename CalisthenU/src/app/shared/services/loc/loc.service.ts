@@ -28,6 +28,7 @@ export class LocService {
   form = new FormGroup({
     locationName: new FormControl(''),
     locationCoordinates: new FormControl(''),
+    locationDescription: new FormControl(''),
   })
 
   GetLocations(){
