@@ -23,3 +23,4 @@ TODO:
 -My location on profile
 -Details locations
 -New location form advanced with other properties (images, descriptions, rating, ...)
+-Cache Data (Service Worker PWA, "location data")
