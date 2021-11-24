@@ -34,9 +34,17 @@ export class CreateLocationComponent implements OnInit {
     // this.locService.form.value.locationName = this.locations;
     if (this.authService.userData != undefined) {
       let data = this.locService.form.value;
+      let images = (<HTMLInputElement>document.querySelector('input[type=file]')).files;
+      const reader = new FileReader();
+      for (let i = 0; i < images.length; i++) {
+        let image = images.item(i);
+        reader.readAsDataURL(image);
+        reader.onload = () => {data.images.push(reader.result)}
+        
+    }
       data.exercises = this.availableEx;
-      this.locService.CreateLocation(data);
       console.log(data);
+      // this.locService.CreateLocation(data);
       this.locService.form.reset();
       this.router.navigate(['dashboard']);
     }
