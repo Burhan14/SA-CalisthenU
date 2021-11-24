@@ -6,6 +6,8 @@ import * as L from 'leaflet';
 import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import { Control, ControlPosition } from 'leaflet';
 
+
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -87,7 +89,7 @@ export class MapComponent implements OnInit {
     this.locService
     .GetLocations()
     .subscribe(res => (this.locations = res));
-    console.table(this.locations);
+    // console.table(this.locations);
   }
     
 
@@ -104,7 +106,6 @@ export class MapComponent implements OnInit {
       marker.addTo(this.map);
       marker.bindPopup(loc.payload.doc.data().locationName);
     }
-    console.log("test");
   }
 
   GetGeoLocation(){
