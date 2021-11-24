@@ -11,12 +11,10 @@ DONE:
 
 
 
-
 IN PROGRESS:
 -firestore CRUD operations ('CR' ok)
 -firebase Authentication ('+-' ok)
 -show locations on map with markers and open accordoen of selected location (+- with button click event, fix : onInit and center map)
--map marker init on user's current position ()
 
 
 

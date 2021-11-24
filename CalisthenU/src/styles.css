@@ -3,7 +3,7 @@
 /* You can add global styles to this file, and also import other style files */
 *{
     --main-color: #C2185B;
-    
+
 }
 
 html, body { height: 100%; }
@@ -17,7 +17,7 @@ body {
     background-color: var(--main-color);
 }
 *:not(i){
-    font-family: 'Saira Condensed', sans-serif  !important; font-size: large; 
+    font-family: 'Saira Condensed', sans-serif  !important; font-size: large;
 }
 h1{
     /* font-family: 'Permanent Marker', cursive !important;  */
@@ -27,5 +27,5 @@ h1{
     font-size: 32px !important;
 }
 h2{
-    font-size: 2rem !important; 
+    font-size: 2rem !important;
 }
