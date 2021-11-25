@@ -7,16 +7,19 @@
   <div class="card" *ngFor="let loc of locations">
     <div class="card-header" [attr.id]="'heading-'+loc.payload.doc.data().locationName">
       <h2 class="mb-0">
-        <button class="btn btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-'+loc.payload.doc.data().locationName" aria-expanded="true" [attr.aria-controls]="'collapse-'+loc.payload.doc.data().locationName">
+        <button class="btn btn-block text-left text-uppercase text-center" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-'+loc.payload.doc.data().locationName" aria-expanded="true" [attr.aria-controls]="'collapse-'+loc.payload.doc.data().locationName">
           {{loc.payload.doc.data().locationName}}
         </button>
       </h2>
     </div>
     <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
-      <div class="card-body">
-        <a attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps"><i class="fas fa-external-link-alt"></i></a>
+      <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+        <img src="https://via.placeholder.com/150" class="mb-4" width="50%">
+        <p class="card-text">{{loc.payload.doc.data().locationDescription}}</p>
+        <small class="text-muted">Added by: {{loc.payload.doc.data().createdBy}}</small>
+        <small class="text-muted " ><a  attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" class="text-custom" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps" style="color: #303030;">Open in Google Maps <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
         <!-- {{loc.payload.doc.data().locationCoordinates}} -->
-        <button class="btn btn-custom" (click)="showInConsole(loc.payload.doc)"></button>
+        <!-- <button class="btn btn-custom" (click)="showInConsole(loc.payload.doc)"></button> -->
       </div>
     </div>
   </div>

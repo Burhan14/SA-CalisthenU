@@ -16,6 +16,9 @@ body {
 .btn-custom{
     background-color: var(--main-color);
 }
+.text-custom{
+    color: var(--main-color);
+}
 *:not(i){
     font-family: 'Saira Condensed', sans-serif  !important; font-size: large;
 }
@@ -29,3 +32,4 @@ h1{
 h2{
     font-size: 2rem !important;
 }
+
