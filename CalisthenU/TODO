@@ -9,6 +9,7 @@ DONE:
 -Tooltip on mobile (ok)
 -Create location page (ok)
 -New location form advanced with other properties (images, descriptions, rating, ...)
+-Add opening hours to Location with checkbox
 
 
 
@@ -25,4 +26,3 @@ TODO:
 -My location on profile
 -Cache Data (Service Worker PWA, "location data")
 -Get Images per location
--Add opening hours to Location with checkbox
