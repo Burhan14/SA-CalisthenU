@@ -24,3 +24,24 @@
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
+
+a:hover,
+a:active{
+    color: darkgrey;
+    text-decoration: none;
+    animation: 3s ease-in-out ;
+}
+.card-body {
+    background-color: rgba(194, 24, 91, 0.5);
+    border-radius: 5px;
+}
+h2 button:focus{
+    box-shadow: none!important;
+    /* color: rgba(194, 24, 91, 1)!important; */
+}
+h2 button {
+    color: white!important;
+}
+h2 button .collapsed{
+    color: rgba(194, 24, 91, 1)!important;
+}
