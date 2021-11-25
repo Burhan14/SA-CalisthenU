@@ -34,6 +34,7 @@ a:active{
 .card-body {
     background-color: rgba(194, 24, 91, 0.5);
     border-radius: 5px;
+    position: relative;
 }
 h2 button:focus{
     box-shadow: none!important;
@@ -45,3 +46,9 @@ h2 button {
 h2 button .collapsed{
     color: rgba(194, 24, 91, 1)!important;
 }
+.external{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+}
+
