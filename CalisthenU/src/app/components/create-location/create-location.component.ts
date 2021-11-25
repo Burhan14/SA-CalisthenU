@@ -13,6 +13,7 @@ export class CreateLocationComponent implements OnInit {
   constructor(public authService: AuthService, public locService: LocService, public router: Router) { }
 
   availableEx : string[] = new Array();
+  // imagesBuffer : any[] = new Array();
 
   ngOnInit(): void {
   }
@@ -34,9 +35,11 @@ export class CreateLocationComponent implements OnInit {
     // this.locService.form.value.locationName = this.locations;
     if (this.authService.userData != undefined) {
       let data = this.locService.form.value;
+      //manually add fields into data object (not through FormControl)
+      data.images = readFiles()
       data.exercises = this.availableEx;
-      this.locService.CreateLocation(data);
       console.log(data);
+      this.locService.CreateLocation(data);
       this.locService.form.reset();
       this.router.navigate(['dashboard']);
     }
@@ -44,4 +47,31 @@ export class CreateLocationComponent implements OnInit {
       window.alert("log in to add location")
     }
   }
+}
+
+function readFiles() {
+
+  var buffer : any[] = new Array();
+  var files   =(<HTMLInputElement>document.querySelector('input[type=file]')).files;
+  
+  function readAndPush(file: any) {
+
+    // Veillez à ce que `file.name` corresponde à nos critères d’extension
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        buffer.push(this.result)
+      }, false);
+
+      reader.readAsDataURL(file);
+    }
+
+  }
+
+  if (files) {
+    [].forEach.call(files, readAndPush);
+  }
+
+  return buffer;
 }

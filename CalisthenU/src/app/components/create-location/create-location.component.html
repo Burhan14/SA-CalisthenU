@@ -24,13 +24,13 @@
       </div>
       <div class="form-group">
         <label for="Description">Description</label>
-        <textarea placeholder="Tell us more about this place" class="form-control" id="Description" rows="3"></textarea>
+        <textarea placeholder="Tell us more about this place" class="form-control" formControlName="locationDescription" id="Description" rows="3" #description></textarea>
       </div>
       
       <div class="form-group">
         <div class="form-row">
           <div class="col-md-11 mb-1">
-            <select #ex class="form-select form-control form-select-lg" aria-label=".form-select-lg example">
+            <select #ex class="form-select form-control form-select-lg"  aria-label=".form-select-lg example">
               <option value="null" selected disabled>Select an exercise to add</option>
               <option value="Pull-up">Pull-up</option>
               <option value="Chin-up">Chin-up</option>

@@ -17,6 +17,7 @@ export class LocationsComponent implements OnInit {
   //when component initiated => get locations from db to list them inside card
   ngOnInit(): void {
     this.GetLocations();
+    
   }
 
   //array of locations, filled in directly on init from db
@@ -28,5 +29,10 @@ export class LocationsComponent implements OnInit {
     .GetLocations()
     .subscribe(res => (this.locations = res));  
 
+  showInConsole(data:any){
+    console.log(data);
+  }
 }
+
+
 
