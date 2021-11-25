@@ -1,3 +1,4 @@
+import { Location } from 'src/app/shared/services/loc/location';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
@@ -14,6 +15,8 @@ export class CreateLocationComponent implements OnInit {
 
   availableEx : string[] = new Array();
   // imagesBuffer : any[] = new Array();
+
+  value: string;
 
   ngOnInit(): void {
   }
@@ -38,6 +41,14 @@ export class CreateLocationComponent implements OnInit {
       //manually add fields into data object (not through FormControl)
       data.images = readFiles()
       data.exercises = this.availableEx;
+      if (data.locationAccess == null || data.locationAccess == '') {
+        if (this.value == "limited") {
+          data.locationAccess = "This location has restricted opening hours."
+        }
+        else{
+          data.locationAccess = "This location is open 24/7."
+        }
+      }
       console.log(data);
       this.locService.CreateLocation(data);
       this.locService.form.reset();

@@ -14,12 +14,14 @@
     </div>
     <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
       <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-        <img src="https://via.placeholder.com/150" class="mb-4" width="50%">
+        <img src="https://via.placeholder.com/150" class="my-4" width="50%">
         <p class="card-text">{{loc.payload.doc.data().locationDescription}}</p>
+        <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <small class="text-muted">Added by: {{loc.payload.doc.data().createdBy}}</small>
-        <small class="text-muted " ><a  attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" class="text-custom" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps" style="color: #303030;">Open in Google Maps <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
+        <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Open in Google Maps <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
         <!-- {{loc.payload.doc.data().locationCoordinates}} -->
         <!-- <button class="btn btn-custom" (click)="showInConsole(loc.payload.doc)"></button> -->
+
       </div>
     </div>
   </div>
@@ -27,23 +29,4 @@
 
 <button class="btn btn-custom btn-lg btn-block mt-5" routerLink="/create-location" *ngIf="this.authService.userData != undefined">Create New Location</button>
 
-<!-- <app-create-location></app-create-location> -->
 
- <!-- <form [formGroup]="this.locService.form">
-  <div class="form-group">
-    <input placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
-  </div>
-   <div class="form-group">
-    <div class="input-group">
-      <input placeholder="Coordinates" formControlName="locationCoordinates" type="text" class="form-control" #coordinates>
-      <span class="input-group-append bg-white border-left-0">
-          <span class="input-group-text bg-transparent">
-            <a data-toggle="tooltip" data-placement="top" title="double click on map to copy coordinates"><i class="fas fa-info-circle" ></i></a>
-          </span>
-      </span>
-  </div>
-  </div>
-   <button class="btn btn-primary" type="submit" *ngIf='name.value != "" && coordinates.value != "" ' (click)="onSubmit()">
-    submit
-   </button>
- </form> -->
