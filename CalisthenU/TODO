@@ -9,14 +9,16 @@ DONE:
 -Tooltip on mobile (ok)
 -Create location page (ok)
 -New location form advanced with other properties (images, descriptions, rating, ...)
-
+-Add opening hours to Location with checkbox
+-Show locations on map with markers, fix : onInit and center map
+-CSS of location details 
 
 
 IN PROGRESS:
 -firestore CRUD operations ('CR' ok)
 -firebase Authentication ('+-' ok)
--show locations on map with markers and open accordoen of selected location (+- with button click event, fix : onInit and center map)
--Details locations in accordeon, CSS
+-Open accordoen of selected location
+-Details locations in accordeon
 
 
 
@@ -25,4 +27,6 @@ TODO:
 -My location on profile
 -Cache Data (Service Worker PWA, "location data")
 -Get Images per location
--Add opening hours to Location with checkbox
+-Copy to clickboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie
+-FireStorage voor img
+-"Show location on Google Maps" veranderen naar "take me there"

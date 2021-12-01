@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.GetLocations();
     this.initializeMapOptions();
-    setTimeout(() => { this.addMarkers(); }, 1000);
+    // setTimeout(() => { this.addMarkers(); }, 1000);
 
     // const markerPromise = new Promise((resolve, reject) => {
     // this.GetLocations()    
@@ -88,7 +88,10 @@ export class MapComponent implements OnInit {
   GetLocations = () => {
     this.locService
     .GetLocations()
-    .subscribe(res => (this.locations = res));
+    .subscribe(res => {
+      this.locations = res;
+      this.addMarkers();
+    });
     // console.table(this.locations);
   }
     
