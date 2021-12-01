@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-create-location',
@@ -11,10 +12,10 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 })
 export class CreateLocationComponent implements OnInit {
 
-  constructor(public authService: AuthService, public locService: LocService, public router: Router) { }
+  constructor(public authService: AuthService, public locService: LocService, public router: Router, private afStorage: AngularFireStorage) { }
 
   availableEx : string[] = new Array();
-  // imagesBuffer : any[] = new Array();
+  currentImages : string[] = new Array();
 
   value: string;
 
@@ -35,11 +36,10 @@ export class CreateLocationComponent implements OnInit {
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
   onSubmit() {
-    // this.locService.form.value.locationName = this.locations;
     if (this.authService.userData != undefined) {
       let data = this.locService.form.value;
       //manually add fields into data object (not through FormControl)
-      data.images = readFiles()
+      data.images = this.uploadImage()
       data.exercises = this.availableEx;
       if (data.locationAccess == null || data.locationAccess == '') {
         if (this.value == "limited") {
@@ -57,6 +57,24 @@ export class CreateLocationComponent implements OnInit {
     else{
       window.alert("log in to add location")
     }
+  }
+
+  paths:Array<any> = []
+
+  upload($event: any){
+    this.paths = $event.target.files
+  }
+
+  uploadImage(){
+    
+    for (let path of this.paths) {
+      this.afStorage.upload("Images/"+Math.random()+"-"+path.name, path).then(res => {this.currentImages.push(res.metadata.fullPath)})
+    }
+    // setTimeout(() => {
+    //   console.table(this.currentImages);
+    // }, this.paths.length*700);
+    
+    return this.currentImages
   }
 }
 

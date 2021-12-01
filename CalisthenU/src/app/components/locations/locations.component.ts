@@ -27,7 +27,7 @@ export class LocationsComponent implements OnInit {
   GetLocations = () =>
     this.locService
     .GetLocations()
-    .subscribe(res => (this.locations = res));  
+    .subscribe(res => {this.locations = res; });  
 
   showInConsole(data:any){
     console.log(data);
