@@ -19,14 +19,15 @@ IN PROGRESS:
 -firebase Authentication ('+-' ok)
 -Open accordoen of selected location
 -Details locations in accordeon
+-FireStorage voor img
 
 
 
 
 TODO:
--My location on profile
+-CRUD: 'UD' **
+-My location on profile **
+-Copy to clickboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie **
+-"Show location on Google Maps" veranderen naar "take me there" **
+-Get Images per location *
 -Cache Data (Service Worker PWA, "location data")
--Get Images per location
--Copy to clickboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie
--FireStorage voor img
--"Show location on Google Maps" veranderen naar "take me there"
