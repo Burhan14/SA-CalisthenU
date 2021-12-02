@@ -12,6 +12,7 @@ DONE:
 -Add opening hours to Location with checkbox
 -Show locations on map with markers, fix : onInit and center map
 -CSS of location details 
+-"Show location on Google Maps" veranderen naar "take me there" **
 
 
 IN PROGRESS:
@@ -20,14 +21,17 @@ IN PROGRESS:
 -Open accordoen of selected location
 -Details locations in accordeon
 -FireStorage voor img
+-My location on profile **
 
 
 
 
 TODO:
 -CRUD: 'UD' **
--My location on profile **
--Copy to clickboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie **
--"Show location on Google Maps" veranderen naar "take me there" **
+-Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie **
 -Get Images per location *
 -Cache Data (Service Worker PWA, "location data")
+
+
+PROBLEMS:
+-appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode.

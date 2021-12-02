@@ -25,18 +25,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.GetLocations();
     this.initializeMapOptions();
-    // setTimeout(() => { this.addMarkers(); }, 1000);
-
-    // const markerPromise = new Promise((resolve, reject) => {
-    // this.GetLocations()    
-    // });
-
-    // markerPromise.then(() => {
-    //   this.addMarkers();
-    // })
-    
-    // Werkt niet onmiddelijk bij het starten van de webapp, probleem met GetLocations.
-    // this.addMarkers();
+    // setTimeout(() => { this.addMarkers(); }, 1000); //solves appendchild error
   }
 
 
@@ -90,7 +79,7 @@ export class MapComponent implements OnInit {
     .GetLocations()
     .subscribe(res => {
       this.locations = res;
-      this.addMarkers();
+      this.addMarkers(); //gives appendchild error
     });
     // console.table(this.locations);
   }

@@ -36,10 +36,15 @@ export class LocService {
     return this.db.collection("locations").snapshotChanges();
   }
 
+  GetUser(id:any){
+    return this.db.collection("users").doc(id).snapshotChanges();
+  }
+
   CreateLocation(data: any) {
 
     //add extra field to data to know who created the location (currently logged in user) 
-    data.createdBy = this.authService.userData.displayName;
+    data.createdByUID = this.authService.userData.uid;
+    data.createdByDN = this.authService.userData.displayName;
     // var images: any = data.images;
     // delete data.images
 
@@ -75,7 +80,9 @@ export class LocService {
     return new Promise<any>((resolve, reject) =>  {
       this.db.collection("locations")
       .add(data)
-      .then(res => {console.log(res)}, err => reject(err));
+      .then(res => {
+        resolve(res);
+      }, err => reject(err));
     })
   }
 }

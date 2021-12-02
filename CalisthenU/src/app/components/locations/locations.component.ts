@@ -28,7 +28,15 @@ export class LocationsComponent implements OnInit {
     this.locService
     .GetLocations()
     .subscribe(res => {this.locations = res; });  
+  
+  // GetUser(id:any){
+  //   this.locService
+  //   .GetUser(id)
+  //   .subscribe(res => {console.log(res.payload.data())});  
+  // }
+    
 
+  
   showInConsole(data:any){
     console.log(data);
   }
