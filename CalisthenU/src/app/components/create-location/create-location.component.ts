@@ -37,24 +37,34 @@ export class CreateLocationComponent implements OnInit {
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
   onSubmit() {
     if (this.authService.userData != undefined) {
+      //all form values
       let data = this.locService.form.value;
+
       //manually add fields into data object (not through FormControl)
-      this.uploadImage().then(res => {
-        data.exercises = this.availableEx;
-        data.images = this.currentImages;
-        if (data.locationAccess == null || data.locationAccess == '') {
-          if (this.value == "limited") {
-            data.locationAccess = "This location has restricted opening hours."
-          }
-          else {
-            data.locationAccess = "This location is open 24/7."
-          }
+      data.exercises = this.availableEx;
+
+      //save image file names (they will be uploaded afterwards)
+      // for (let i = 0; i < this.paths.length; i++) {
+      //   // this.currentImages.push("Images/" + [ID OF CURRENT DOCUMENT] + i)
+        
+      // }
+      // data.images = this.currentImages;
+
+      //when is location open
+      if (data.locationAccess == null || data.locationAccess == '') {
+        if (this.value == "limited") {
+          data.locationAccess = "This location has restricted opening hours."
         }
-        console.log(data);
-        this.locService.CreateLocation(data);
-        this.locService.form.reset();
-        this.router.navigate(['dashboard']);
-      })
+        else {
+          data.locationAccess = "This location is open 24/7."
+        }
+      }
+      console.log(data);
+      this.locService.CreateLocation(data)
+      // .then(res => {this.uploadImage(res.id);});
+      // this.locService.form.reset();
+      this.router.navigate(['dashboard']);
+
 
     }
     else {
@@ -68,36 +78,38 @@ export class CreateLocationComponent implements OnInit {
     this.paths = $event.target.files
   }
 
-  async uploadImage() {
+  uploadImage(locId: string) {
+    for (let i = 0; i < this.paths.length; i++) {
+      this.afStorage.upload("Images/" + locId + "-" + i, this.paths[i]).then(res => {
+        // this.currentImages.push(res.metadata.fullPath);
+      })
 
-    for await (let path of this.paths) {
-      this.afStorage.upload("Images/" + Math.random() + "-" + path.name, path).then(res => { this.currentImages.push(res.metadata.fullPath) })
     }
   }
 }
 
-function readFiles() {
+// function readFiles() {
 
-  var buffer: any[] = new Array();
-  var files = (<HTMLInputElement>document.querySelector('input[type=file]')).files;
+//   var buffer: any[] = new Array();
+//   var files = (<HTMLInputElement>document.querySelector('input[type=file]')).files;
 
-  function readAndPush(file: any) {
+//   function readAndPush(file: any) {
 
-    if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-      var reader = new FileReader();
+//     if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+//       var reader = new FileReader();
 
-      reader.addEventListener("load", function () {
-        buffer.push(this.result)
-      }, false);
+//       reader.addEventListener("load", function () {
+//         buffer.push(this.result)
+//       }, false);
 
-      reader.readAsDataURL(file);
-    }
+//       reader.readAsDataURL(file);
+//     }
 
-  }
+//   }
 
-  if (files) {
-    [].forEach.call(files, readAndPush);
-  }
+//   if (files) {
+//     [].forEach.call(files, readAndPush);
+//   }
 
-  return buffer;
-}
+//   return buffer;
+// }
