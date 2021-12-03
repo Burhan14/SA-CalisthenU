@@ -81,7 +81,7 @@ export class CreateLocationComponent implements OnInit {
     let total = this.paths.length;
     let totalDone = 0;
     for (let i = 0; i < this.paths.length; i++) {
-      this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i], this.paths[i]).then(res => {
+      this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
         // this.currentImages.push(res.metadata.fullPath);
         this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
           this.currentImages.push(res);
