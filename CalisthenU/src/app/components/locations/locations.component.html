@@ -23,7 +23,7 @@
         </div>
         <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small>
-        <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Take me there">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
+        <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
         <!-- {{loc.payload.doc.data().locationCoordinates}} -->
         <!-- <button class="btn btn-custom" (click)="showInConsole(loc.payload.doc)"></button> -->
 
