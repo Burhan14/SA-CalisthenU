@@ -2,7 +2,7 @@
   <mat-list-item role="listitem">{{ loc.payload.doc.data().locationName }}</mat-list-item>
   <mat-divider></mat-divider>
  </mat-list> -->
-
+<img src="" id="tempImage" alt="">
 <div class="accordion" id="accordionExample">
   <div class="card" *ngFor="let loc of locations">
     <div class="card-header" [attr.id]="'heading-'+loc.payload.doc.data().locationName">
@@ -14,8 +14,13 @@
     </div>
     <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
       <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-        <img src="https://via.placeholder.com/150" class="my-4" width="50%">
+        <div class="d-flex justify-content-around flex-row">
+          <img attr.src="{{img}}" *ngFor="let img of loc.payload.doc.data().images" class="my-4 mx-1" width="50%">
+        </div>
         <p class="card-text">{{loc.payload.doc.data().locationDescription}}</p>
+        <div class="d-flex justify-content-between flex-row">
+          <p class="card-text" *ngFor="let ex of loc.payload.doc.data().exercises">{{ex}} &nbsp;</p>
+        </div>
         <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small>
         <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Take me there">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>

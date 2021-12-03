@@ -23,8 +23,8 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.GetLocations();
     this.initializeMapOptions();
+    this.GetLocations();
     // setTimeout(() => { this.addMarkers(); }, 1000); //solves appendchild error
   }
 
@@ -96,6 +96,7 @@ export class MapComponent implements OnInit {
             iconUrl: 'assets/icons/marker-icon.png'
           }));
       marker.addTo(this.map);
+      // console.log(this.map);
       marker.bindPopup(loc.payload.doc.data().locationName);
     }
   }

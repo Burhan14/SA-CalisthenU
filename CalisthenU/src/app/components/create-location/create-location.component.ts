@@ -16,6 +16,7 @@ export class CreateLocationComponent implements OnInit {
 
   availableEx: string[] = new Array();
   currentImages: string[] = new Array();
+  data: any;
 
   value: string;
 
@@ -38,32 +39,30 @@ export class CreateLocationComponent implements OnInit {
   onSubmit() {
     if (this.authService.userData != undefined) {
       //all form values
-      let data = this.locService.form.value;
+      this.data = this.locService.form.value;
 
       //manually add fields into data object (not through FormControl)
-      data.exercises = this.availableEx;
+      this.data.exercises = this.availableEx;
 
       //save image file names (they will be uploaded afterwards)
       // for (let i = 0; i < this.paths.length; i++) {
       //   // this.currentImages.push("Images/" + [ID OF CURRENT DOCUMENT] + i)
         
       // }
-      // data.images = this.currentImages;
-
+      
       //when is location open
-      if (data.locationAccess == null || data.locationAccess == '') {
+      if (this.data.locationAccess == null || this.data.locationAccess == '') {
         if (this.value == "limited") {
-          data.locationAccess = "This location has restricted opening hours."
+          this.data.locationAccess = "This location has restricted opening hours."
         }
         else {
-          data.locationAccess = "This location is open 24/7."
+          this.data.locationAccess = "This location is open 24/7."
         }
       }
-      console.log(data);
-      this.locService.CreateLocation(data)
-      // .then(res => {this.uploadImage(res.id);});
-      // this.locService.form.reset();
-      this.router.navigate(['dashboard']);
+      this.uploadImage();
+      console.log(this.data);
+     
+      this.locService.form.reset();
 
 
     }
@@ -78,13 +77,28 @@ export class CreateLocationComponent implements OnInit {
     this.paths = $event.target.files
   }
 
-  uploadImage(locId: string) {
+  uploadImage() {
+    let total = this.paths.length;
+    let totalDone = 0;
     for (let i = 0; i < this.paths.length; i++) {
-      this.afStorage.upload("Images/" + locId + "-" + i, this.paths[i]).then(res => {
+      this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i], this.paths[i]).then(res => {
         // this.currentImages.push(res.metadata.fullPath);
+        this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
+          this.currentImages.push(res);
+          totalDone++;
+          if (totalDone == total) {
+            //current images toevoegen aan firestore...
+            console.log(this.currentImages);
+            this.data.images = this.currentImages;
+            this.locService.CreateLocation(this.data);
+            // console.log(this.data);
+            
+            this.router.navigate(['dashboard']);
+          }
+        })
       })
-
     }
+    
   }
 }
 
