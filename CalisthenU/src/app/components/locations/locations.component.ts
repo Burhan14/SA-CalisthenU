@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Location } from 'src/app/shared/services/loc/location';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-locations',
@@ -12,7 +13,7 @@ import { Location } from 'src/app/shared/services/loc/location';
 })
 export class LocationsComponent implements OnInit {
 
-  constructor(public locService: LocService, public authService: AuthService) { }
+  constructor(public locService: LocService, public authService: AuthService, private afStorage: AngularFireStorage) { }
   
   //when component initiated => get locations from db to list them inside card
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class LocationsComponent implements OnInit {
   
   showInConsole(data:any){
     console.log(data);
+    
   }
 }
 
