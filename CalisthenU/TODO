@@ -13,24 +13,23 @@ DONE:
 -Show locations on map with markers, fix : onInit and center map
 -CSS of location details 
 -"Show location on Google Maps" veranderen naar "take me there" **
+-Details locations in accordeon
+-FireStorage voor img
+-Get Images per location *
 
 
 IN PROGRESS:
 -firestore CRUD operations ('CR' ok)
--firebase Authentication ('+-' ok)
--Open accordoen of selected location
--Details locations in accordeon
--FireStorage voor img
--My location on profile **
-
-
+-firebase Authentication ('+-' ok): when email login set displayname (setter problem)
+-Open accordeon of selected location
+-redesign profile page **
 
 
 TODO:
 -CRUD: 'UD' **
 -Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie **
--Get Images per location *
 -Cache Data (Service Worker PWA, "location data")
+-locations details: clickable images
 
 
 PROBLEMS:

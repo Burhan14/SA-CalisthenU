@@ -84,11 +84,12 @@ export class CreateLocationComponent implements OnInit {
       this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
         // this.currentImages.push(res.metadata.fullPath);
         this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
+          // console.log("download url: "+res);
           this.currentImages.push(res);
           totalDone++;
           if (totalDone == total) {
             //current images toevoegen aan firestore...
-            console.log(this.currentImages);
+            // console.log(this.currentImages);
             this.data.images = this.currentImages;
             this.locService.CreateLocation(this.data);
             // console.log(this.data);
