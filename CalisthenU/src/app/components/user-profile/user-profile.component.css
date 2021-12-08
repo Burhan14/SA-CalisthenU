@@ -1,3 +1,63 @@
 .center{    
 text-align: center;
 }
+
+.grid-container {
+    margin: 20px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+  }
+  
+  .body{
+    margin: 1rem;
+  }
+  
+  .card{
+    background-color: #3d3d3d;
+  }
+  
+  .content{
+    min-height: 50vh;
+  }
+
+  .card-body{
+    padding: 0.625rem;
+  }
+  
+  .card{
+    padding:10px;
+  }
+  
+  .card-title{
+    text-align: center;
+  }
+
+  
+a:hover,
+a:active{
+    color: darkgrey;
+    text-decoration: none;
+    animation: 3s ease-in-out ;
+}
+.card-body {
+    background-color: rgba(194, 24, 91, 0.5);
+    border-radius: 5px;
+    position: relative;
+}
+h2 button:focus{
+    box-shadow: none!important;
+    /* color: rgba(194, 24, 91, 1)!important; */
+}
+h2 button {
+    color: white!important;
+}
+h2 button .collapsed{
+    color: rgba(194, 24, 91, 1)!important;
+}
+.external{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+}

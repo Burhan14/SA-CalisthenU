@@ -12,12 +12,31 @@ export class UserProfileComponent implements OnInit {
 
   constructor(public authService: AuthService, public router: Router, private locService: LocService) { }
 
+  myProfile: boolean = true;  
+  myLocs: boolean = false;  
+  myFavs: boolean = false;  
+
   ngOnInit(): void {
     if (this.authService.userData == undefined) {
       this.router.navigate(['dashboard']);
     }
     this.GetMyLocations()
     
+  }
+
+  Display(div: string){
+    this.myProfile= false;  
+    this.myLocs = false;  
+    this.myFavs = false;  
+
+    if (div == 'myProfile') {
+      this.myProfile = true;
+    }else if (div == 'myLocs') {
+      this.myLocs = true;
+    }else if (div == 'myFavs') {
+      this.myFavs = true;
+    }
+
   }
 
   showInConsole(){

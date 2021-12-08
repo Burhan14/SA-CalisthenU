@@ -1,8 +1,57 @@
-<div *ngIf="this.authService.userData != undefined" class="container center">
-    <h1>Your Profile</h1>
-    <p>Username: {{this.authService.userData.displayName}}</p>
-    <p>E-mail: {{this.authService.userData.email}}</p>
-    <button class="btn btn-lg btn-outline-danger btn-block" (click)="authService.SignOut()"><i class="fa fa-sign-out"></i>
-      Logout</button>
-  <button class="btn btn-custom" (click)="showInConsole()">get my locations</button>
+
+
+
+  <div class="body">
+    <div class="row">
+      <div class="container center">
+        <button class="btn btn-custom mr-5" (click)= "Display('myProfile')">My Profile</button>
+        <button class="btn btn-custom mr-5" (click)= "Display('myLocs')">My Locations</button>
+        <button class="btn btn-custom" (click)= "Display('myFavs')">Favorite Locations</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 m-3">     
+          <div class="content" >
+            <div *ngIf="this.authService.userData != undefined && myProfile" class="container center">
+              <h1>My Profile</h1>
+              <p>Username: {{this.authService.userData.displayName}}</p>
+              <p>E-mail: {{this.authService.userData.email}}</p>
+            </div>
+            <div *ngIf="this.authService.userData != undefined && myLocs" class="container center">
+              <div class="accordion" id="accordionExample">
+                <div class="card" *ngFor="let loc of myLocations">
+                  <div class="card-header" [attr.id]="'heading-'+loc.payload.doc.data().locationName">
+                    <h2 class="mb-0">
+                      <button class="btn btn-block text-left text-uppercase text-center" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-'+loc.payload.doc.data().locationName" aria-expanded="true" [attr.aria-controls]="'collapse-'+loc.payload.doc.data().locationName">
+                        {{loc.payload.doc.data().locationName}}
+                      </button>
+                    </h2>
+                  </div>
+                  <div [attr.id]="'collapse-'+loc.payload.doc.data().locationName" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().locationName" data-parent="#accordionExample">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                      <div class="d-flex justify-content-around flex-row">
+                        <img attr.src="{{img}}" *ngFor="let img of loc.payload.doc.data().images" class="my-4 mx-1" width="50%">
+                      </div>
+                      <p class="card-text">{{loc.payload.doc.data().locationDescription}}</p>
+                      <div class="d-flex justify-content-between flex-row">
+                        <p class="card-text" *ngFor="let ex of loc.payload.doc.data().exercises">{{ex}} &nbsp;</p>
+                      </div>
+                      <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
+                      <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small>
+                      <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>            
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="this.authService.userData != undefined && myFavs" class="container center">
+              <h1>myFav</h1>
+            </div>
+          </div>  
+      </div>
+    </div>
   </div>
+
+  <button class="btn btn-lg btn-outline-danger btn-block" (click)="authService.SignOut()"><i class="fa fa-sign-out"></i>
+    Logout</button>
+ 
