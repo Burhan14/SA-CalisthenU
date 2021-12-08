@@ -19,7 +19,9 @@
         </div>
         <p class="card-text">{{loc.payload.doc.data().locationDescription}}</p>
         <div class="d-flex justify-content-between flex-row">
-          <p class="card-text" *ngFor="let ex of loc.payload.doc.data().exercises">{{ex}} &nbsp;</p>
+          <ul>
+            <li class="card-text" *ngFor="let ex of loc.payload.doc.data().exercises">{{ex}} &nbsp;</li>
+          </ul>
         </div>
         <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small>
