@@ -20,30 +20,10 @@ export class UserProfileComponent implements OnInit {
     if (this.authService.userData == undefined) {
       this.router.navigate(['dashboard']);
     }
+    this.myLocationsRAW = []
+    this.myLocations = []
     this.GetMyLocations()
-    
   }
-
-  // Display(div: string){
-  //   this.myProfile= false;  
-  //   this.myLocs = false;  
-  //   this.myFavs = false;  
-
-  //   if (div == 'myProfile') {
-  //     this.myProfile = true;
-  //   }else if (div == 'myLocs') {
-  //     this.myLocs = true;
-  //   }else if (div == 'myFavs') {
-  //     this.myFavs = true;
-  //   }
-
-  // }
-
-  // showInConsole(){
-  //   for (let loc of this.myLocations) {
-  //     console.log(loc.payload.doc.data());
-  //   }
-  // }
 
   myLocationsRAW: any = [];
   myLocations: Array<any> = new Array();
@@ -62,5 +42,8 @@ export class UserProfileComponent implements OnInit {
         }
       }
     });  
+
+
+  
 
 }

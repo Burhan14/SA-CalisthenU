@@ -22,6 +22,11 @@ body {
   background-color: var(--main-color);
 }
 
+.btn-outline-custom {
+  border-color: var(--main-color);
+  background-color: transparent;
+}
+
 .text-custom {
   color: var(--main-color);
 }

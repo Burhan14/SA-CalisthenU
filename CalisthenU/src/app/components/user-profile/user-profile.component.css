@@ -67,9 +67,22 @@ h2 button .collapsed{
 }
 
 .nav a{
-  color: var(--main-color);
+  color: white;
 }
 
-.nav a:hover{
-  color: white;
+.nav-tabs {
+  border-bottom: 1px solid var(--main-color);
+}
+
+.btn-outline-custom:hover{
+  background-color: rgba(194, 24, 91, 1);
+  transition: 0.3s ease-in-out; 
+}
+
+a.active{
+  background-color: rgba(194, 24, 91, 1);
+}
+
+.btn-outline-custom:focus{
+  box-shadow: none!important;
 }
