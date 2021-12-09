@@ -18,7 +18,7 @@ text-align: center;
     background-color: #3d3d3d;
   }
   
-  .content{
+  .tab-content{
     min-height: 50vh;
   }
 
@@ -60,4 +60,16 @@ h2 button .collapsed{
     position: absolute;
     top: 0.5rem;
     right: 1rem;
+}
+.row{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.nav a{
+  color: var(--main-color);
+}
+
+.nav a:hover{
+  color: white;
 }

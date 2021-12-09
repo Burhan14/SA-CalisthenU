@@ -44,7 +44,7 @@ h2 {
 }
 
 .mat-drawer-content {
-  overflow: scroll !important;
+  overflow: overlay !important;
 }
 
 /* width */
@@ -63,4 +63,7 @@ h2 {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(194, 24, 92, .5);
+}
+::-webkit-scrollbar-corner{
+    background: none;
 }

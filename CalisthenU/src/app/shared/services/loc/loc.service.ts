@@ -45,6 +45,7 @@ export class LocService {
     //add extra field to data to know who created the location (currently logged in user) 
     data.createdByUID = this.authService.userData.uid;
     data.createdByDN = this.authService.userData.displayName;
+    data.creationDate = Date.now();
     // var images: any = data.images;
     // delete data.images
 

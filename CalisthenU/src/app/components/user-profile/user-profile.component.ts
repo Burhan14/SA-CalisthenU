@@ -12,9 +12,9 @@ export class UserProfileComponent implements OnInit {
 
   constructor(public authService: AuthService, public router: Router, private locService: LocService) { }
 
-  myProfile: boolean = true;  
-  myLocs: boolean = false;  
-  myFavs: boolean = false;  
+  // myProfile: boolean = true;  
+  // myLocs: boolean = false;  
+  // myFavs: boolean = false;  
 
   ngOnInit(): void {
     if (this.authService.userData == undefined) {
@@ -24,26 +24,26 @@ export class UserProfileComponent implements OnInit {
     
   }
 
-  Display(div: string){
-    this.myProfile= false;  
-    this.myLocs = false;  
-    this.myFavs = false;  
+  // Display(div: string){
+  //   this.myProfile= false;  
+  //   this.myLocs = false;  
+  //   this.myFavs = false;  
 
-    if (div == 'myProfile') {
-      this.myProfile = true;
-    }else if (div == 'myLocs') {
-      this.myLocs = true;
-    }else if (div == 'myFavs') {
-      this.myFavs = true;
-    }
+  //   if (div == 'myProfile') {
+  //     this.myProfile = true;
+  //   }else if (div == 'myLocs') {
+  //     this.myLocs = true;
+  //   }else if (div == 'myFavs') {
+  //     this.myFavs = true;
+  //   }
 
-  }
+  // }
 
-  showInConsole(){
-    for (let loc of this.myLocations) {
-      console.log(loc.payload.doc.data());
-    }
-  }
+  // showInConsole(){
+  //   for (let loc of this.myLocations) {
+  //     console.log(loc.payload.doc.data());
+  //   }
+  // }
 
   myLocationsRAW: any = [];
   myLocations: Array<any> = new Array();
