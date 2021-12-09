@@ -55,8 +55,10 @@ export class UserProfileComponent implements OnInit {
     .subscribe(res => {
       this.myLocationsRAW = res; 
       for (let loc of this.myLocationsRAW) {
-        if (loc.payload.doc.data().createdByUID == this.authService.userData.uid)  {
-          this.myLocations.push(loc)
+        if (this.authService.userData != undefined) {
+          if (loc.payload.doc.data().createdByUID == this.authService.userData.uid)  {
+            this.myLocations.push(loc)
+          }
         }
       }
     });  

@@ -51,4 +51,7 @@ h2 button .collapsed{
     top: 0.5rem;
     right: 1rem;
 }
+.horizontal-scroll{
+    overflow: auto;
+}
 
