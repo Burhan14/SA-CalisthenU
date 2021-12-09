@@ -81,17 +81,16 @@ export class MapComponent implements OnInit {
     .GetLocations()
     .subscribe(res => {
       this.locations = res; 
-      
       this.addMarkers(); //gives appendchild error
+      
     });
+    
     // console.table(this.locations);
   }
     
 
   public addMarkers() {
-    if (this.marker != undefined) {
-      this.map.removeLayer(this.marker);
-    }
+
     for (const loc of this.locations) {
       let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0],(loc.payload.doc.data().locationCoordinates).split(',')[1]);
       this.marker = new Marker([coord.lat, coord.lng])
@@ -101,6 +100,10 @@ export class MapComponent implements OnInit {
             iconAnchor: [13, 41],
             iconUrl: 'assets/icons/marker-icon.png'
           }));
+
+          // if (this.marker != undefined) {
+          //   this.map.removeLayer(this.marker);
+          // }
 
       this.map.addLayer(this.marker);
       
