@@ -51,7 +51,7 @@
   <div class="container">
 
     <ul class="nav nav-tabs d-flex ">
-      <li><a class="btn btn-outline-custom mr-1" data-toggle="tab"
+      <li><a class="btn btn-outline-custom mr-1 active" data-toggle="tab"
           href="#profile">Profile</a></li>
       <li><a class="btn btn-outline-custom mr-1" data-toggle="tab"
           href="#locs">My Locations</a></li>
@@ -60,7 +60,7 @@
     </ul>
 
     <div class="tab-content ">
-      <div id="profile" class="tab-pane fade in show ">
+      <div id="profile" class="tab-pane fade in active show">
         <div *ngIf="this.authService.userData != undefined" class="container">
           <div class="pt-3">
             <p>Username: {{this.authService.userData.displayName}}</p>

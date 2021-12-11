@@ -36,3 +36,4 @@ TODO:
 
 PROBLEMS:
 -appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED]
+-fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR)
