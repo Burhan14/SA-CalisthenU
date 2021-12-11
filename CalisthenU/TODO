@@ -17,6 +17,7 @@ DONE:
 -FireStorage voor img
 -Get Images per location *
 -firestore CRUD operations ('CR' ok)
+-when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile [ => managed to implement directly with form input ]
 
 
 IN PROGRESS:
@@ -30,7 +31,6 @@ TODO:
 -Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie **
 -Cache Data (Service Worker PWA, "location data")
 -locations details: clickable images --> js style classList
--when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile
 -Comments & rating
 
 
