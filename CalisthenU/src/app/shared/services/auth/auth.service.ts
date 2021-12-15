@@ -55,11 +55,16 @@ export class AuthService {
         up and returns promise */
         this.SendVerificationMail();
         // result.user.displayName = username;
-        this.SetUserData(result.user);
+        this.SetUserData(result.user, username);
+        this.UpdateUser(username);
       }).catch((error: { message: any; }) => {
         console.log(email + " " + password)
         window.alert(error.message)
       })
+  }
+
+  UpdateUser(name:string){
+    return this.afAuth.currentUser.then(res => res.updateProfile({displayName: name}))
   }
 
   // Send email verfificaiton when new user sign up
@@ -120,13 +125,25 @@ export class AuthService {
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: User, username?: string) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+    let userData: User;
+    if(user.displayName){
+      userData = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        emailVerified: user.emailVerified
+      }
+    }else{
+      userData = {
+        uid: user.uid,
+        email: user.email,
+        displayName: username,
+        photoURL: user.photoURL,
+        emailVerified: user.emailVerified
+      }
     }
+    
     return userRef.set(userData, {
       merge: true
     })

@@ -37,7 +37,7 @@ export class MapComponent implements OnInit {
 
       navigator.clipboard.writeText(e.latlng.lat + ',' + e.latlng.lng);
       document.querySelector(".alert").classList.remove("hide");
-      setTimeout(() => { document.querySelector(".alert").classList.add("hide"); }, 3000);
+      setTimeout(() => { document.querySelector(".alert").classList.add("hide"); }, 5000);
      });
      map.doubleClickZoom.disable();
 
@@ -72,17 +72,17 @@ export class MapComponent implements OnInit {
   
   //array of locations, filled in directly on init from db
   locations: any = [];
-  
-  marker:Marker;
-
+  loopSubscribe: number = 0;
   //call service to fetch data from db and push into locations array
   GetLocations = () => {
     this.locService
     .GetLocations()
     .subscribe(res => {
-      this.locations = res; 
-      this.addMarkers(); //gives appendchild error
-      
+      if (this.loopSubscribe == 0) {
+        this.locations = res;
+        this.addMarkers(); //gives appendchild error
+        this.loopSubscribe = 1
+      }
     });
     
     // console.table(this.locations);
@@ -93,23 +93,16 @@ export class MapComponent implements OnInit {
 
     for (const loc of this.locations) {
       let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0],(loc.payload.doc.data().locationCoordinates).split(',')[1]);
-      this.marker = new Marker([coord.lat, coord.lng])
-        .setIcon(
-          icon({
-            iconSize: [15, 25],
-            iconAnchor: [13, 41],
-            iconUrl: 'assets/icons/marker-icon.png'
-          }));
-
-          // if (this.marker != undefined) {
-          //   this.map.removeLayer(this.marker);
-          // }
-
-      this.map.addLayer(this.marker);
-      
-      // marker.addTo(this.map);
-      
-      this.marker.bindPopup(loc.payload.doc.data().locationName);
+      let marker = new Marker([coord.lat, coord.lng])
+      .setIcon(
+        icon({
+          iconSize: [15, 25],
+          iconAnchor: [13, 41],
+          iconUrl: 'assets/icons/marker-icon.png'
+        }));
+      // console.log(marker);
+      marker.addTo(this.map);
+      marker.bindPopup(loc.payload.doc.data().locationName);
     }
   }
 
