@@ -3,7 +3,7 @@
   <form [formGroup]="this.locService.form">
     <div class="form-group">
       <label for="location">Location</label>
-      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" #name required>
+      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" autofocus #name required>
     </div>
     <div class="form-group">
       <label for="coordinates">Coordinates</label>
@@ -18,14 +18,9 @@
         </span>
       </div>
     </div>
-    <!-- <div class="form-group">
-      <label for="Images">Images</label>
-      <input class="form-control" id="Images" type="file" multiple />
-    </div> -->
     <div class="form-group">
       <label for="Images">Images</label>
       <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple required/>
-      <!-- <button class="btn btn-custom" (click)="uploadImage()">upload image</button> -->
     </div>
     <div class="form-group">
       <label for="Description">Description</label>
@@ -75,7 +70,6 @@
       id="Accesibility" rows="2" required></textarea>
     </div>
 
-    <!-- <button class="btn btn-custom btn-lg btn-block text-white" type="submit" (click)="onSubmit()"> -->
     <button class="btn btn-custom btn-lg btn-block text-white" (click)="onSubmit()">
       Create
     </button>

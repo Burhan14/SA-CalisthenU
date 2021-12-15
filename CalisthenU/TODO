@@ -19,17 +19,17 @@ DONE:
 -firestore CRUD operations ('CR' ok)
 -when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile [ => managed to implement directly with form input ]
 -appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED]
+-Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie ** --> automatisch ongevuld bij double click op kaart (moet op link drukken in alert)
+-firebase Authentication ('+-' ok): when email login set displayname (setter problem)
 
 
 IN PROGRESS:
--firebase Authentication ('+-' ok): when email login set displayname (setter problem)
 -Open accordeon of selected location
 -redesign profile page ** 
 
 
 TODO:
 -firestore CRUD operations: 'UD' **
--Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie **
 -Cache Data (Service Worker PWA, "location data")
 -locations details: clickable images --> js style classList
 -Comments & rating
