@@ -3,13 +3,13 @@
   <form [formGroup]="this.locService.form">
     <div class="form-group">
       <label for="location">Location</label>
-      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" #name>
+      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" #name required>
     </div>
     <div class="form-group">
       <label for="coordinates">Coordinates</label>
       <div class="input-group">
         <input id="coordinates" placeholder="Latitude and Longitude" formControlName="locationCoordinates" type="text"
-          class="form-control" #coordinates>
+          class="form-control" #coordinates required>
         <span class="input-group-append bg-white border-left-0">
           <span class="input-group-text bg-transparent">
             <a data-toggle="tooltip" data-placement="top" title="double click on map to copy coordinates"><i
@@ -24,20 +24,20 @@
     </div> -->
     <div class="form-group">
       <label for="Images">Images</label>
-      <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple />
+      <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple required/>
       <!-- <button class="btn btn-custom" (click)="uploadImage()">upload image</button> -->
     </div>
     <div class="form-group">
       <label for="Description">Description</label>
       <textarea placeholder="Tell us more about this place" class="form-control" formControlName="locationDescription"
-        id="Description" rows="3" #description></textarea>
+        id="Description" rows="3" #description required></textarea>
     </div>
 
     <div class="form-group">
       <label for="Exercises">Exercises</label>
       <div class="form-row">
         <div class="col-md-11 mb-1">
-          <select #ex class="form-select form-control form-select-lg" aria-label=".form-select-lg example">
+          <select #ex class="form-select form-control form-select-lg" aria-label=".form-select-lg example" required>
             <option value="null" selected disabled>Select an exercise to add</option>
             <option value="Pull-up">Pull-up</option>
             <option value="Chin-up">Chin-up</option>
@@ -72,7 +72,7 @@
     </div>
     <div class="form-group" *ngIf="value === 'limited'">
       <textarea placeholder="When can you access this location ?" class="form-control" formControlName="locationAccess"
-      id="Accesibility" rows="2" ></textarea>
+      id="Accesibility" rows="2" required></textarea>
     </div>
 
     <!-- <button class="btn btn-custom btn-lg btn-block text-white" type="submit" (click)="onSubmit()"> -->

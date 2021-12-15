@@ -18,6 +18,7 @@ DONE:
 -Get Images per location *
 -firestore CRUD operations ('CR' ok)
 -when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile [ => managed to implement directly with form input ]
+-appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED]
 
 
 IN PROGRESS:
@@ -35,5 +36,4 @@ TODO:
 
 
 PROBLEMS:
--appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED]
 -fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR)

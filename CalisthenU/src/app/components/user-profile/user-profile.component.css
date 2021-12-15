@@ -86,3 +86,6 @@ a.active{
 .btn-outline-custom:focus{
   box-shadow: none!important;
 }
+.horizontal-scroll{
+  overflow: auto;
+}
