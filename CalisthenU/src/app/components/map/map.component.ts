@@ -84,11 +84,13 @@ export class MapComponent implements OnInit {
         this.loopSubscribe = 1
       }
     });
+    
     // console.table(this.locations);
   }
     
 
   public addMarkers() {
+
     for (const loc of this.locations) {
       let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0],(loc.payload.doc.data().locationCoordinates).split(',')[1]);
       let marker = new Marker([coord.lat, coord.lng])
