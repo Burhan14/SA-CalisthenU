@@ -6,8 +6,6 @@ import * as L from 'leaflet';
 import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import { Control, ControlPosition } from 'leaflet';
 
-
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -94,8 +92,8 @@ export class MapComponent implements OnInit {
     // console.table(this.locations);
   }
 
-
   public addMarkers() {
+
     for (const loc of this.locations) {
       let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0], (loc.payload.doc.data().locationCoordinates).split(',')[1]);
       let marker = new Marker([coord.lat, coord.lng])

@@ -42,6 +42,7 @@ export class LocationsComponent implements OnInit {
     console.log(data);
     
   }
+
 }
 
 
