@@ -73,6 +73,7 @@ export class MapComponent implements OnInit {
   //array of locations, filled in directly on init from db
   locations: any = [];
   loopSubscribe: number = 0;
+  
   //call service to fetch data from db and push into locations array
   GetLocations = () => {
     this.locService

@@ -54,3 +54,11 @@ h2 button .collapsed{
 .horizontal-scroll{
     overflow: auto;
 }
+
+.images{
+    cursor: pointer;
+}
+
+
+
+
