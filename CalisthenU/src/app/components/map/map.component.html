@@ -3,7 +3,7 @@
 <div class="alert alert-primary hide alert-fixed" role="alert">
     Coordinates copied into clipboard!
     <br>
-    <a routerLink="/create-location">create a location on this spot</a>
+    <a routerLink="/create-location" (click)=PasteCoords()>create a location on this spot</a>
 </div>
 <div id="map"
     leaflet

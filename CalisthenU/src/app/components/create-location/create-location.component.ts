@@ -41,15 +41,15 @@ export class CreateLocationComponent implements OnInit {
       //all form values
       this.data = this.locService.form.value;
 
+      //for wathever reason angular's formControl won't take what's inside the coordinates input when filled in with javascript. SOLUTION: do it manually
+      if (this.data.locationCoordinates == "" || this.data.locationCoordinates == null) {
+        let coords = <HTMLInputElement>document.getElementById("coordinates");
+        this.data.locationCoordinates = coords.value;
+      }
+
       //manually add fields into data object (not through FormControl)
       this.data.exercises = this.availableEx;
 
-      //save image file names (they will be uploaded afterwards)
-      // for (let i = 0; i < this.paths.length; i++) {
-      //   // this.currentImages.push("Images/" + [ID OF CURRENT DOCUMENT] + i)
-        
-      // }
-      
       //when is location open
       if (this.data.locationAccess == null || this.data.locationAccess == '') {
         if (this.value == "limited") {
@@ -60,12 +60,8 @@ export class CreateLocationComponent implements OnInit {
         }
       }
       this.uploadImage();
-      console.log(this.data);
-     
-      this.locService.form.reset();
-
-
-    }
+      // console.log(this.data);
+      this.locService.form.reset();    }
     else {
       window.alert("log in to add location")
     }
@@ -89,8 +85,8 @@ export class CreateLocationComponent implements OnInit {
           totalDone++;
           if (totalDone == total) {
             //current images toevoegen aan firestore...
-            // console.log(this.currentImages);
             this.data.images = this.currentImages;
+
             this.locService.CreateLocation(this.data);
             // console.log(this.data);
             
