@@ -42,41 +42,10 @@ export class LocService {
 
   CreateLocation(data: any) {
 
-    //add extra field to data to know who created the location (currently logged in user) 
+    //add extra field to data to know who created the location (currently logged in user) and when it is created
     data.createdByUID = this.authService.userData.uid;
     data.createdByDN = this.authService.userData.displayName;
     data.creationDate = Date.now();
-    // var images: any = data.images;
-    // delete data.images
-
-    // return new Promise<any>((resolve, reject) =>  {
-    //   this.db.collection("locations")
-    //   .add(data)
-    //   .then(res => {
-    //     images.forEach((image: any) => {
-    //       this.db.collection("locations")
-    //       .doc(res.id)
-    //       .collection("images")
-    //       .add({
-    //         image
-    //       }).then(res_ => {}, err_ => reject(err_));
-    //     });
-    //   }, err => reject(err));
-    // })
-
-    // return new Promise<any>((resolve, reject) =>  {
-    //   this.db.collection("locations")
-    //   .add(data)
-    //   .then(res => {
-    //     console.log(images)
-    //       this.db.collection("locations")
-    //       .doc(res.id)
-    //       .collection("images")
-    //       .add({
-    //         images
-    //       })
-    //   }, err => reject(err));
-    // })
 
     return new Promise<any>((resolve, reject) =>  {
       this.db.collection("locations")
@@ -85,5 +54,12 @@ export class LocService {
         resolve(res);
       }, err => reject(err));
     })
+  }
+
+  DeleteLocation(docId: string){
+    return this.db
+       .collection("locations")
+       .doc(docId)
+       .delete();
   }
 }
