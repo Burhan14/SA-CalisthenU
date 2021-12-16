@@ -12,10 +12,6 @@ export class UserProfileComponent implements OnInit {
 
   constructor(public authService: AuthService, public router: Router, private locService: LocService) { }
 
-  // myProfile: boolean = true;  
-  // myLocs: boolean = false;  
-  // myFavs: boolean = false;  
-
   ngOnInit(): void {
     if (this.authService.userData == undefined) {
       this.router.navigate(['dashboard']);
@@ -43,7 +39,13 @@ export class UserProfileComponent implements OnInit {
       }
     });  
 
-
-  
+  DeleteLocation = (locId: string) =>
+    this.locService
+    .DeleteLocation(locId).then(res => {
+      this.myLocationsRAW = [];
+      this.myLocations = [];
+      this.GetMyLocations();
+    });
+    // console.log(locId);
 
 }
