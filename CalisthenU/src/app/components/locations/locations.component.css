@@ -51,13 +51,20 @@ h2 button .collapsed{
     top: 0.5rem;
     right: 1rem;
 }
+
+.details{
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+}
+
 .horizontal-scroll{
     overflow: auto;
 }
 
-.images{
+/* .images{
     cursor: pointer;
-}
+} */
 
 
 
