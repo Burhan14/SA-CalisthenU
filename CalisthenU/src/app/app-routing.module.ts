@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'create-location', component: CreateLocationComponent },
-  { path: 'location-details', component: LocationDetailsComponent },
+  { path: 'location-details/:id', component: LocationDetailsComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

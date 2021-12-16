@@ -36,6 +36,12 @@ export class LocService {
     return this.db.collection("locations").snapshotChanges();
   }
 
+  GetLocationSingle(id: string){
+    // console.log(id);
+    return this.db.collection("locations").doc(id).snapshotChanges();
+  }
+
+
   GetUser(id:any){
     return this.db.collection("users").doc(id).snapshotChanges();
   }
