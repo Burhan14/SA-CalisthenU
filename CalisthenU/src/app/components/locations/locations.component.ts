@@ -18,7 +18,7 @@ export class LocationsComponent implements OnInit {
   //when component initiated => get locations from db to list them inside card
   ngOnInit(): void {
     this.GetLocations();
-    
+    // setTimeout(() => {this.TestImages()}, 2000);
   }
 
   //array of locations, filled in directly on init from db
@@ -42,6 +42,29 @@ export class LocationsComponent implements OnInit {
     console.log(data);
     
   }
+
+
+
+  // TestImages(){
+  //   console.log('test');
+
+  //   document.querySelector('.closeArea').addEventListener('click',() => {
+  //     document.getElementById('modal').classList.add('d-none');
+
+  //   });
+
+  //   document.querySelectorAll('.images').forEach((img) =>{
+  //     console.log();
+      
+  //     img.addEventListener('click', (e) =>{
+  //       var image = (<HTMLImageElement>e.target);
+  //       console.log(image.src);
+  //       (<HTMLImageElement>document.querySelector('#slider_img')).src = image.src
+  //       document.getElementById('modal').classList.remove('d-none');
+  //     })
+  //   })
+  // }
+
 
 }
 

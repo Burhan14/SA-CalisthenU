@@ -1,0 +1,48 @@
+<div class="body px-3">
+    <h1>{{name}}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="d-flex flex-row horizontal-scroll detail-images" *ngFor="let img of images">
+                  <img src="{{img}}" class="mt-4 mb-3 mx-1"
+                    width="100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="card w-100">
+                    <div class="card-body">
+                      <h2 class="card-title">Details</h2>
+                      <h3>Coordinates:</h3>
+                      <p class="card-text">{{coordinates}}</p>
+                      <h3>Description:</h3>
+                      <p class="card-text">{{description}}</p>
+                      <h3>List of available exercises in this location:</h3>
+                      <div class="d-flex justify-content-between flex-row">
+                        <ul *ngFor="let ex of exercises">
+                          <li class="card-text">&nbsp; {{ex}}</li>
+                        </ul>
+                      </div>
+                      <h3>Opening hours:</h3>
+                      <p class="card-text">{{access}}</p>
+                      <h3>This Location has been created by:</h3>
+                      <p class="card-text">{{createdBy}}</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+              <app-review></app-review>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+

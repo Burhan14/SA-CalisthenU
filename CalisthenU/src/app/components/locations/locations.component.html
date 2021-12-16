@@ -10,7 +10,7 @@
     <div [attr.id]="'collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID" data-parent="#accordionExample">
       <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
         <div class="d-flex flex-row horizontal-scroll">
-          <img attr.src="{{img}}" *ngFor="let img of loc.payload.doc.data().images" class="mt-4 mb-3 mx-1" width="50%">
+          <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.doc.data().images" width="50%">
         </div>
         <p class="card-text mt-3">{{loc.payload.doc.data().locationDescription}}</p>
         <div class="d-flex justify-content-between flex-row">
@@ -21,12 +21,10 @@
         <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small>
         <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
+        <small class="details"><a class="text-white" [routerLink]="['/location-details', loc.payload.doc.id]">More Details</a></small>
       </div>
     </div>
   </div>
 </div>
 
 <button class="btn btn-custom btn-lg btn-block mt-5" routerLink="/create-location" *ngIf="this.authService.userData != undefined">Create New Location</button>
-
-
-

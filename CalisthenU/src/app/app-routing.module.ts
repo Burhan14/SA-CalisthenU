@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateLocationComponent } from './components/create-location/create-location.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'create-location', component: CreateLocationComponent },
+  { path: 'location-details/:id', component: LocationDetailsComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

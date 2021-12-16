@@ -1,0 +1,48 @@
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .dashboard-card-content {
+    text-align: center;
+  }
+
+  .body {
+    margin: 1rem;
+  }
+
+  .card {
+    background-color: #3d3d3d;
+  }
+
+  .card-body {
+    padding: 0.625rem;
+  }
+
+  .card {
+    padding: 10px;
+    margin: 1rem 0
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .horizontal-scroll {
+    overflow: auto;
+  }
+
+  .detail-images {
+    height: 40vh;
+  }

@@ -42,6 +42,9 @@ import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
 import { CreateLocationComponent } from './components/create-location/create-location.component';
+import { ImageModalComponent } from './components/image-modal/image-modal.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
+import { ReviewComponent } from './components/review/review.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { CreateLocationComponent } from './components/create-location/create-loc
     MapComponent,
     MapPointFormComponent,
     CreateLocationComponent,
+    ImageModalComponent,
+    LocationDetailsComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
