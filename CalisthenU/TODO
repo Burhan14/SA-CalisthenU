@@ -34,6 +34,11 @@ TODO:
 -locations details: clickable images --> js style classList
 -Comments & rating
 
+-multiple selecet in exercises dropdown
+-redirect to details page on marker popup
+-probeer straat adres krijgen van coordinaten voor in details
+-padding en marging op kaart aanpassen (zeker voor mobile)
+-hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
 
 PROBLEMS:
 -fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR)
