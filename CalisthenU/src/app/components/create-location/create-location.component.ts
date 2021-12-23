@@ -23,10 +23,12 @@ export class CreateLocationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public addExercise(ex: string) {
-    if (ex != "null" && !this.availableEx.includes(ex)) {
-      this.availableEx.push(ex);
-      console.log(this.availableEx);
+  public addExercise(exs: string) {
+    for (let ex of exs) {
+      if (ex != "null" && !this.availableEx.includes(ex)) {
+        this.availableEx.push(ex);
+        console.log(this.availableEx);
+      }
     }
   }
 

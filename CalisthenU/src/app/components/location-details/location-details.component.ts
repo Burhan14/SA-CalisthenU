@@ -20,6 +20,7 @@ export class LocationDetailsComponent implements OnInit {
   images:any;
   exercises:any;
   createdBy:string;
+  fullAddress: string;
 
 
   constructor(private route:ActivatedRoute, private locService:LocService) { }
@@ -32,7 +33,8 @@ export class LocationDetailsComponent implements OnInit {
     })
   }
 
-  GetLocation = () => 
+  GetLocation = () => {
+    let loopCount= 0;
     this.locService
     .GetLocationSingle(this.id)
     .subscribe(res => {
@@ -45,10 +47,22 @@ export class LocationDetailsComponent implements OnInit {
       this.exercises = this.location.exercises;
       this.createdBy = this.location.createdByDN;
 
+      // console.log(res.payload.data());
+
+      if(loopCount < 1){
+        let lat = this.coordinates.split(',')[0]
+        let lng = this.coordinates.split(',')[1]
 
 
+        fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
+        .then(response => response.json())
+        .then(data => {this.fullAddress = data.results[0].formatted_address; console.log(data)});
 
-      console.log(res.payload.data());
-    }) 
+        loopCount++;
+      }
+
+    })
+  }
+
 
 }

@@ -5,6 +5,7 @@ import { latLng, MapOptions, tileLayer, Map, Marker, icon, LeafletMouseEvent } f
 import * as L from 'leaflet';
 import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import { Control, ControlPosition } from 'leaflet';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,7 @@ export class MapComponent implements OnInit {
   mapOptions: MapOptions;
   coords: string;
 
-  constructor(private locService: LocService) {
+  constructor(private locService: LocService, private router: Router) {
 
   }
 
@@ -25,13 +26,14 @@ export class MapComponent implements OnInit {
     this.initializeMapOptions();
     this.GetLocations();
     // setTimeout(() => { this.addMarkers(); }, 1000); //solves appendchild error
+
   }
 
 
   onMapReady(map: Map) {
     this.map = map;
     map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => {
-      // console.log(e.latlng);
+      console.log(e.latlng);
       // navigator.clipboard.writeText(e.latlng);
 
       this.coords = e.latlng.lat + ',' + e.latlng.lng;
@@ -106,8 +108,17 @@ export class MapComponent implements OnInit {
           }));
       // console.log(marker);
       marker.addTo(this.map);
-      marker.bindPopup(loc.payload.doc.data().locationName);
+      // marker.bindPopup(loc.payload.doc.data().locationName);
+      marker.bindPopup('<a onClick="GoToDetails('+ loc.payload.doc.id + ')">' + loc.payload.doc.data().locationName + '</a>');
+      // marker.bindPopup('<p id="details">' + loc.payload.doc.data().locationName + '</p>');
     }
+  }
+
+  
+
+  public GoToDetails(id: string){
+    this.router.navigate(['location-details', id ]);
+    // console.log("details");
   }
 
   GetGeoLocation() {
@@ -130,3 +141,4 @@ export class MapComponent implements OnInit {
   }
 
 }
+
