@@ -23,17 +23,17 @@ export class CreateLocationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public addExercise(ex: string) {
-    if (ex != "null" && !this.availableEx.includes(ex)) {
-      this.availableEx.push(ex);
-      console.log(this.availableEx);
-    }
-  }
+  // public addExercise(ex: string) {
+  //   if (ex != "null" && !this.availableEx.includes(ex)) {
+  //     this.availableEx.push(ex);
+  //     console.log(this.availableEx);
+  //   }
+  // }
 
-  public removeEx(ex: string) {
-    this.availableEx.splice(this.availableEx.indexOf(ex), 1);
-    console.log(this.availableEx);
-  }
+  // public removeEx(ex: string) {
+  //   this.availableEx.splice(this.availableEx.indexOf(ex), 1);
+  //   console.log(this.availableEx);
+  // }
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
   onSubmit() {
@@ -65,6 +65,19 @@ export class CreateLocationComponent implements OnInit {
     else {
       window.alert("log in to add location")
     }
+  }
+
+  updateExs(selected:any){
+    if (selected.target.checked) {
+      console.log(selected.target.value + ' added');
+      this.availableEx.push(selected.target.value);    
+      console.log(this.availableEx);
+    }else{
+      console.log(selected.target.value + ' removed');  
+      this.availableEx.splice(this.availableEx.indexOf(selected.target.value), 1);
+      console.log(this.availableEx);
+    }
+    
   }
 
   paths: Array<any> = []
