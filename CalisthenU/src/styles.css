@@ -72,3 +72,10 @@ h2 {
 ::-webkit-scrollbar-corner{
     background: none;
 }
+
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+}
