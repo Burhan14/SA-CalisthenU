@@ -56,7 +56,7 @@ export class LocationDetailsComponent implements OnInit {
 
         fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
         .then(response => response.json())
-        .then(data => {this.fullAddress = data.results[0].formatted_address; console.log(data)});
+        .then(data => {this.fullAddress = data.results[0].formatted_address;});
 
         loopCount++;
       }

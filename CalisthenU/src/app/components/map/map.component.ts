@@ -25,7 +25,14 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.initializeMapOptions();
     this.GetLocations();
-    // setTimeout(() => { this.addMarkers(); }, 1000); //solves appendchild error
+
+    window.onclick = e => {
+      // console.log((e.target as Element).id.split(" ")[0]);  // to get the element
+      let id = (e.target as Element).id.split(" ")[0];
+      if (id == 'marker-detail') {
+        this.router.navigate(['location-details', (e.target as Element).id.split(" ")[1]]);
+      }
+    }
 
   }
 
@@ -34,7 +41,7 @@ export class MapComponent implements OnInit {
     this.map = map;
     map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => {
       console.log(e.latlng);
-      // navigator.clipboard.writeText(e.latlng);
+      navigator.clipboard.writeText(e.latlng);
 
       this.coords = e.latlng.lat + ',' + e.latlng.lng;
       navigator.clipboard.writeText(this.coords);
@@ -80,7 +87,7 @@ export class MapComponent implements OnInit {
   //array of locations, filled in directly on init from db
   locations: any = [];
   loopSubscribe: number = 0;
-  
+
   //call service to fetch data from db and push into locations array
   GetLocations = () => {
     this.locService
@@ -109,12 +116,12 @@ export class MapComponent implements OnInit {
       // console.log(marker);
       marker.addTo(this.map);
       // marker.bindPopup(loc.payload.doc.data().locationName);
-      marker.bindPopup('<a onClick="GoToDetails('+ loc.payload.doc.id + ')">' + loc.payload.doc.data().locationName + '</a>');
+      marker.bindPopup('<a id="marker-detail '+loc.payload.doc.id+'">' + loc.payload.doc.data().locationName + '</a>');
       // marker.bindPopup('<p id="details">' + loc.payload.doc.data().locationName + '</p>');
     }
   }
 
-  
+
 
   public GoToDetails(id: string){
     this.router.navigate(['location-details', id ]);
