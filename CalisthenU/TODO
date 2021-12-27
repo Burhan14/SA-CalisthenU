@@ -16,7 +16,7 @@ DONE:
 -Details locations in accordeon
 -FireStorage voor img
 -Get Images per location *
--firestore CRUD operations ('CR' ok)
+-firestore CRUD operations ('CR D' ok)
 -when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile [ => managed to implement directly with form input ]
 -appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED]
 -Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie ** --> automatisch ongevuld bij double click op kaart (moet op link drukken in alert)
@@ -24,22 +24,29 @@ DONE:
 -probeer straat adres krijgen van coordinaten voor in details: gelukt met google maps geocoding API. VERGEET NIET SUBSCRIBTION TE STOPPEN NA PRESENTATIE
 -multiple select in exercises dropdown: select van 0 starten => checkboxes and ng (change) event.
 -padding en marging op kaart aanpassen (zeker voor mobile): scrollbar verwijderd voor mobile, padding en margins aangepast
+-fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR) 
+-Redirect to details page on marker popup : niet kunnen doen => popup inhoud leest click event niet (FIXED)
 
 
 IN PROGRESS:
--Open accordeon of selected location
 -redesign profile page ** 
 
 
 TODO:
--firestore CRUD operations: 'UD' **
--Cache Data (Service Worker PWA, "location data")
--locations details: clickable images --> js style classList
--Comments & rating
+-Firestore CRUD operations: 'U' **
+-Cache Data (Service Worker PWA, "location data") *
+-Fav locations*
+-Geocoding gegevens bijhouden in db*
+-Comments & rating (input with textarea for placing a comment and leaving a rating, avg rating displayed with stars and list of comments from top to bottom, comment author, comment date) *
+-Share API (share locations)
+-Lighthouse Test**
+-GENERAL DESIGN AND CLEANING CODE ***
 
--redirect to details page on marker popup : niet kunnen doen => popup inhoud leest click event niet
--hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
+-Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
+
+OPTIONAL: 
+-Filter on (rating, exercices) 
+
 
 PROBLEMS:
--fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR)
--image input on phone is DISGUSTANG
+-Image input on phone is DISGUSTANG
