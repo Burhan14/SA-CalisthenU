@@ -41,6 +41,7 @@ TODO:
 -Share API (share locations)
 -Lighthouse Test**
 -GENERAL DESIGN AND CLEANING CODE ***
+-login persistence
 
 -Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
 

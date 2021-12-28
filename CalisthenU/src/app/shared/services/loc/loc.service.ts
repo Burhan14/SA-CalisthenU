@@ -68,4 +68,10 @@ export class LocService {
        .doc(docId)
        .delete();
   }
+  UpdateLocation(docId: string, data: any){
+    return this.db
+       .collection("locations")
+       .doc(docId)
+       .update(data);
+  }
 }

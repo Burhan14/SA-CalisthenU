@@ -11,6 +11,8 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateLocationComponent } from './components/create-location/create-location.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
+import { LocationEditComponent } from './components/location-edit/location-edit.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'create-location', component: CreateLocationComponent },
   { path: 'location-details/:id', component: LocationDetailsComponent },
+  { path: 'location-edit/:id', component: LocationEditComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 
