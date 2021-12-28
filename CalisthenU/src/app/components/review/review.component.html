@@ -1,1 +1,30 @@
-<p>review works!</p>
+<div class="review-list">
+
+</div>
+
+<form id="review-form">
+    <div class="form-group shadow-textarea">
+      <i class="fas fa-pencil-alt prefix mr-2"></i>
+      <label for="commentArea">Let us know your opinion about this location</label>
+      <div class="rating">
+        <input type="radio" name="rating" (click)="UpdateRating(5)" value="5" id="5">
+        <label for="5">☆</label>
+        <input type="radio" name="rating" (click)="UpdateRating(4)" value="4" id="4">
+        <label for="4">☆</label>
+        <input type="radio" name="rating" (click)="UpdateRating(3)" value="3" id="3">
+        <label for="3">☆</label>
+        <input type="radio" name="rating" (click)="UpdateRating(2)" value="2" id="2">
+        <label for="2">☆</label>
+        <input type="radio" name="rating" checked (click)="UpdateRating(1)" value="1" id="1">
+        <label for="1">☆</label>
+      </div>
+      <textarea #comment class="form-control z-depth-1" id="commentArea" rows="4"
+        placeholder="What do you think about this place?..."></textarea>
+    </div>
+    <div class="w-100 d-flex justify-content-end">
+        <button (click)="sendReview(comment.value)" type="button" class="btn btn-custom">
+            Send Review
+            <i class="fas fa-long-arrow-alt-right ms-1"></i>
+          </button>
+    </div>
+</form>

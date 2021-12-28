@@ -1,7 +1,7 @@
 <div class="body px-3">
     <h1><i (click)="GoBack()" class="fas fa-chevron-left" style="font-size: 2rem; vertical-align: middle;"></i> {{name}}</h1>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="row horizontal-scroll">
                 <div class="d-flex flex-row detail-images" >
                   <img src="{{img}}" class="mt-4 mb-3 mx-1"
@@ -30,6 +30,7 @@
                   </div>
             </div>
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-4">
             <div class="card">
               <app-review></app-review>
