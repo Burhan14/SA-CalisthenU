@@ -30,16 +30,16 @@ DONE:
 
 IN PROGRESS:
 -redesign profile page ** 
+-Firestore CRUD operations: 'U' ** => navigation + security OK!
+-Comments & rating (input with textarea for placing a comment and leaving a rating, avg rating displayed with stars and list of comments from top to bottom, comment author, comment date) * => Create comment OK!
 
 
 TODO:
--Firestore CRUD operations: 'U' **
--Cache Data (Service Worker PWA, "location data") *
 -Fav locations*
+-Cache Data (Service Worker PWA, "location data") *
 -Geocoding gegevens bijhouden in db*
--Comments & rating (input with textarea for placing a comment and leaving a rating, avg rating displayed with stars and list of comments from top to bottom, comment author, comment date) *
--Share API (share locations)
 -Lighthouse Test**
+-Share API (share locations)
 -GENERAL DESIGN AND CLEANING CODE ***
 
 -Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
