@@ -46,6 +46,12 @@ export class UserProfileComponent implements OnInit {
       this.myLocations = [];
       this.GetMyLocations();
     });
-    // console.log(locId);
 
+  UpdateLocation = (locId: string, authorId: string) => {
+    if(this.authService.userData.uid == authorId) {
+      this.router.navigate(['location-edit', locId])
+    }else{
+      console.log("you cant edit this location")
+    }
+  }
 }

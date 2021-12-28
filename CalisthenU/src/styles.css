@@ -20,6 +20,7 @@ body {
 
 .btn-custom {
   background-color: var(--main-color);
+  color: white;
 }
 
 .btn-outline-custom {

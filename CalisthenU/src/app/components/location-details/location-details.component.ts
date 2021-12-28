@@ -33,6 +33,8 @@ export class LocationDetailsComponent implements OnInit {
     })
   }
 
+  GoBack = () => history.back()
+
   GetLocation = () => {
     let loopCount= 0;
     this.locService

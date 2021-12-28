@@ -45,6 +45,8 @@ import { CreateLocationComponent } from './components/create-location/create-loc
 import { ImageModalComponent } from './components/image-modal/image-modal.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { ReviewComponent } from './components/review/review.component';
+import { LocationEditComponent } from './components/location-edit/location-edit.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { ReviewComponent } from './components/review/review.component';
     ImageModalComponent,
     LocationDetailsComponent,
     ReviewComponent,
+    LocationEditComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
