@@ -22,7 +22,7 @@ export class ReviewService {
     //add extra field to data to know who created the location (currently logged in user) and when it is created
     data.createdByUID = this.authService.userData.uid;
     data.createdByDN = this.authService.userData.displayName;
-    data.creationDate = Date.now();
+    data.creationDate = (new Date(Date.now())).toLocaleDateString();
 
     return new Promise<any>((resolve, reject) =>  {
       this.db.collection("reviews")
@@ -32,4 +32,14 @@ export class ReviewService {
       }, err => reject(err));
     })
   }
+  GetReviews(){
+    return this.db.collection("reviews").snapshotChanges();
+  }
+
+  GetReviewById(id:string){
+    // console.log(id);
+    return this.db.collection("reviews").doc(id).snapshotChanges();
+    // werkt niet, omdat dit de id van locatie is en geen review.
+  }
+
 }
