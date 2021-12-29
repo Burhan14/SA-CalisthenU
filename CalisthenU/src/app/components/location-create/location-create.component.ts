@@ -6,9 +6,9 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
-  selector: 'app-create-location',
-  templateUrl: './create-location.component.html',
-  styleUrls: ['./create-location.component.css']
+  selector: 'app-location-create',
+  templateUrl: './location-create.component.html',
+  styleUrls: ['./location-create.component.css']
 })
 export class CreateLocationComponent implements OnInit {
 
@@ -22,18 +22,6 @@ export class CreateLocationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  // public addExercise(ex: string) {
-  //   if (ex != "null" && !this.availableEx.includes(ex)) {
-  //     this.availableEx.push(ex);
-  //     console.log(this.availableEx);
-  //   }
-  // }
-
-  // public removeEx(ex: string) {
-  //   this.availableEx.splice(this.availableEx.indexOf(ex), 1);
-  //   console.log(this.availableEx);
-  // }
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
   onSubmit() {
@@ -77,7 +65,6 @@ export class CreateLocationComponent implements OnInit {
       this.availableEx.splice(this.availableEx.indexOf(selected.target.value), 1);
       console.log(this.availableEx);
     }
-    
   }
 
   paths: Array<any> = []
@@ -108,32 +95,5 @@ export class CreateLocationComponent implements OnInit {
         })
       })
     }
-    
   }
 }
-
-// function readFiles() {
-
-//   var buffer: any[] = new Array();
-//   var files = (<HTMLInputElement>document.querySelector('input[type=file]')).files;
-
-//   function readAndPush(file: any) {
-
-//     if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-//       var reader = new FileReader();
-
-//       reader.addEventListener("load", function () {
-//         buffer.push(this.result)
-//       }, false);
-
-//       reader.readAsDataURL(file);
-//     }
-
-//   }
-
-//   if (files) {
-//     [].forEach.call(files, readAndPush);
-//   }
-
-//   return buffer;
-// }
