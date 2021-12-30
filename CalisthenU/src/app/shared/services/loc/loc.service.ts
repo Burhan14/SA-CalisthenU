@@ -41,7 +41,6 @@ export class LocService {
     return this.db.collection("locations").doc(id).snapshotChanges();
   }
 
-
   GetUser(id:any){
     return this.db.collection("users").doc(id).snapshotChanges();
   }

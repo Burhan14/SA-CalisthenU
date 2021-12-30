@@ -1,3 +1,4 @@
+import { LocService } from './../../shared/services/loc/loc.service';
 import { ReviewService } from './../../shared/services/review/review.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Component, Input, OnInit } from '@angular/core';
@@ -8,37 +9,32 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
-  @Input() locId:string;
+  @Input() locId: string;
 
 
-  constructor(private afStorage:AngularFireStorage, private reviewService: ReviewService ) { }
+  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, private locService: LocService) { }
   currentRating: number = 1;
-  data:any = new Object();
-
-  review:any
-  createdBy: string;
-  comment: string;
-  score:number;
-  date:any;
+  data: any = new Object();
 
   ngOnInit(): void {
-    this.GetReviewsById();
+    this.reviewsRaw = []
+    this.reviews = []
+    this.GetReviews();
   }
 
   public sendReview(comment: string) {
     this.data.rating = this.currentRating;
-      if (!comment) {
-        // console.log("NO COMMENT!" + this.currentRating);
-        this.data.comment = null;
-      }
-      else{
-        // console.log(comment + " " + this.currentRating);
-        this.data.comment = comment;
-      }
-      this.data.locId = this.locId;
-      this.reviewService.CreateReview(this.data)
-      // console.log(this.data);
-
+    if (!comment) {
+      // console.log("NO COMMENT!" + this.currentRating);
+      this.data.comment = null;
+    }
+    else {
+      // console.log(comment + " " + this.currentRating);
+      this.data.comment = comment;
+    }
+    this.data.locId = this.locId;
+    this.reviewService.CreateReview(this.data)
+    // console.log(this.data);
   }
 
   public UpdateRating(rating: number) {
@@ -47,29 +43,26 @@ export class ReviewComponent implements OnInit {
 
   //array of reviews, filled in directly on init from db
   reviews: any = [];
+  reviewsRaw: any = [];
+  locationId: any;
 
   //call service to fetch data from db and push into reviews array
-  // GetReviews = () =>
-  //   this.reviewService
-  //   .GetReviews()
-  //   .subscribe(res => {
-  //     this.reviews = res;
-  //   });  
-
-  //call service to fetch data from db and push into reviews array
-    GetReviewsById = () =>
+  GetReviews = () => {
+    let loopCount = 0;
     this.reviewService
-    .GetReviewById(this.locId)
-    .subscribe(res => {
-      this.review = res.payload.data();
-      console.log(this.review);
-      this.date = this.review.creationDate;
-      this.score = this.review.rating;
-      this.comment = this.review.comment;
-      this.createdBy = this.review.createdByDN;
-    });  
-
-    // werkt niet
-    // toon enkel de reviews waar de locid gelijk is aan de id van de huidige locatie.
+      .GetReviews()
+      .subscribe(res => {
+        if (loopCount < 1) {
+          this.reviewsRaw = res;
+          for (let rev of this.reviewsRaw) {
+            if (rev.payload.doc.data().locId == this.locId) {
+              this.reviews.push(rev);
+              console.log(this.reviews);
+            }
+          }
+          loopCount++;
+        };
+      });
+  }
 
 }

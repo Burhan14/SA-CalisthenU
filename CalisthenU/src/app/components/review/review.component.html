@@ -1,20 +1,20 @@
 <div class="h-100">
   <div class="review-list">
     <div class="d-flex flex-column" *ngFor="let rev of reviews">
-      <h4>{{createdBy}}</h4>
+      <h4>{{rev.payload.doc.data().createdByDN}}</h4>
       <div class="rating">
-        <span class="d-flex flex-row" *ngIf="score == 5">★★★★★</span>
-        <span class="d-flex flex-row" *ngIf="score == 4">★★★★☆</span>
-        <span class="d-flex flex-row" *ngIf="score == 3">★★★☆☆</span>
-        <span class="d-flex flex-row" *ngIf="score == 2">★★☆☆☆</span>
-        <span class="d-flex flex-row" *ngIf="score == 1">★☆☆☆☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 5">★★★★★</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 4">★★★★☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 3">★★★☆☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 2">★★☆☆☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 1">★☆☆☆☆</span>
         <!-- <h3>Rating: {{rev.payload.doc.data().rating}} / 5</h3> -->
       </div>
       <label class="" id="comment" rows="4">
-        {{comment}}
+        {{rev.payload.doc.data().comment}}
       </label>
       <p class="w-100 d-flex justify-content-end mt-2" style="color: lightgray; font-size: 15px;">Commented on:
-        {{date}}</p>
+        {{rev.payload.doc.data().creationDate}}</p>
       <mat-divider class="py-2"></mat-divider>
     </div>
   </div>

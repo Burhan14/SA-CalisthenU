@@ -36,10 +36,4 @@ export class ReviewService {
     return this.db.collection("reviews").snapshotChanges();
   }
 
-  GetReviewById(id:string){
-    // console.log(id);
-    return this.db.collection("reviews").doc(id).snapshotChanges();
-    // werkt niet, omdat dit de id van locatie is en geen review.
-  }
-
 }
