@@ -1,4 +1,3 @@
-import { LocService } from './../../shared/services/loc/loc.service';
 import { ReviewService } from './../../shared/services/review/review.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Component, Input, OnInit } from '@angular/core';
@@ -12,14 +11,14 @@ export class ReviewComponent implements OnInit {
   @Input() locId: string;
 
 
-  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, private locService: LocService) { }
+  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, ) { }
   currentRating: number = 1;
   data: any = new Object();
 
   ngOnInit(): void {
     this.reviewsRaw = []
     this.reviews = []
-    this.GetReviews();
+    this.GetReviews();   
   }
 
   public sendReview(comment: string) {
@@ -34,6 +33,7 @@ export class ReviewComponent implements OnInit {
     }
     this.data.locId = this.locId;
     this.reviewService.CreateReview(this.data)
+    this.ngOnInit()
     // console.log(this.data);
   }
 
@@ -44,7 +44,6 @@ export class ReviewComponent implements OnInit {
   //array of reviews, filled in directly on init from db
   reviews: any = [];
   reviewsRaw: any = [];
-  locationId: any;
 
   //call service to fetch data from db and push into reviews array
   GetReviews = () => {
@@ -57,12 +56,23 @@ export class ReviewComponent implements OnInit {
           for (let rev of this.reviewsRaw) {
             if (rev.payload.doc.data().locId == this.locId) {
               this.reviews.push(rev);
-              console.log(this.reviews);
             }
           }
+          this.AvgRating();
           loopCount++;
         };
       });
   }
 
+  score:number;
+  //calculates the avg rating of all reviews
+  AvgRating = () => {
+    this.score = 0;
+    for (let rev of this.reviews) {
+      this.score = this.score + rev.payload.doc.data().rating;
+    }
+    this.score = this.score/this.reviews.length;
+    console.log(this.score + '('+this.reviews.length+')');
+  }
 }
+
