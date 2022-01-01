@@ -11,6 +11,14 @@
     justify-content: start;
 }
 
+.rating>span {
+    color: #FFD600;
+    position: relative;
+    width: 1em;
+    font-size: 20px;
+    font-weight: 300;
+}
+
 .rating>input {
     display: none;
 }

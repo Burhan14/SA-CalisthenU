@@ -16,7 +16,7 @@ DONE:
 -Details locations in accordeon
 -FireStorage voor img
 -Get Images per location *
--firestore CRUD operations ('CR D' ok)
+-firestore CRUD operations ('CRUD' ok)
 -when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile [ => managed to implement directly with form input ]
 -appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED]
 -Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie ** --> automatisch ongevuld bij double click op kaart (moet op link drukken in alert)
@@ -28,9 +28,9 @@ DONE:
 -Redirect to details page on marker popup : niet kunnen doen => popup inhoud leest click event niet (FIXED)
 
 
+
 IN PROGRESS:
 -redesign profile page ** 
--Firestore CRUD operations: 'U' ** => navigation + security OK!
 -Comments & rating (input with textarea for placing a comment and leaving a rating, avg rating displayed with stars and list of comments from top to bottom, comment author, comment date) * => Create comment OK!
 
 

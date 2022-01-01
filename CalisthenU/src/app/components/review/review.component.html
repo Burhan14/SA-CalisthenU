@@ -1,11 +1,28 @@
-<div class="review-list">
+<div class="h-100">
+  <div class="review-list">
+    <div class="d-flex flex-column" *ngFor="let rev of reviews">
+      <h4>{{rev.payload.doc.data().createdByDN}}</h4>
+      <div class="rating">
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 5">★★★★★</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 4">★★★★☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 3">★★★☆☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 2">★★☆☆☆</span>
+        <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 1">★☆☆☆☆</span>
+        <!-- <h3>Rating: {{rev.payload.doc.data().rating}} / 5</h3> -->
+      </div>
+      <label class="" id="comment" rows="4">
+        {{rev.payload.doc.data().comment}}
+      </label>
+      <p class="w-100 d-flex justify-content-end mt-2" style="color: lightgray; font-size: 15px;">Commented on:
+        {{rev.payload.doc.data().creationDate}}</p>
+      <mat-divider class="py-2"></mat-divider>
+    </div>
+  </div>
 
-</div>
-
-<form id="review-form">
+  <form class="mt-5" id="review-form">
     <div class="form-group shadow-textarea">
-      <i class="fas fa-pencil-alt prefix mr-2"></i>
-      <label for="commentArea">Let us know your opinion about this location</label>
+      <p style="font-size: 22px;" for="commentArea"><i class="fas fa-pencil-alt prefix mr-2"></i> Let us know your
+        opinion about this location</p>
       <div class="rating">
         <input type="radio" name="rating" (click)="UpdateRating(5)" value="5" id="5">
         <label for="5">☆</label>
@@ -15,16 +32,18 @@
         <label for="3">☆</label>
         <input type="radio" name="rating" (click)="UpdateRating(2)" value="2" id="2">
         <label for="2">☆</label>
-        <input type="radio" name="rating" checked (click)="UpdateRating(1)" value="1" id="1">
+        <input #default type="radio" name="rating" checked (click)="UpdateRating(1)" value="1" id="1">
         <label for="1">☆</label>
       </div>
       <textarea #comment class="form-control z-depth-1" id="commentArea" rows="4"
         placeholder="What do you think about this place?..."></textarea>
     </div>
     <div class="w-100 d-flex justify-content-end">
-        <button (click)="sendReview(comment.value)" type="button" class="btn btn-custom">
-            Send Review
-            <i class="fas fa-long-arrow-alt-right ms-1"></i>
-          </button>
+      <button (click)="sendReview(comment.value); comment.value = ''; UpdateRating(1); default.checked = true; "
+        type="button" class="btn btn-custom">
+        Send Review
+        <i class="fas fa-long-arrow-alt-right ms-1"></i>
+      </button>
     </div>
-</form>
+  </form>
+</div>
