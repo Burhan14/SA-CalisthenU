@@ -33,8 +33,6 @@ export class ReviewComponent implements OnInit {
     }
     this.data.locId = this.locId;
     this.reviewService.CreateReview(this.data)
-    this.ngOnInit()
-    // console.log(this.data);
   }
 
   public UpdateRating(rating: number) {
