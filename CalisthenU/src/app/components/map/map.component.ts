@@ -116,7 +116,7 @@ export class MapComponent implements OnInit {
       // console.log(marker);
       marker.addTo(this.map);
       // marker.bindPopup(loc.payload.doc.data().locationName);
-      marker.bindPopup('<a id="marker-detail '+loc.payload.doc.id+'">' + loc.payload.doc.data().locationName + '</a>');
+      marker.bindPopup('<a style="color: black; text-decoration:none;" class="marker" id="marker-detail '+loc.payload.doc.id+'">' + loc.payload.doc.data().locationName + '</a>');
       // marker.bindPopup('<p id="details">' + loc.payload.doc.data().locationName + '</p>');
     }
   }

@@ -50,4 +50,4 @@ DONE:
 - delete comment @done
 - comment & rating @done
 - calc avg rating (live update in parrent component) @done
-- display rating of location on dashboard/accordeon @done
+- display rating of location on dashboard/accordeon (https://dev.to/madsstoumann/star-rating-using-a-single-input-i0l) @done 

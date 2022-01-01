@@ -75,6 +75,16 @@ h2 {
     background: none;
 }
 
+.marker{
+  transition: 0.2s ease-in-out;
+}
+.marker:hover{
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  color: var(--main-color)!important;
+}
+
+
 
 @media (max-width: 768px) {
   ::-webkit-scrollbar {
