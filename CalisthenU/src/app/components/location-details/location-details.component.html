@@ -26,6 +26,18 @@
                       <p class="card-text">{{access}}</p>
                       <h3>This Location has been created by:</h3>
                       <p class="card-text">{{createdBy}}</p>
+                      <label class="rating-label">
+                        <h3>Rating: </h3>
+                        
+                        <div class="d-flex">
+                          <input
+                          class="rating"
+                          max="5"
+                          step="0.25"
+                          type="range">
+                          <small class="align-self-center ml-3">{{avgrating}}/5</small>
+                        </div>
+                      </label>
                     </div>
                   </div>
             </div>
@@ -33,7 +45,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-4">
             <div class="card">
-              <app-review [locId]="id"></app-review>
+              <app-review [locId]="id" ></app-review>
             </div>
         </div>
     </div>

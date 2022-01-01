@@ -21,6 +21,7 @@ export class LocationDetailsComponent implements OnInit {
   exercises:any;
   createdBy:string;
   fullAddress: string;
+  avgrating: number;
 
 
   constructor(private route:ActivatedRoute, private locService:LocService) { }
@@ -48,8 +49,12 @@ export class LocationDetailsComponent implements OnInit {
       this.images = this.location.images;
       this.exercises = this.location.exercises;
       this.createdBy = this.location.createdByDN;
+      this.avgrating = this.location.avgRating;
 
       // console.log(res.payload.data());
+
+      let root = document.documentElement;
+      root.style.setProperty('--value', this.location.avgRating.toString());
 
       if(loopCount < 1){
         let lat = this.coordinates.split(',')[0]

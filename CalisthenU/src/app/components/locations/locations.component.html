@@ -19,6 +19,17 @@
           </ul>
         </div> -->
         <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
+        <label class="rating-label">
+          <div class="d-flex">
+            <input
+            class="rating"
+            max="5"
+            step="0.25"
+            attr.style="--value:{{loc.payload.doc.data().avgRating}}"
+            type="range">
+            <small class="align-self-center ml-3">{{loc.payload.doc.data().avgRating}}/5</small>
+          </div>
+        </label>
         <p></p>
         <!-- <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small> -->
         <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>

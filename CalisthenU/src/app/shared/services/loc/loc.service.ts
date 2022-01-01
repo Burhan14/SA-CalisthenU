@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { User } from "../auth/user";
 import { Location } from "../loc/location";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
 import firebase from 'firebase/compat/app';
 import { Observable } from 'rxjs';
@@ -15,14 +15,14 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class LocService {
-  
+
   constructor(
     public db: AngularFirestore,   // Inject Firestore service
     public auth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router,  
+    public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     public authService: AuthService
-  ){ }
+  ) { }
 
   //form to create a new location
   form = new FormGroup({
@@ -32,16 +32,16 @@ export class LocService {
     locationAccess: new FormControl(''),
   })
 
-  GetLocations(){
+  GetLocations() {
     return this.db.collection("locations").snapshotChanges();
   }
 
-  GetLocationSingle(id: string){
+  GetLocationSingle(id: string) {
     // console.log(id);
     return this.db.collection("locations").doc(id).snapshotChanges();
   }
 
-  GetUser(id:any){
+  GetUser(id: any) {
     return this.db.collection("users").doc(id).snapshotChanges();
   }
 
@@ -51,26 +51,27 @@ export class LocService {
     data.createdByUID = this.authService.userData.uid;
     data.createdByDN = this.authService.userData.displayName;
     data.creationDate = Date.now();
+    data.avgRating = 0;
 
-    return new Promise<any>((resolve, reject) =>  {
+    return new Promise<any>((resolve, reject) => {
       this.db.collection("locations")
-      .add(data)
-      .then(res => {
-        resolve(res);
-      }, err => reject(err));
+        .add(data)
+        .then(res => {
+          resolve(res);
+        }, err => reject(err));
     })
   }
 
-  DeleteLocation(docId: string){
+  DeleteLocation(docId: string) {
     return this.db
-       .collection("locations")
-       .doc(docId)
-       .delete();
+      .collection("locations")
+      .doc(docId)
+      .delete();
   }
-  UpdateLocation(docId: string, data: any){
+  UpdateLocation(docId: string, data: any) {
     return this.db
-       .collection("locations")
-       .doc(docId)
-       .update(data);
+      .collection("locations")
+      .doc(docId)
+      .update(data);
   }
 }

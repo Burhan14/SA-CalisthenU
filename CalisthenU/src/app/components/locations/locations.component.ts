@@ -23,20 +23,22 @@ export class LocationsComponent implements OnInit {
 
   //array of locations, filled in directly on init from db
   locations: any = [];
-
+  avgrating: number;
   //call service to fetch data from db and push into locations array
   GetLocations = () =>
     this.locService
     .GetLocations()
-    .subscribe(res => {this.locations = res;});  
+    .subscribe(res => {
+      this.locations = res; 
+      // let root = document.documentElement;
+      // root.style.setProperty('--value', this.avgrating.toString());
+    });  
   
   // GetUser(id:any){
   //   this.locService
   //   .GetUser(id)
   //   .subscribe(res => {console.log(res.payload.data())});  
   // }
-    
-
   
   showInConsole(data:any){
     console.log(data);

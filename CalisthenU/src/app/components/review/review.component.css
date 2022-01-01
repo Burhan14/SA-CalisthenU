@@ -50,3 +50,12 @@
 .rating:hover>input:checked~label:before {
     opacity: 0.4;
 }
+.delete:hover{
+ cursor: pointer;
+ color: white;
+ transition: 0.2s ease-in-out;
+}
+.delete{
+ color: var(--main-color);
+ transition: 0.2s ease-in-out;
+}

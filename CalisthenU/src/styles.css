@@ -1,9 +1,10 @@
 /* @import '~firebaseui/dist/firebaseui.css'; */
 
 /* You can add global styles to this file, and also import other style files */
-* {
-  --main-color: #C2185B;
 
+:root {
+  --value: 0;
+  --main-color: #C2185B;
 }
 
 html,

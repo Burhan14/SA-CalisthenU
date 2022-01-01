@@ -1,6 +1,8 @@
 import { ReviewService } from './../../shared/services/review/review.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { LocService } from 'src/app/shared/services/loc/loc.service';
 
 @Component({
   selector: 'app-review',
@@ -10,15 +12,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ReviewComponent implements OnInit {
   @Input() locId: string;
 
-
-  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, ) { }
+  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, public authService: AuthService, public locService: LocService ) { }
   currentRating: number = 1;
   data: any = new Object();
 
   ngOnInit(): void {
     this.reviewsRaw = []
     this.reviews = []
-    this.GetReviews();   
+    this.GetReviews();
   }
 
   public sendReview(comment: string) {
@@ -33,8 +34,10 @@ export class ReviewComponent implements OnInit {
     }
     this.data.locId = this.locId;
     this.reviewService.CreateReview(this.data)
-    this.ngOnInit()
-    // console.log(this.data);
+    this.reviewsRaw = []
+    this.reviews = []
+    this.GetReviews();
+
   }
 
   public UpdateRating(rating: number) {
@@ -71,8 +74,24 @@ export class ReviewComponent implements OnInit {
     for (let rev of this.reviews) {
       this.score = this.score + rev.payload.doc.data().rating;
     }
-    this.score = this.score/this.reviews.length;
-    console.log(this.score + '('+this.reviews.length+')');
+    if (this.reviews.length == 0) {
+      this.score = 0;
+    }else{
+      this.score = this.score/this.reviews.length;
+    }
+    // console.log(this.score + '('+this.reviews.length+')');
+
+    this.locService.UpdateLocation(this.locId, {avgRating: this.score})
+
+  }
+
+  RemoveComment(id: string){
+    this.reviewService
+    .DeleteReview(id).then(res => {
+      this.reviewsRaw = [];
+      this.reviews = [];
+      this.GetReviews();
+    });
   }
 }
 
