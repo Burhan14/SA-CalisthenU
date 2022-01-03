@@ -1,5 +1,5 @@
 <div class="body px-3">
-    <h1><i (click)="GoBack()" class="fas fa-chevron-left" style="font-size: 2rem; vertical-align: middle;"></i> {{name}}</h1>
+    <h1><i (click)="GoBack()" class="fas fa-chevron-left clickable" style="font-size: 2rem; vertical-align: middle;"></i> {{name}} <i id="fav" (click)="AddFav()" class="far fa-heart ml-3 clickable" style="font-size: 2rem; vertical-align: middle;" data-toggle="tooltip" data-placement="right" title="add to favorites"></i></h1>
     <div class="row">
         <div class="col-md-7">
             <div class="row horizontal-scroll">

@@ -2,9 +2,9 @@ Calisthen-U TODO's
 
 IN PROGRESS:
 - redesign profile page ** 
+- Fav locations*
 
 TODO:
-- Fav locations*
 - Cache Data (Service Worker PWA, "location data") *
 - Geocoding gegevens bijhouden in db*
 - Lighthouse Test**

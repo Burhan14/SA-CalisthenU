@@ -47,11 +47,11 @@
     height: 40vh;
   }
 
-  .fa-chevron-left{
+  .clickable{
     cursor: pointer;
   }
 
-  .fa-chevron-left:hover{
+  .clickable:hover{
     cursor: pointer;
     color: var(--main-color);
   }

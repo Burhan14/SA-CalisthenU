@@ -2,6 +2,7 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { parseActionCodeURL } from '@firebase/auth';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-location-details',
@@ -10,7 +11,7 @@ import { parseActionCodeURL } from '@firebase/auth';
 })
 export class LocationDetailsComponent implements OnInit {
 
-  id:string;
+  id:string; //id of this location
   private sub: any;
   location:any
   name:string;
@@ -24,7 +25,7 @@ export class LocationDetailsComponent implements OnInit {
   avgrating: number;
 
 
-  constructor(private route:ActivatedRoute, private locService:LocService) { }
+  constructor(private route:ActivatedRoute, private locService:LocService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -32,9 +33,26 @@ export class LocationDetailsComponent implements OnInit {
       this.GetLocation();
       // console.log(params['id']);
     })
+
+    
   }
 
   GoBack = () => history.back()
+  AddFav = () => {
+    let fav = <HTMLElement>document.getElementById("fav");
+    if (fav.classList.contains("far")) { //add to favs
+      fav.classList.remove("far");
+      fav.classList.add("fas");
+      console.log("added to favs (does nothing yet)")
+      this.locService.AddToFavs(this.authService.userData.uid, this.id)
+    }else{ //remove from favs
+      fav.classList.remove("fas");
+      fav.classList.add("far");
+      console.log("removed from favs (does nothing yet)")
+    }
+
+  }
+
 
   GetLocation = () => {
     let loopCount= 0;

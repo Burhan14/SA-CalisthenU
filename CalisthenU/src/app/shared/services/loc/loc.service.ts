@@ -41,6 +41,20 @@ export class LocService {
     return this.db.collection("locations").doc(id).snapshotChanges();
   }
 
+  GetUsersFavLocs(id: string){
+    return this.db.collection("users").doc(id).collection("favorites").snapshotChanges();
+  }
+
+  AddToFavs(uid:string, locId: string){
+    return new Promise<any>((resolve, reject) => {
+      this.db.collection("users").doc(uid).collection("favorites")
+        .add({locId: locId})
+        .then(res => {
+          resolve(res);
+        }, err => reject(err));
+    })
+  }
+
   GetUser(id: any) {
     return this.db.collection("users").doc(id).snapshotChanges();
   }
