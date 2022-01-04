@@ -11,6 +11,7 @@ TODO:
 - Share API (share locations)
 - GENERAL DESIGN AND CLEANING CODE ***
 - login persistence
+- firestore general security check
 
 - Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
 
