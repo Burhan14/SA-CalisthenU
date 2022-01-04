@@ -1,9 +1,10 @@
 /* @import '~firebaseui/dist/firebaseui.css'; */
 
 /* You can add global styles to this file, and also import other style files */
-* {
-  --main-color: #C2185B;
 
+:root {
+  --value: 0;
+  --main-color: #C2185B;
 }
 
 html,
@@ -73,6 +74,16 @@ h2 {
 ::-webkit-scrollbar-corner{
     background: none;
 }
+
+.marker{
+  transition: 0.2s ease-in-out;
+}
+.marker:hover{
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  color: var(--main-color)!important;
+}
+
 
 
 @media (max-width: 768px) {

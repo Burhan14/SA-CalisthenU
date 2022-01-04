@@ -11,18 +11,24 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 export class UserProfileComponent implements OnInit {
 
   constructor(public authService: AuthService, public router: Router, private locService: LocService) { }
+  
+  myLocationsRAW: any = [];
+  myLocations: Array<any> = new Array();
+  favLocations: any = [];
+
 
   ngOnInit(): void {
     if (this.authService.userData == undefined) {
       this.router.navigate(['dashboard']);
     }
-    this.myLocationsRAW = []
-    this.myLocations = []
-    this.GetMyLocations()
+    this.myLocationsRAW = [];
+    this.myLocations = [];
+    this.GetMyLocations();
+    this.favLocations = [];
+    this.GetFavLocations();
+
   }
 
-  myLocationsRAW: any = [];
-  myLocations: Array<any> = new Array();
 
 
   GetMyLocations = () =>
@@ -37,7 +43,21 @@ export class UserProfileComponent implements OnInit {
           }
         }
       }
-    });  
+    }); 
+    
+  GetFavLocations = (id: string = this.authService.userData.uid) =>
+    this.locService
+    .GetUsersFavLocs(id)
+    .subscribe(res => {
+      console.log(res);
+      for (let loc of res) {
+        this.locService.GetLocationSingle(loc.payload.doc.data().createdByUID)
+        .subscribe(res2 => {
+          this.favLocations = res2;
+        })
+      }
+      console.log(this.favLocations);
+    });
 
   DeleteLocation = (locId: string) =>
     this.locService

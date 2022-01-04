@@ -41,7 +41,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
-import { CreateLocationComponent } from './components/create-location/create-location.component';
+import { CreateLocationComponent } from './components/location-create/location-create.component';
 import { ImageModalComponent } from './components/image-modal/image-modal.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { ReviewComponent } from './components/review/review.component';

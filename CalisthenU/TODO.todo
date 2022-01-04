@@ -1,0 +1,53 @@
+Calisthen-U TODO's
+
+IN PROGRESS:
+- redesign profile page ** 
+- Fav locations*
+
+TODO:
+- Cache Data (Service Worker PWA, "location data") *
+- Geocoding gegevens bijhouden in db*
+- Lighthouse Test**
+- Share API (share locations)
+- GENERAL DESIGN AND CLEANING CODE ***
+- login persistence
+
+- Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
+
+OPTIONAL: 
+- Filter on (rating, exercices) 
+
+
+PROBLEMS:
+- Image input on phone is DISGUSTANG
+
+DONE:
+- get coordinates of selected location on map ('double click, copy to clipboard' ok) @done
+- fix layout: map acts abnormal when scrolling (ok) @done
+- fix webmanifest (ok) @done
+- locations clickable and navigate/route to location details (of the clicked location) (ok accordeon) @done
+- map marker on user's current position (not on init, press button and ask permission before) @done
+- Tooltip on mobile (ok) @done
+- Create location page (ok) @done
+- New location form advanced with other properties (images, descriptions, rating, ...) @done
+- Add opening hours to Location with checkbox @done
+- Show locations on map with markers, fix : onInit and center map @done
+- CSS of location details @done
+- "Show location on Google Maps" veranderen naar "take me there" ** @done
+- Details locations in accordeon @done
+- FireStorage voor img @done
+- Get Images per location * @done
+- firestore CRUD operations ('CRUD') @done
+- when user creates email/pwd account set no displayname (default) --> use before @ in email. user can update his displayname later in profile [ => managed to implement directly with form input ] @done
+- appendchild error when asking to add markers after getting locations. no problem when using timout but timeout it self is bad 'cause hardcode. [FIXED] @done
+- Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie ** --> automatisch ongevuld bij double click op kaart (moet op link drukken in alert) @done
+- firebase Authentication ('+-' ok): when email login set displayname (setter problem) @done
+- probeer straat adres krijgen van coordinaten voor in details: gelukt met google maps geocoding API. VERGEET NIET SUBSCRIBTION TE STOPPEN NA PRESENTATIE @done
+- multiple select in exercises dropdown: select van 0 starten => checkboxes and ng (change) event. @done
+- padding en marging op kaart aanpassen (zeker voor mobile): scrollbar verwijderd voor mobile, padding en margins aangepast @done
+- fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR) @done
+- Redirect to details page on marker popup : niet kunnen doen => popup inhoud leest click event niet (FIXED) @done
+- delete comment @done
+- comment & rating @done
+- calc avg rating (live update in parrent component) @done
+- display rating of location on dashboard/accordeon (https://dev.to/madsstoumann/star-rating-using-a-single-input-i0l) @done 

@@ -1,8 +1,5 @@
 <div class="body px-3">
-  <div class="d-flex justify-content-between">
-    <h1><i (click)="GoBack()" class="fas fa-chevron-left" style="font-size: 2rem; vertical-align: middle;"></i> {{name}}</h1>
-    <i class="fas clickable fa-share-square" (click)="Share()"></i>
-  </div>
+    <h1><i (click)="GoBack()" class="fas fa-chevron-left clickable" style="font-size: 2rem; vertical-align: middle;"></i> {{name}} <i id="fav" (click)="AddFav()" class="far fa-heart ml-3 clickable" style="font-size: 2rem; vertical-align: middle;" data-toggle="tooltip" data-placement="right" title="add to favorites"></i></h1>
     <div class="row">
         <div class="col-md-7">
             <div class="row horizontal-scroll">
@@ -29,6 +26,18 @@
                       <p class="card-text">{{access}}</p>
                       <h3>This Location has been created by:</h3>
                       <p class="card-text">{{createdBy}}</p>
+                      <label class="rating-label">
+                        <h3>Rating: </h3>
+                        
+                        <div class="d-flex">
+                          <input
+                          class="rating"
+                          max="5"
+                          step="0.25"
+                          type="range">
+                          <small class="align-self-center ml-3">{{avgrating}}/5</small>
+                        </div>
+                      </label>
                     </div>
                   </div>
             </div>
@@ -36,7 +45,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-4">
             <div class="card">
-              <app-review [locId]="id"></app-review>
+              <app-review [locId]="id" ></app-review>
             </div>
         </div>
     </div>

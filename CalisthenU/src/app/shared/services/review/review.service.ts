@@ -35,5 +35,12 @@ export class ReviewService {
   GetReviews(){
     return this.db.collection("reviews").snapshotChanges();
   }
+  
+  DeleteReview(commentId: string){
+    return this.db
+       .collection("reviews")
+       .doc(commentId)
+       .delete();
+  }
 
 }
