@@ -37,7 +37,6 @@ export class ReviewComponent implements OnInit {
     this.reviewsRaw = []
     this.reviews = []
     this.GetReviews();
-
   }
 
   public UpdateRating(rating: number) {

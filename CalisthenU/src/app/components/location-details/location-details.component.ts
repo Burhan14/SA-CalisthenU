@@ -89,5 +89,19 @@ export class LocationDetailsComponent implements OnInit {
     })
   }
 
+  Share(){
+    const title = window.document.title;
+    const url = window.document.location.href;
+
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: url,
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    }
+  }
+
 
 }
