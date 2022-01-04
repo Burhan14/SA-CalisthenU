@@ -10,6 +10,7 @@ TODO:
 - Geocoding gegevens bijhouden in db*
 - Lighthouse Test**
 - login persistence
+- firestore general security check
 
 - Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
 
