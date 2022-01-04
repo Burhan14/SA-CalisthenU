@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { parseActionCodeURL } from '@firebase/auth';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-location-details',
@@ -11,46 +12,78 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 })
 export class LocationDetailsComponent implements OnInit {
 
-  id:string; //id of this location
+  id: string; //id of this location
   private sub: any;
-  location:any
-  name:string;
-  description:string;
-  coordinates:string;
-  access:string;
-  images:any;
-  exercises:any;
-  createdBy:string;
+  location: any
+  name: string;
+  description: string;
+  coordinates: string;
+  access: string;
+  images: any;
+  exercises: any;
+  createdBy: string;
   fullAddress: string;
   avgrating: number;
 
+  fav:HTMLElement = <HTMLElement>document.getElementById("fav");
 
-  constructor(private route:ActivatedRoute, private locService:LocService, public authService: AuthService) { }
+  currentUserFavs: Array<string> = new Array();
 
+
+  constructor(private route:ActivatedRoute, private locService:LocService, public authService: AuthService, private titleService:Title) {}
+  
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id']
       this.GetLocation();
-      // console.log(params['id']);
+      this.GetFavLocations();
     })
 
-    
+
+  }
+
+  GetFavLocations() {
+    let loopCount = 0;
+    this.currentUserFavs = [];
+    if (this.authService.userData == undefined) return;
+    this.locService
+      .GetUsersFavLocs(this.authService.userData.uid)
+      .subscribe(res => {
+        if (loopCount < 1) {
+          for (let loc of res) {
+            this.currentUserFavs.push(loc.payload.doc.data().locId);
+          }
+          loopCount++
+        }
+        this.CheckFav()
+      });
+
+  }
+
+  CheckFav() {
+    let fav = <HTMLElement>document.getElementById("fav");
+    if (this.currentUserFavs.includes(this.id)) {
+      fav.classList.remove("far");
+      fav.classList.add("fas");
+    }
   }
 
   GoBack = () => history.back()
-  AddFav = () => {
-    let fav = <HTMLElement>document.getElementById("fav");
-    if (fav.classList.contains("far")) { //add to favs
-      fav.classList.remove("far");
-      fav.classList.add("fas");
-      console.log("added to favs (does nothing yet)")
-      this.locService.AddToFavs(this.authService.userData.uid, this.id)
-    }else{ //remove from favs
-      fav.classList.remove("fas");
-      fav.classList.add("far");
-      console.log("removed from favs (does nothing yet)")
-    }
 
+  AddFav () {
+    let fav = <HTMLElement>document.getElementById("fav");
+    if (fav.classList.contains("far")) { //if not faved, add to favs
+      this.locService.AddToFavs(this.authService.userData.uid, this.id).then(res => {
+        fav.classList.remove("far");
+        fav.classList.add("fas");
+      })
+    }
+    else{ //if faved, remove from favs
+      this.locService.RemoveFromFavs(this.authService.userData.uid, this.id).then(res => {
+        fav.classList.remove("fas");
+        fav.classList.add("far");
+      })
+    }
   }
 
 
@@ -69,7 +102,8 @@ export class LocationDetailsComponent implements OnInit {
       this.createdBy = this.location.createdByDN;
       this.avgrating = this.location.avgRating;
 
-      // console.log(res.payload.data());
+      //change page title
+      this.titleService.setTitle("Calisthen-U | " + this.name);
 
       let root = document.documentElement;
       root.style.setProperty('--value', this.location.avgRating.toString());

@@ -42,7 +42,6 @@ import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
 import { CreateLocationComponent } from './components/location-create/location-create.component';
-import { ImageModalComponent } from './components/image-modal/image-modal.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { ReviewComponent } from './components/review/review.component';
 import { LocationEditComponent } from './components/location-edit/location-edit.component';
@@ -63,7 +62,6 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     MapComponent,
     MapPointFormComponent,
     CreateLocationComponent,
-    ImageModalComponent,
     LocationDetailsComponent,
     ReviewComponent,
     LocationEditComponent,
