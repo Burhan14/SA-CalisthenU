@@ -95,7 +95,7 @@ export class MapComponent implements OnInit {
       .subscribe(res => {
         if (this.loopSubscribe == 0) {
           this.locations = res;
-          console.log(this.locations)
+          // console.log(this.locations)
           this.addMarkers(); //gives appendchild error
           this.loopSubscribe = 1
         }

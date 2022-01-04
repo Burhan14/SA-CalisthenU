@@ -65,7 +65,7 @@ export class UserProfileComponent implements OnInit {
                 if (loopCount2 < 1) {
                   if(res2.type == "removed") return
                   this.favLocations.push(res2);
-                  console.log(this.favLocations);
+                  // console.log(this.favLocations);
                   loopCount2++
                 }
               })

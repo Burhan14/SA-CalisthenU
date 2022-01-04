@@ -19,8 +19,8 @@ PROBLEMS:
 - Image input on phone is DISGUSTANG
 
 DONE:
-- login persistence @done
 - Geocoding gegevens bijhouden in db* @done
+- login persistence @done
 - titles per page @done
 - Share API (share locations) @done
 - Fav locations* @done

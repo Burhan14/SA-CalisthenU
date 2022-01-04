@@ -98,7 +98,7 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 
   ],
   providers: [
-    { provide: PERSISTENCE, useValue: 'session' },
+    { provide: PERSISTENCE, useValue: 'local' }, //choose between local, session or none
     AuthService,
     LocService,
   ],
