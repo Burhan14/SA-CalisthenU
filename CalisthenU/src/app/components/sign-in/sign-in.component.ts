@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from "../../shared/services/auth/auth.service";
 
 @Component({
@@ -9,7 +10,10 @@ import { AuthService } from "../../shared/services/auth/auth.service";
 
 export class SignInComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService , private titleService:Title) { 
+    //change page title
+    this.titleService.setTitle("Calisthen-U | Sign-In");
+  }
 
   ngOnInit() { 
     

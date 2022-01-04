@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-location-create',
@@ -12,7 +13,10 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 })
 export class CreateLocationComponent implements OnInit {
 
-  constructor(public authService: AuthService, public locService: LocService, public router: Router, private afStorage: AngularFireStorage) { }
+  constructor(public authService: AuthService, public locService: LocService, public router: Router, private afStorage: AngularFireStorage, private titleService:Title) {
+    //change page title
+    this.titleService.setTitle("Calisthen-U | New Location");
+   }
 
   availableEx: string[] = new Array();
   currentImages: string[] = new Array();

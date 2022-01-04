@@ -47,12 +47,21 @@ export class LocService {
 
   AddToFavs(uid:string, locId: string){
     return new Promise<any>((resolve, reject) => {
-      this.db.collection("users").doc(uid).collection("favorites")
-        .add({locId: locId})
+      this.db.collection("users").doc(uid).collection("favorites").doc(locId)
+        .set({locId: locId})
         .then(res => {
           resolve(res);
         }, err => reject(err));
     })
+  }
+
+  RemoveFromFavs(uid: string, locId: string){
+    return this.db
+      .collection("users")
+      .doc(uid)
+      .collection("favorites")
+      .doc(locId)
+      .delete();
   }
 
   GetUser(id: any) {

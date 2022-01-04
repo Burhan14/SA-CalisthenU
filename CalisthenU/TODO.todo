@@ -2,14 +2,13 @@ Calisthen-U TODO's
 
 IN PROGRESS:
 - redesign profile page ** 
-- Fav locations*
+- GENERAL DESIGN AND CLEANING CODE ***
+- titles per page
 
 TODO:
 - Cache Data (Service Worker PWA, "location data") *
 - Geocoding gegevens bijhouden in db*
 - Lighthouse Test**
-- Share API (share locations)
-- GENERAL DESIGN AND CLEANING CODE ***
 - login persistence
 
 - Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
@@ -22,6 +21,8 @@ PROBLEMS:
 - Image input on phone is DISGUSTANG
 
 DONE:
+- Share API (share locations) @done
+- Fav locations* @done
 - get coordinates of selected location on map ('double click, copy to clipboard' ok) @done
 - fix layout: map acts abnormal when scrolling (ok) @done
 - fix webmanifest (ok) @done

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from "../../shared/services/auth/auth.service";
 
 @Component({
@@ -9,8 +10,11 @@ import { AuthService } from "../../shared/services/auth/auth.service";
 export class VerifyEmailComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
-  ) { }
+    public authService: AuthService, private titleService:Title
+  ) {
+    //change page title
+    this.titleService.setTitle("Calisthen-U | Verify-Email");
+   }
 
   ngOnInit() {
   }

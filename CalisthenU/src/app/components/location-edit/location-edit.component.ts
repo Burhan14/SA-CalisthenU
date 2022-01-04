@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
@@ -10,7 +11,10 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 })
 export class LocationEditComponent implements OnInit {
 
-  constructor(public locService: LocService, private router: Router,private route:ActivatedRoute, private authService: AuthService) { }
+  constructor(public locService: LocService, private router: Router,private route:ActivatedRoute, private authService: AuthService, private titleService:Title) {
+    //change page title
+    this.titleService.setTitle("Calisthen-U | Update Location");
+  }
 
   updatedData: any = new Object();;
 
