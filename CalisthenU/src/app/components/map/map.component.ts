@@ -89,17 +89,17 @@ export class MapComponent implements OnInit {
   loopSubscribe: number = 0;
 
   //call service to fetch data from db and push into locations array
-  GetLocations = () => {
+  GetLocations() {
     this.locService
       .GetLocations()
       .subscribe(res => {
         if (this.loopSubscribe == 0) {
           this.locations = res;
+          console.log(this.locations)
           this.addMarkers(); //gives appendchild error
           this.loopSubscribe = 1
         }
       });
-    // console.table(this.locations);
   }
 
   public addMarkers() {

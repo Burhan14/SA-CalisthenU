@@ -101,6 +101,7 @@ export class LocationDetailsComponent implements OnInit {
       this.exercises = this.location.exercises;
       this.createdBy = this.location.createdByDN;
       this.avgrating = this.location.avgRating;
+      this.fullAddress = this.location.fullAddress;
 
       //change page title
       this.titleService.setTitle("Calisthen-U | " + this.name);
@@ -108,17 +109,17 @@ export class LocationDetailsComponent implements OnInit {
       let root = document.documentElement;
       root.style.setProperty('--value', this.location.avgRating.toString());
 
-      if(loopCount < 1){
-        let lat = this.coordinates.split(',')[0]
-        let lng = this.coordinates.split(',')[1]
+      // if(loopCount < 1){
+      //   let lat = this.coordinates.split(',')[0]
+      //   let lng = this.coordinates.split(',')[1]
 
 
-        fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
-        .then(response => response.json())
-        .then(data => {this.fullAddress = data.results[0].formatted_address;});
+      //   fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
+      //   .then(response => response.json())
+      //   .then(data => {this.fullAddress = data.results[0].formatted_address;});
 
-        loopCount++;
-      }
+      //   loopCount++;
+      // }
 
     })
   }

@@ -63,7 +63,9 @@ export class UserProfileComponent implements OnInit {
             this.locService.GetLocationSingle(loc.payload.doc.data().locId)
               .subscribe(res2 => {
                 if (loopCount2 < 1) {
+                  if(res2.type == "removed") return
                   this.favLocations.push(res2);
+                  console.log(this.favLocations);
                   loopCount2++
                 }
               })

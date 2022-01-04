@@ -91,10 +91,18 @@ export class CreateLocationComponent implements OnInit {
             //current images toevoegen aan firestore...
             this.data.images = this.currentImages;
 
-            this.locService.CreateLocation(this.data);
+            let lat = this.data.locationCoordinates.split(',')[0]
+            let lng = this.data.locationCoordinates.split(',')[1]
+            fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
+            .then(response => response.json())
+            .then(data => {this.data.fullAddress = data.results[0].formatted_address; })
+            .then(()=> this.locService.CreateLocation(this.data))
+            .then(()=>this.router.navigate(['dashboard']));
+
+            // this.locService.CreateLocation(this.data);
             // console.log(this.data);
             
-            this.router.navigate(['dashboard']);
+            
           }
         })
       })
