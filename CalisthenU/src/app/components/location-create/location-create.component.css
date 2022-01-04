@@ -1,6 +1,7 @@
 input[type="file"]{
     -webkit-appearance: none;
     text-align: left;
+    /* float: left; */
     -webkit-rtl-ordering:  left;
     cursor: pointer;
  }

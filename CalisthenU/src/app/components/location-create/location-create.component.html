@@ -1,0 +1,131 @@
+<div class="container p-5">
+  <h2 class="text-center">Create New Location</h2>
+  <form [formGroup]="this.locService.form">
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" autofocus #name required>
+    </div>
+    <div class="form-group">
+      <label for="coordinates">Coordinates</label>
+      <div class="input-group">
+        <input id="coordinates" placeholder="Latitude and Longitude" formControlName="locationCoordinates" type="text"
+          class="form-control" #coordinates required>
+        <span class="input-group-append bg-white border-left-0">
+          <span class="input-group-text bg-transparent">
+            <a data-toggle="tooltip" data-placement="top" title="double click on map to copy coordinates"><i
+                class="fas fa-info-circle"></i></a>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Images">Images</label>
+      <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple required/>
+    </div>
+    <div class="form-group">
+      <label for="Description">Description</label>
+      <textarea placeholder="Tell us more about this place" class="form-control" formControlName="locationDescription"
+        id="Description" rows="3" #description required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="Exercises">Exercises</label>
+      <div class="form-row">
+        <div class="col mb-1">
+          <!-- <select #ex class="form-select form-control form-select-lg" aria-label=".form-select-lg example" required>
+            <option value="null" selected disabled>Select an exercise to add</option>
+            <option value="Pull-up">Pull-up</option>
+            <option value="Chin-up">Chin-up</option>
+            <option value="Australian Pull-up">Australian Pull-up</option>
+            <option value="Incline Push-up">Incline Push-up</option>
+            <option value="Chest-Dips">Chest-Dips</option>
+            <option value="Dips">Dips</option>
+            <option value="L-Sit">L-Sit</option>
+            <option value="Front-Lever">Front-Lever</option>
+            <option value="Flag">Flag</option>
+            <option value="Windshield Wipers">Windshield Wipers</option>
+            <option value="Leg Exercises">Leg Exercises</option>
+          </select> -->
+          <div class="row">
+            <div class="col-6">
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Pull-up" value="Pull-up">
+                <label class="form-check-label" for="Pull-up">Pull-up</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Chin-up" value="Chin-up">
+                <label class="form-check-label" for="Chin-up">Chin-up</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Australian Pull-up" value="Australian Pull-up">
+                <label class="form-check-label" for="Australian Pull-up">Australian Pull-up</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Incline Push-up" value="Incline Push-up">
+                <label class="form-check-label" for="Incline Push-up">Incline Push-up</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Dips" value="Dips">
+                <label class="form-check-label" for="Dips">Dips</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="L-Sit" value="L-Sit">
+                <label class="form-check-label" for="L-Sit">L-Sit</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Front-Lever" value="Front-Lever">
+                <label class="form-check-label" for="Front-Lever">Front-Lever</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Flag" value="Flag">
+                <label class="form-check-label" for="Flag">Flag</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Windshield Wipers" value="Windshield Wipers">
+                <label class="form-check-label" for="Windshield Wipers">Windshield Wipers</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Leg Exercises" value="Leg Exercises">
+                <label class="form-check-label" for="Leg Exercises">Leg Exercises</label>
+              </div>
+            </div>
+          </div>         
+        </div>
+        <!-- <div class="col-md-1 d-flex justify-content-end  mb-1">
+          <button class="btn btn-custom w-100 text-center p-0 text-white"
+            (click)="addExercise(ex.options[ex.selectedIndex].value)">Add</button>
+        </div> -->
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <ul class="customListStyle" *ngFor="let e of availableEx">
+        <li #rmThis><i class="fas fa-times rm" (click)="removeEx(rmThis.innerHTML)" data-toggle="tooltip"
+            data-placement="right" title="click to remove"></i>{{e}}</li>
+      </ul>
+    </div> -->
+
+    <div class="form-group">
+      <label for="Accesibility">Opening hours</label>
+      <div class="input-group">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="value = 'unlimited'">
+          <label class="form-check-label" for="inlineRadio1">Always open</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" [checked]="value === 'limited'" (click)="value = 'limited'">
+          <label class="form-check-label" for="inlineRadio2">Limited opening hours</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="value === 'limited'">
+      <textarea placeholder="When can you access this location ?" class="form-control" formControlName="locationAccess"
+      id="Accesibility" rows="2" required></textarea>
+    </div>
+
+    <button class="btn btn-custom btn-lg btn-block text-white" (click)="onSubmit()">
+      Create
+    </button>
+  </form>
+</div>

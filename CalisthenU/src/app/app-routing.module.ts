@@ -5,11 +5,14 @@ import { AuthGuard } from "./shared/guard/auth.guard";
 
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import {UserProfileComponent } from './components/user-profile/user-profile.component'
+import { UserProfileComponent } from './components/user-profile/user-profile.component'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { CreateLocationComponent } from './components/create-location/create-location.component';
+import { CreateLocationComponent } from './components/location-create/location-create.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
+import { LocationEditComponent } from './components/location-edit/location-edit.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -19,7 +22,10 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'create-location', component: CreateLocationComponent },
+  { path: 'location-create', component: CreateLocationComponent },
+  { path: 'location-details/:id', component: LocationDetailsComponent },
+  { path: 'location-edit/:id', component: LocationEditComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

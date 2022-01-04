@@ -1,31 +1,93 @@
 /* @import '~firebaseui/dist/firebaseui.css'; */
 
 /* You can add global styles to this file, and also import other style files */
-*{
-    --main-color: #C2185B;
 
+:root {
+  --value: 0;
+  --main-color: #C2185B;
 }
 
-html, body { height: 100%; }
+html,
 body {
-    margin: 0;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
+  height: 100%;
 }
-.btn-custom{
-    background-color: var(--main-color);
+
+body {
+  margin: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
-*:not(i){
-    font-family: 'Saira Condensed', sans-serif  !important; font-size: large;
+
+.btn-custom {
+  background-color: var(--main-color);
+  color: white;
 }
-h1{
-    /* font-family: 'Permanent Marker', cursive !important;  */
-    /* font-family: 'Bebas Neue', cursive !important; */
-    font-family: 'Saira Condensed', sans-serif  !important;
-    font-weight: 800 !important;
-    font-size: 32px !important;
+
+.btn-outline-custom {
+  border-color: var(--main-color);
+  background-color: transparent;
 }
-h2{
-    font-size: 2rem !important;
+
+.text-custom {
+  color: var(--main-color);
+}
+
+*:not(i) {
+  font-family: 'Saira Condensed', sans-serif !important;
+  font-size: large;
+}
+
+h1 {
+  /* font-family: 'Permanent Marker', cursive !important;  */
+  /* font-family: 'Bebas Neue', cursive !important; */
+  font-family: 'Saira Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 32px !important;
+}
+
+h2 {
+  font-size: 2rem !important;
+}
+
+.mat-drawer-content {
+  overflow: overlay !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(194, 24, 92, 1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(194, 24, 92, .5);
+}
+::-webkit-scrollbar-corner{
+    background: none;
+}
+
+.marker{
+  transition: 0.2s ease-in-out;
+}
+.marker:hover{
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  color: var(--main-color)!important;
+}
+
+
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 }

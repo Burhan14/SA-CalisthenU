@@ -1,12 +1,11 @@
 import { map } from 'rxjs/operators';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
-import {latLng, MapOptions, tileLayer, Map, Marker, icon, LeafletMouseEvent} from 'leaflet';
+import { latLng, MapOptions, tileLayer, Map, Marker, icon, LeafletMouseEvent } from 'leaflet';
 import * as L from 'leaflet';
 import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 import { Control, ControlPosition } from 'leaflet';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -14,43 +13,47 @@ import { Control, ControlPosition } from 'leaflet';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  
+
   map: Map;
   mapOptions: MapOptions;
+  coords: string;
 
-  constructor(private locService:LocService) {
+  constructor(private locService: LocService, private router: Router) {
 
   }
 
   ngOnInit() {
-    this.GetLocations();
     this.initializeMapOptions();
-    setTimeout(() => { this.addMarkers(); }, 1000);
+    this.GetLocations();
 
-    // const markerPromise = new Promise((resolve, reject) => {
-    // this.GetLocations()    
-    // });
+    window.onclick = e => {
+      // console.log((e.target as Element).id.split(" ")[0]);  // to get the element
+      let id = (e.target as Element).id.split(" ")[0];
+      if (id == 'marker-detail') {
+        this.router.navigate(['location-details', (e.target as Element).id.split(" ")[1]]);
+      }
+    }
 
-    // markerPromise.then(() => {
-    //   this.addMarkers();
-    // })
-    
-    // Werkt niet onmiddelijk bij het starten van de webapp, probleem met GetLocations.
-    // this.addMarkers();
   }
 
 
   onMapReady(map: Map) {
     this.map = map;
-    map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => { 
+    map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => {
       console.log(e.latlng);
-      // navigator.clipboard.writeText(e.latlng);
+      navigator.clipboard.writeText(e.latlng);
 
-      navigator.clipboard.writeText(e.latlng.lat + ',' + e.latlng.lng);
+      this.coords = e.latlng.lat + ',' + e.latlng.lng;
+      navigator.clipboard.writeText(this.coords);
       document.querySelector(".alert").classList.remove("hide");
-      setTimeout(() => { document.querySelector(".alert").classList.add("hide"); }, 3000);
-     });
-     map.doubleClickZoom.disable();
+      setTimeout(() => {
+        let alert = document.querySelector(".alert");
+        if (alert) {
+          alert.classList.add("hide");
+        }
+      }, 4000);
+    });
+    map.doubleClickZoom.disable();
 
   }
 
@@ -69,7 +72,7 @@ export class MapComponent implements OnInit {
     };
   }
 
-  private addCurrentPositionMarker(lat : number, long : number) {
+  private addCurrentPositionMarker(lat: number, long: number) {
     const marker = new Marker([lat, long])
       .setIcon(
         icon({
@@ -80,22 +83,29 @@ export class MapComponent implements OnInit {
     marker.addTo(this.map);
     marker.bindPopup("<b>I am here!</b>").openPopup();;
   }
-  
+
   //array of locations, filled in directly on init from db
   locations: any = [];
+  loopSubscribe: number = 0;
 
   //call service to fetch data from db and push into locations array
   GetLocations = () => {
     this.locService
-    .GetLocations()
-    .subscribe(res => (this.locations = res));
+      .GetLocations()
+      .subscribe(res => {
+        if (this.loopSubscribe == 0) {
+          this.locations = res;
+          this.addMarkers(); //gives appendchild error
+          this.loopSubscribe = 1
+        }
+      });
     // console.table(this.locations);
   }
-    
 
   public addMarkers() {
+
     for (const loc of this.locations) {
-      let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0],(loc.payload.doc.data().locationCoordinates).split(',')[1]);
+      let coord = L.latLng((loc.payload.doc.data().locationCoordinates).split(',')[0], (loc.payload.doc.data().locationCoordinates).split(',')[1]);
       let marker = new Marker([coord.lat, coord.lng])
         .setIcon(
           icon({
@@ -103,12 +113,22 @@ export class MapComponent implements OnInit {
             iconAnchor: [13, 41],
             iconUrl: 'assets/icons/marker-icon.png'
           }));
+      // console.log(marker);
       marker.addTo(this.map);
-      marker.bindPopup(loc.payload.doc.data().locationName);
+      // marker.bindPopup(loc.payload.doc.data().locationName);
+      marker.bindPopup('<a style="color: black; text-decoration:none;" class="marker" id="marker-detail '+loc.payload.doc.id+'">' + loc.payload.doc.data().locationName + '</a>');
+      // marker.bindPopup('<p id="details">' + loc.payload.doc.data().locationName + '</p>');
     }
   }
 
-  GetGeoLocation(){
+
+
+  public GoToDetails(id: string){
+    this.router.navigate(['location-details', id ]);
+    // console.log("details");
+  }
+
+  GetGeoLocation() {
     if (!navigator.geolocation) {
       console.log('location is not supported');
     }
@@ -117,8 +137,15 @@ export class MapComponent implements OnInit {
         'lat: ' + position.coords.latitude, 'long: ' + position.coords.longitude
       )
       this.addCurrentPositionMarker(position.coords.latitude, position.coords.longitude);
-      this.map.flyTo(L.latLng(position.coords.latitude, position.coords.longitude),17);
+      this.map.flyTo(L.latLng(position.coords.latitude, position.coords.longitude), 17);
     });
   }
 
+  PasteCoords() {
+    document.querySelector(".alert").classList.add("hide");
+    // console.log(this.coords);
+    setTimeout(() => { let coordsInput = <HTMLInputElement>document.getElementById("coordinates"); coordsInput.focus(); coordsInput.value = this.coords; }, 200);
+  }
+
 }
+

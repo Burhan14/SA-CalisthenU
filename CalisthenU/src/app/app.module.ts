@@ -41,7 +41,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
-import { CreateLocationComponent } from './components/create-location/create-location.component';
+import { CreateLocationComponent } from './components/location-create/location-create.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
+import { ReviewComponent } from './components/review/review.component';
+import { LocationEditComponent } from './components/location-edit/location-edit.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { CreateLocationComponent } from './components/create-location/create-loc
     MapComponent,
     MapPointFormComponent,
     CreateLocationComponent,
+    LocationDetailsComponent,
+    ReviewComponent,
+    LocationEditComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,

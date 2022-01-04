@@ -1,68 +1,77 @@
-.card{
-    background-color: transparent;
-}
-.btn{
-    color: white;
-}
-
-/* enable absolute positioning */
-.inner-addon { 
-    position: relative; 
-}
-
-/* style icon */
-.inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-/* align icon */
-.left-addon .glyphicon  { left:  0px;}
-.right-addon .glyphicon { right: 0px;}
-
-/* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
-
-a:hover,
-a:active{
-    color: darkgrey;
-    text-decoration: none;
-    animation: 3s ease-in-out ;
-}
-.card-body {
-    background-color: rgba(194, 24, 91, 0.5);
-    border-radius: 5px;
-    position: relative;
-}
-h2 button:focus{
-    box-shadow: none!important;
-    /* color: rgba(194, 24, 91, 1)!important; */
-}
-h2 button {
-    color: white!important;
-}
-h2 button .collapsed{
-    color: rgba(194, 24, 91, 1)!important;
-}
-.external{
+  .dashboard-card {
     position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-}
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
 
-.details{
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
-}
+  .dashboard-card-content {
+    text-align: center;
+  }
 
-.horizontal-scroll{
+  .body {
+    margin: 1rem;
+  }
+
+  .card {
+    background-color: #3d3d3d;
+  }
+
+  .card-body {
+    padding: 0.625rem;
+  }
+
+  .card {
+    padding: 10px;
+    margin: 1rem 0
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .horizontal-scroll {
     overflow: auto;
-}
+  }
 
-.rating {
+  .detail-images {
+    height: 40vh;
+  }
+
+  .clickable{
+    cursor: pointer;
+  }
+
+  .clickable:hover{
+    cursor: pointer;
+    color: var(--main-color);
+  }
+
+
+  /* img{
+    min-width: 100%;
+  } */
+
+  /* .rating::-webkit-slider-runnable-track {
+    background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+    block-size: 100%;
+    mask: repeat left center/var(--starsize) var(--symbol);
+    -webkit-mask: repeat left center/var(--starsize) var(--symbol);
+  }
+  [dir="rtl"] .rating {
+    --dir: left;
+  } */
+
+  .rating {
     --dir: right;
     --fill: gold;
     --fillbg: rgba(139, 139, 139, 0.15);
@@ -134,7 +143,3 @@ h2 button .collapsed{
   [dir="rtl"] .rating--nojs::-webkit-slider-thumb {
     box-shadow: var(--w) 0 0 var(--w) var(--fill);
   }
-
-
-
-
