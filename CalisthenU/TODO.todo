@@ -3,10 +3,11 @@ Calisthen-U TODO's
 IN PROGRESS:
 - redesign profile page ** 
 - GENERAL DESIGN AND CLEANING CODE ***
+- location creation without image error
+- next to update, add images (handle separately)
+- Lighthouse Test** (better performances, text compression)
 
 TODO:
-- Cache Data (Service Worker PWA, "location data") *
-- Lighthouse Test**
 - firestore general security check
 
 - Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
@@ -19,6 +20,7 @@ PROBLEMS:
 - Image input on phone is DISGUSTANG
 
 DONE:
+- Cache Data (Service Worker PWA, "location data") * @done
 - Geocoding gegevens bijhouden in db* @done
 - login persistence @done
 - titles per page @done

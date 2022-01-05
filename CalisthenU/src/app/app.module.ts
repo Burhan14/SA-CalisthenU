@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 // import { NominatimService } from './services/nominatim-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,13 +14,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { LocationsComponent } from './components/locations/locations.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -29,6 +27,8 @@ import { AuthService } from "./shared/services/auth/auth.service";
 import { LocService } from "./shared/services/loc/loc.service";
 
 //Components
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LocationsComponent } from './components/locations/locations.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -46,6 +46,7 @@ import { LocationDetailsComponent } from './components/location-details/location
 import { ReviewComponent } from './components/review/review.component';
 import { LocationEditComponent } from './components/location-edit/location-edit.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { ReviewService } from './shared/services/review/review.service';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     { provide: PERSISTENCE, useValue: 'local' }, //choose between local, session or none
     AuthService,
     LocService,
+    ReviewService,
   ],
   bootstrap: [AppComponent]
 })

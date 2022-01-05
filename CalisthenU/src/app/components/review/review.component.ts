@@ -23,6 +23,7 @@ export class ReviewComponent implements OnInit {
   }
 
   public sendReview(comment: string) {
+    if(this.authService.userData == undefined) return
     this.data.rating = this.currentRating;
     if (!comment) {
       // console.log("NO COMMENT!" + this.currentRating);

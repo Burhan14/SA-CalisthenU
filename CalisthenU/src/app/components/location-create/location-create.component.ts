@@ -25,6 +25,9 @@ export class CreateLocationComponent implements OnInit {
   value: string;
 
   ngOnInit(): void {
+
+    // window.addEventListener('online', () => console.log('Became online'));
+    // window.addEventListener('offline', () => console.log('Became offline'));
   }
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
@@ -80,32 +83,32 @@ export class CreateLocationComponent implements OnInit {
   uploadImage() {
     let total = this.paths.length;
     let totalDone = 0;
-    for (let i = 0; i < this.paths.length; i++) {
-      this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
-        // this.currentImages.push(res.metadata.fullPath);
-        this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
-          // console.log("download url: "+res);
-          this.currentImages.push(res);
-          totalDone++;
-          if (totalDone == total) {
-            //current images toevoegen aan firestore...
-            this.data.images = this.currentImages;
-
-            let lat = this.data.locationCoordinates.split(',')[0]
-            let lng = this.data.locationCoordinates.split(',')[1]
-            fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
-            .then(response => response.json())
-            .then(data => {this.data.fullAddress = data.results[0].formatted_address; })
-            .then(()=> this.locService.CreateLocation(this.data))
-            .then(()=>this.router.navigate(['dashboard']));
-
-            // this.locService.CreateLocation(this.data);
-            // console.log(this.data);
-            
-            
-          }
+    if(this.paths.length <= 0) {
+      this.locService.CreateLocation(this.data).then(()=> this.router.navigate(['dashboard']));
+    }
+    else{
+      for (let i = 0; i < this.paths.length; i++) {
+        this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
+          // this.currentImages.push(res.metadata.fullPath);
+          this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
+            // console.log("download url: "+res);
+            this.currentImages.push(res);
+            totalDone++;
+            if (totalDone == total) {
+              //current images toevoegen aan firestore...
+              this.data.images = this.currentImages;
+  
+              let lat = this.data.locationCoordinates.split(',')[0]
+              let lng = this.data.locationCoordinates.split(',')[1]
+              fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
+              .then(response => response.json())
+              .then(data => {this.data.fullAddress = data.results[0].formatted_address; })
+              .then(()=> this.locService.CreateLocation(this.data))
+              .then(()=>this.router.navigate(['dashboard']));
+            }
+          })
         })
-      })
+      }
     }
   }
 }
