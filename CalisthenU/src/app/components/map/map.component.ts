@@ -1,10 +1,7 @@
-import { map } from 'rxjs/operators';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
-import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
-import { latLng, MapOptions, tileLayer, Map, Marker, icon, LeafletMouseEvent } from 'leaflet';
+import { Component, OnInit } from '@angular/core';
+import { latLng, MapOptions, tileLayer, Map, Marker, icon } from 'leaflet';
 import * as L from 'leaflet';
-import { positionElements } from '@ng-bootstrap/ng-bootstrap/util/positioning';
-import { Control, ControlPosition } from 'leaflet';
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,22 +24,18 @@ export class MapComponent implements OnInit {
     this.GetLocations();
 
     window.onclick = e => {
-      // console.log((e.target as Element).id.split(" ")[0]);  // to get the element
       let id = (e.target as Element).id.split(" ")[0];
       if (id == 'marker-detail') {
         this.router.navigate(['location-details', (e.target as Element).id.split(" ")[1]]);
       }
     }
-
   }
-
 
   onMapReady(map: Map) {
     this.map = map;
     map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => {
       console.log(e.latlng);
       navigator.clipboard.writeText(e.latlng);
-
       this.coords = e.latlng.lat + ',' + e.latlng.lng;
       navigator.clipboard.writeText(this.coords);
       document.querySelector(".alertCopy").classList.remove("hide");
@@ -95,8 +88,7 @@ export class MapComponent implements OnInit {
       .subscribe(res => {
         if (this.loopSubscribe == 0) {
           this.locations = res;
-          // console.log(this.locations)
-          this.addMarkers(); //gives appendchild error
+          this.addMarkers();
           this.loopSubscribe = 1
         }
       });
@@ -113,19 +105,13 @@ export class MapComponent implements OnInit {
             iconAnchor: [13, 41],
             iconUrl: 'assets/icons/marker-icon.png'
           }));
-      // console.log(marker);
       marker.addTo(this.map);
-      // marker.bindPopup(loc.payload.doc.data().locationName);
-      marker.bindPopup('<a style="color: white; text-decoration:none;" class="marker btn btn-custom" id="marker-detail '+loc.payload.doc.id+'">' + loc.payload.doc.data().locationName + '</a>');
-      // marker.bindPopup('<p id="details">' + loc.payload.doc.data().locationName + '</p>');
+      marker.bindPopup('<a style="color: white; text-decoration:none;" class="marker btn btn-custom" id="marker-detail ' + loc.payload.doc.id + '">' + loc.payload.doc.data().locationName + '</a>');
     }
   }
 
-
-
-  public GoToDetails(id: string){
-    this.router.navigate(['location-details', id ]);
-    // console.log("details");
+  public GoToDetails(id: string) {
+    this.router.navigate(['location-details', id]);
   }
 
   GetGeoLocation() {
@@ -143,7 +129,6 @@ export class MapComponent implements OnInit {
 
   PasteCoords() {
     document.querySelector(".alertCopy").classList.add("hide");
-    // console.log(this.coords);
     setTimeout(() => { let coordsInput = <HTMLInputElement>document.getElementById("coordinates"); coordsInput.focus(); coordsInput.value = this.coords; }, 200);
   }
 

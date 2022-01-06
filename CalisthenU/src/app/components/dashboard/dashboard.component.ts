@@ -11,22 +11,20 @@ import { MapComponent } from '../map/map.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
-  @ViewChild(MapComponent) child:MapComponent;
+  @ViewChild(MapComponent) child: MapComponent;
 
-  constructor(public authService: AuthService, public locService: LocService, private titleService:Title) {
+  constructor(public authService: AuthService, public locService: LocService, private titleService: Title) {
     //change page title
     this.titleService.setTitle("Calisthen-U");
   }
-  currentUser:any = this.authService.userData;
+  currentUser: any = this.authService.userData;
   ngOnInit(): void {
     try {
-      // console.log(this.currentUser);
-      // this.child.GetLocations();
     } catch (error) {
       console.log(error)
     }
   }
- 
+
 }

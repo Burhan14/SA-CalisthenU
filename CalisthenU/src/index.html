@@ -10,10 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- fonts -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;800&display=swap" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://kit.fontawesome.com/1b64e4eed7.js" crossorigin="anonymous"></script>
   <!-- PWA -->
@@ -23,7 +21,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#C2185B">
   <link rel="apple-touch-icon" href="./assets/icons/icon-128x128.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- <link rel="apple-touch-startup-image" href="./assets/icons/splash.png"> -->
   <meta name="apple-mobile-web-app-title" content="Calisthen-U">
   <!-- iPhone Xs Max (1242px x 2688px) -->
   <link rel="apple-touch-startup-image"
@@ -52,12 +49,6 @@
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function () {
-      var fileName = $(this).val().split("\\").pop();
-      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-
   </script>
 </body>
 

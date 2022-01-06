@@ -1,6 +1,6 @@
 import { ReviewService } from './../../shared/services/review/review.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 
@@ -12,7 +12,7 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 export class ReviewComponent implements OnInit {
   @Input() locId: string;
 
-  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, public authService: AuthService, public locService: LocService ) { }
+  constructor(private afStorage: AngularFireStorage, private reviewService: ReviewService, public authService: AuthService, public locService: LocService) { }
   currentRating: number = 1;
   data: any = new Object();
 
@@ -23,14 +23,12 @@ export class ReviewComponent implements OnInit {
   }
 
   public sendReview(comment: string) {
-    if(this.authService.userData == undefined) return
+    if (this.authService.userData == undefined) return
     this.data.rating = this.currentRating;
     if (!comment) {
-      // console.log("NO COMMENT!" + this.currentRating);
       this.data.comment = null;
     }
     else {
-      // console.log(comment + " " + this.currentRating);
       this.data.comment = comment;
     }
     this.data.locId = this.locId;
@@ -67,7 +65,7 @@ export class ReviewComponent implements OnInit {
       });
   }
 
-  score:number;
+  score: number;
   //calculates the avg rating of all reviews
   AvgRating = () => {
     this.score = 0;
@@ -76,22 +74,20 @@ export class ReviewComponent implements OnInit {
     }
     if (this.reviews.length == 0) {
       this.score = 0;
-    }else{
-      this.score = this.score/this.reviews.length;
+    } else {
+      this.score = this.score / this.reviews.length;
     }
-    // console.log(this.score + '('+this.reviews.length+')');
 
-    this.locService.UpdateLocation(this.locId, {avgRating: this.score})
-
+    this.locService.UpdateLocation(this.locId, { avgRating: this.score })
   }
 
-  RemoveComment(id: string){
+  RemoveComment(id: string) {
     this.reviewService
-    .DeleteReview(id).then(res => {
-      this.reviewsRaw = [];
-      this.reviews = [];
-      this.GetReviews();
-    });
+      .DeleteReview(id).then(res => {
+        this.reviewsRaw = [];
+        this.reviews = [];
+        this.GetReviews();
+      });
   }
 }
 

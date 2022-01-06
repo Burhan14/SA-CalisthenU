@@ -20,32 +20,31 @@
   text-align: center;
 }
 
-.body{
+.body {
   margin: 1rem;
 }
 
-.dash-col{
+.dash-col {
   padding-right: 10px;
   padding-left: 10px;
 }
 
-.card{
+.card {
   background-color: #3d3d3d;
 }
 
-.card-body{
+.card-body {
   padding: 0.625rem;
 }
 
-.card{
+.card {
   margin-bottom: 1rem;
 }
 
-.map-card{
+.map-card {
   height: 85vh;
 }
 
-.card-title{
+.card-title {
   text-align: center;
 }
-

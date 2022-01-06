@@ -19,7 +19,6 @@
           <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 3">★★★☆☆</span>
           <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 2">★★☆☆☆</span>
           <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 1">★☆☆☆☆</span>
-          <!-- <h3>Rating: {{rev.payload.doc.data().rating}} / 5</h3> -->
         </div>
         <label class="" id="comment" rows="4">
           {{rev.payload.doc.data().comment}}

@@ -1,96 +1,24 @@
-<!-- <div class="container">
-  <div class="kpx_login">
-    <h3 class="kpx_authTitle">Sign Up</h3>
-    <div class="row kpx_row-sm-offset-3 kpx_socialButtons">
-      <div class="col-xs-2 col-sm-2">
-        <a class="btn btn-lg btn-block kpx_btn-facebook" data-toggle="tooltip" data-placement="top"
-          title="Facebook" (click)="authService.FacebookAuth()">
-          <i class="fa fa-facebook fa-2x"></i>
-          <span class="hidden-xs"></span>
-        </a>
-      </div>
-      <div class="col-xs-2 col-sm-2">
-        <a class="btn btn-lg btn-block kpx_btn-google-plus" data-toggle="tooltip" data-placement="top"
-          title="Google" (click)="authService.GoogleAuth()">
-          <i class="fa fa-google fa-2x"></i>
-          <span class="hidden-xs"></span>
-        </a>
-      </div>
-      <div class="col-xs-2 col-sm-2">
-        <a class="btn btn-lg btn-block kpx_btn-github" data-toggle="tooltip" data-placement="top"
-          title="GitHub">
-          <i class="fa fa-github fa-2x"></i>
-          <span class="hidden-xs"></span>
-        </a>
-      </div>
-    </div><br>
-
-    <div class="row kpx_row-sm-offset-3 kpx_loginOr">
-      <div class="col-xs-12 col-sm-6">
-        <hr class="kpx_hrOr">
-        <span class="kpx_spanOr">or</span>
-      </div>
-    </div>
-
-    <div class="row kpx_row-sm-offset-3">
-      <div class="col-xs-12 col-sm-6">
-        <form class="kpx_loginForm">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-at" style="margin-top: 10px;"></i></span>
-            &nbsp;
-            <input type="text" class="form-control" name="email" placeholder="Email" #userEmail required>
-          </div>
-          <hr />
-
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user" style="margin-top: 10px;"></i></span>
-            &nbsp;
-            <input type="text" class="form-control" name="name" placeholder="UserName" #userName required>
-          </div>
-          <hr />
-
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-key" style="margin-top: 10px;"></i></span>
-            &nbsp;
-            <input type="password" class="form-control" name="password" placeholder="Password" #userPwd required>
-          </div>
-          <hr />
-          <button class="btn btn-lg btn-outline-primary btn-block" (click)="authService.SignUp(userEmail.value, userPwd.value, userName.value)"><i class="fa fa-sign-in"></i>
-            Sign Up</button>
-        </form>
-      </div>
-    </div>
-    <div class="row kpx_row-sm-offset-3">
-      <div class="col-xs-12 col-sm-6">
-        <p style="padding-top: 10px;">
-          <a routerLink="/sign-in">Already have an account? <span class="redirect">Log In</span></a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container mt-3">
   <div class="text-center d-flex flex-column justify-content-center">
     <h3 class="justify-content-center pl-2">Sign Up</h3>
     <div class="row mt-3 justify-content-center">
       <div class="mt-2 col-md-2">
-        <a class="btn btn-auth btn-fb btn-lg btn-block " data-toggle="tooltip" data-placement="top"
-          title="Facebook" (click)="authService.FacebookAuth()">
+        <a class="btn btn-auth btn-fb btn-lg btn-block " data-toggle="tooltip" data-placement="top" title="Facebook"
+          (click)="authService.FacebookAuth()">
           <i class="fa fa-facebook fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
       </div>
       <div class="mt-2 col-md-2">
-        <a class="btn btn-g btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top"
-          title="Google" (click)="authService.GoogleAuth()">
+        <a class="btn btn-g btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="Google"
+          (click)="authService.GoogleAuth()">
           <i class="fa fa-google fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
       </div>
       <div class="mt-2 col-md-2">
-        <a class="btn btn-gh btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top"
-          title="GitHub" (click)="authService.GithubAuth()">
+        <a class="btn btn-gh btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="GitHub"
+          (click)="authService.GithubAuth()">
           <i class="fa fa-github fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
@@ -128,8 +56,9 @@
             <input type="password" class="form-control" name="password" placeholder="Password" #userPwd required>
           </div>
           <hr />
-          
-          <button class="btn btn-lg btn-custom btn-block" (click)="authService.SignUp(userEmail.value, userPwd.value, userName.value)"><i class="fa fa-sign-in"></i>
+
+          <button class="btn btn-lg btn-custom btn-block"
+            (click)="authService.SignUp(userEmail.value, userPwd.value, userName.value)"><i class="fa fa-sign-in"></i>
             Sign Up</button>
         </form>
       </div>
@@ -137,11 +66,9 @@
     <div class="row justify-content-center">
       <div class="col-sm-3">
         <p class="mt-2">
-          <span >Already have an account? <a routerLink="/sign-in">Log In</a></span>
+          <span>Already have an account? <a routerLink="/sign-in">Log In</a></span>
         </p>
       </div>
     </div>
   </div>
 </div>
-
-

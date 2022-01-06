@@ -14,11 +14,10 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import { LocationAddImagesComponent } from './components/location-add-images/location-add-images.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'sign-in', component: SignInComponent},
-  { path: 'register-user', component: SignUpComponent},
-  { path: 'user-profile', component: UserProfileComponent},
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'register-user', component: SignUpComponent },
+  { path: 'user-profile', component: UserProfileComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'location-create', component: CreateLocationComponent },

@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class UnauthorizedComponent implements OnInit {
 
-  constructor(private titleService:Title) {
+  constructor(private titleService: Title) {
     //change page title
     this.titleService.setTitle("Calisthen-U | UNAUTHORIZED");
   }

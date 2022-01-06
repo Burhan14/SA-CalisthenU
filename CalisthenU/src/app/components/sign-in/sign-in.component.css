@@ -1,20 +1,25 @@
-.sparator-custom{
+.sparator-custom {
   background-color: var(--main-color);
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.btn-fb{
+
+.btn-fb {
   background-color: #2374E1;
 }
-.btn-g{
+
+.btn-g {
   background-color: #C4402F;
 }
-.btn-gh{
+
+.btn-gh {
   background-color: #5D5D5D;
 }
-.btn-auth{
+
+.btn-auth {
   color: white;
 }
-a{
+
+a {
   color: var(--main-color)
 }

@@ -14,7 +14,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 export class LocationsComponent implements OnInit {
 
   constructor(public locService: LocService, public authService: AuthService, private afStorage: AngularFireStorage) { }
-  
+
   //when component initiated => get locations from db to list them inside card
   ngOnInit(): void {
     this.GetLocations();
@@ -27,14 +27,14 @@ export class LocationsComponent implements OnInit {
   //call service to fetch data from db and push into locations array
   GetLocations = () =>
     this.locService
-    .GetLocations()
-    .subscribe(res => {
-      this.locations = res; 
-    });  
-  
-  showInConsole(data:any){
+      .GetLocations()
+      .subscribe(res => {
+        this.locations = res;
+      });
+
+  showInConsole(data: any) {
     console.log(data);
-    
+
   }
 
 }

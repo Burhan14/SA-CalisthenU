@@ -3,22 +3,22 @@
     <h3 class="justify-content-center pl-2">Login or <a routerLink="/register-user">Sign up</a></h3>
     <div class="row mt-3 justify-content-center">
       <div class="mt-2 col-md-2">
-        <a class="btn btn-auth btn-fb btn-lg btn-block " data-toggle="tooltip" data-placement="top"
-          title="Facebook" (click)="authService.FacebookAuth()">
+        <a class="btn btn-auth btn-fb btn-lg btn-block " data-toggle="tooltip" data-placement="top" title="Facebook"
+          (click)="authService.FacebookAuth()">
           <i class="fa fa-facebook fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
       </div>
       <div class="mt-2 col-md-2">
-        <a class="btn btn-g btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top"
-          title="Google" (click)="authService.GoogleAuth()">
+        <a class="btn btn-g btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="Google"
+          (click)="authService.GoogleAuth()">
           <i class="fa fa-google fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
       </div>
       <div class="mt-2 col-md-2">
-        <a class="btn btn-gh btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top"
-          title="GitHub" (click)="authService.GithubAuth()">
+        <a class="btn btn-gh btn-auth btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="GitHub"
+          (click)="authService.GithubAuth()">
           <i class="fa fa-github fa-2x"></i>
           <span class="hidden-xs"></span>
         </a>
@@ -49,7 +49,8 @@
             <input type="password" class="form-control" name="password" placeholder="Password" #userPassword required>
           </div>
           <hr />
-          <button class="btn btn-lg btn-custom btn-block" (click)="authService.SignIn(userMail.value, userPassword.value)"><i class="fa fa-sign-in"></i>
+          <button class="btn btn-lg btn-custom btn-block"
+            (click)="authService.SignIn(userMail.value, userPassword.value)"><i class="fa fa-sign-in"></i>
             Login</button>
         </form>
       </div>
@@ -63,5 +64,3 @@
     </div>
   </div>
 </div>
-
-
