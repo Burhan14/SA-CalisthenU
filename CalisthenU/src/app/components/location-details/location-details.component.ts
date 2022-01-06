@@ -20,7 +20,7 @@ export class LocationDetailsComponent implements OnInit {
   coordinates: string;
   access: string;
   images: any;
-  exercises: any;
+  equipments: any;
   createdBy: string;
   fullAddress: string;
   avgrating: number;
@@ -88,17 +88,17 @@ export class LocationDetailsComponent implements OnInit {
 
 
   GetLocation = () => {
-    let loopCount= 0;
     this.locService
     .GetLocationSingle(this.id)
     .subscribe(res => {
       this.location = res.payload.data();
+      if(this.location == undefined) return
       this.name = this.location.locationName;
       this.description = this.location.locationDescription;
       this.coordinates = this.location.locationCoordinates;
       this.access = this.location.locationAccess;
       this.images = this.location.images;
-      this.exercises = this.location.exercises;
+      this.equipments = this.location.equipments;
       this.createdBy = this.location.createdByDN;
       this.avgrating = this.location.avgRating;
       this.fullAddress = this.location.fullAddress;
@@ -108,18 +108,6 @@ export class LocationDetailsComponent implements OnInit {
 
       let root = document.documentElement;
       root.style.setProperty('--value', this.location.avgRating.toString());
-
-      // if(loopCount < 1){
-      //   let lat = this.coordinates.split(',')[0]
-      //   let lng = this.coordinates.split(',')[1]
-
-
-      //   fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
-      //   .then(response => response.json())
-      //   .then(data => {this.fullAddress = data.results[0].formatted_address;});
-
-      //   loopCount++;
-      // }
 
     })
   }

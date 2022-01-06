@@ -80,6 +80,17 @@ h2 button .collapsed{
     touch-action: manipulation;
     -webkit-appearance: none;
   }
+  @media (max-width: 500px) {
+    .rating {
+      --starsize: 2rem;
+    }
+  }
+  @media (max-width: 330px) {
+    .rating {
+      --starsize: 1rem;
+    }
+  }
+
   [dir="rtl"] .rating {
     --dir: left;
   }

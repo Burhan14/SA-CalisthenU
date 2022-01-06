@@ -2,10 +2,10 @@ Calisthen-U TODO's
 
 IN PROGRESS:
 - redesign profile page ** 
+- redesign sign in sign up page ** 
 - GENERAL DESIGN AND CLEANING CODE ***
 - next to update, add images (handle separately)
 - Lighthouse Test** (better performances, text compression)
-- check for offline before adding image (do not upload to FireStorage)
 
 TODO:
 - firestore general security check
@@ -23,6 +23,8 @@ PROBLEMS:
 - Image input on phone is DISGUSTANG
 
 DONE:
+- change exercices to equipments + code optimalisation @done
+- check for offline before adding image (do not upload to FireStorage) @done
 - location creation without image error @done
 - Cache Data (Service Worker PWA, "location data") * @done
 - Geocoding gegevens bijhouden in db* @done

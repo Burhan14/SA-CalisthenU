@@ -18,16 +18,38 @@ export class CreateLocationComponent implements OnInit {
     this.titleService.setTitle("Calisthen-U | New Location");
    }
 
-  availableEx: string[] = new Array();
+  availableEq: string[] = new Array();
   currentImages: string[] = new Array();
   data: any;
+  online: boolean;
 
   value: string;
 
+  equipmentList: string[] = new Array();
+
   ngOnInit(): void {
 
-    // window.addEventListener('online', () => console.log('Became online'));
-    // window.addEventListener('offline', () => console.log('Became offline'));
+    //check if user has internet connection
+    if (navigator.onLine) {
+      this.online = true;
+    }
+    else{
+      this.online = false;
+    }
+    window.addEventListener('online', () => this.online = true);
+    window.addEventListener('offline', () => this.online = false);
+
+    //init list of equipments
+    this.equipmentList = [
+      "Pull-up Bars",
+      "Push-up Bars",
+      "Parallel Bars",
+      "Workout Desk",
+      "Wall Bars",
+      "Abs Benches",
+      "Gym Rings",
+      "Monkey Bars",
+    ]
   }
 
   //when form submitted create new location by calling service which will add location into db, reset form, refresh list, log into console
@@ -36,14 +58,36 @@ export class CreateLocationComponent implements OnInit {
       //all form values
       this.data = this.locService.form.value;
 
+      //check if name is empty
+      if (this.data.name == "" || this.data.name == null){
+        document.querySelector(".alertCoord").classList.remove("hide");
+        setTimeout(() => {
+          let alert = document.querySelector(".alertCoord");
+          if (alert) {
+            alert.classList.add("hide");
+          }
+        }, 4000);
+        return
+      }
+
       //for wathever reason angular's formControl won't take what's inside the coordinates input when filled in with javascript. SOLUTION: do it manually
       if (this.data.locationCoordinates == "" || this.data.locationCoordinates == null) {
         let coords = <HTMLInputElement>document.getElementById("coordinates");
         this.data.locationCoordinates = coords.value;
+        if (this.data.locationCoordinates == "" || this.data.locationCoordinates == null){
+          document.querySelector(".alertCoord").classList.remove("hide");
+          setTimeout(() => {
+            let alert = document.querySelector(".alertCoord");
+            if (alert) {
+              alert.classList.add("hide");
+            }
+          }, 4000);
+          return
+        }
       }
 
       //manually add fields into data object (not through FormControl)
-      this.data.exercises = this.availableEx;
+      this.data.equipments = this.availableEq;
 
       //when is location open
       if (this.data.locationAccess == null || this.data.locationAccess == '') {
@@ -65,12 +109,12 @@ export class CreateLocationComponent implements OnInit {
   updateExs(selected:any){
     if (selected.target.checked) {
       console.log(selected.target.value + ' added');
-      this.availableEx.push(selected.target.value);    
-      console.log(this.availableEx);
+      this.availableEq.push(selected.target.value);    
+      console.log(this.availableEq);
     }else{
       console.log(selected.target.value + ' removed');  
-      this.availableEx.splice(this.availableEx.indexOf(selected.target.value), 1);
-      console.log(this.availableEx);
+      this.availableEq.splice(this.availableEq.indexOf(selected.target.value), 1);
+      console.log(this.availableEq);
     }
   }
 

@@ -69,7 +69,6 @@ export class LocService {
   }
 
   CreateLocation(data: any) {
-
     //add extra field to data to know who created the location (currently logged in user) and when it is created
     data.createdByUID = this.authService.userData.uid;
     data.createdByDN = this.authService.userData.displayName;
@@ -97,4 +96,5 @@ export class LocService {
       .doc(docId)
       .update(data);
   }
+  
 }
