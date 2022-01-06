@@ -3,16 +3,17 @@ Calisthen-U TODO's
 IN PROGRESS:
 - redesign profile page ** 
 - GENERAL DESIGN AND CLEANING CODE ***
-- titles per page
+- next to update, add images (handle separately)
+- Lighthouse Test** (better performances, text compression)
+- check for offline before adding image (do not upload to FireStorage)
 
 TODO:
-- Cache Data (Service Worker PWA, "location data") *
-- Geocoding gegevens bijhouden in db*
-- Lighthouse Test**
-- login persistence
 - firestore general security check
-
 - Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
+
+- DOCUMENTATIE
+
+
 
 OPTIONAL: 
 - Filter on (rating, exercices) 
@@ -22,6 +23,11 @@ PROBLEMS:
 - Image input on phone is DISGUSTANG
 
 DONE:
+- location creation without image error @done
+- Cache Data (Service Worker PWA, "location data") * @done
+- Geocoding gegevens bijhouden in db* @done
+- login persistence @done
+- titles per page @done
 - Share API (share locations) @done
 - Fav locations* @done
 - get coordinates of selected location on map ('double click, copy to clipboard' ok) @done

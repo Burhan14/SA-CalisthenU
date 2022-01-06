@@ -12,6 +12,15 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap",
+          "https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;800&display=swap",
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://kit.fontawesome.com/1b64e4eed7.js",
+          "https://a.tile.openstreetmap.org/*/*/*.png",
+          "https://b.tile.openstreetmap.org/*/*/*.png",
+          "https://c.tile.openstreetmap.org/*/*/*.png"
         ]
       }
     },

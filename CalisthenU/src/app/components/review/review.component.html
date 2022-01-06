@@ -31,7 +31,11 @@
     </div>
   </div>
 
-  <form class="mt-5" id="review-form">
+  <form class="mt-5" id="review-form" *ngIf="this.authService.userData == undefined">
+    <p class="text-white text-center text-uppercase">login to leave a review !</p>
+  </form>
+
+  <form class="mt-5" id="review-form" *ngIf="authService.userData != undefined">
     <div class="form-group shadow-textarea">
       <p style="font-size: 22px;" for="commentArea"><i class="fas fa-pencil-alt prefix mr-2"></i> Let us know your
         opinion about this location</p>

@@ -36,15 +36,17 @@ export class AuthService {
 
   // Sign in with email/password
   SignIn(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result: { user: any; }) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
-        this.SetUserData(result.user);
-      }).catch((error: { message: any; }) => {
-        window.alert(error.message)
-      })
+    return this.afAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() =>
+      this.afAuth.signInWithEmailAndPassword(email, password)
+        .then((result: { user: any; }) => {
+          this.ngZone.run(() => {
+            this.router.navigate(['dashboard']);
+          });
+          this.SetUserData(result.user);
+        }).catch((error: { message: any; }) => {
+          window.alert(error.message)
+        })
+      )
   }
 
   // Sign up with email/password
@@ -107,8 +109,22 @@ export class AuthService {
   }
 
   // Auth logic to run auth providers
+  // AuthLogin(provider: any) {
+  //   return this.afAuth.signInWithPopup(provider)
+  //   .then((result: { user: any; }) => {
+  //      this.ngZone.run(() => {
+  //         this.router.navigate(['dashboard']);
+  //       })
+  //     this.SetUserData(result.user);
+  //     console.log(this.userData);
+  //   }).catch((error: any) => {
+  //     window.alert(error)
+  //   })
+  // }
+
   AuthLogin(provider: any) {
-    return this.afAuth.signInWithPopup(provider)
+    return this.afAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => 
+    this.afAuth.signInWithPopup(provider)
     .then((result: { user: any; }) => {
        this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
@@ -118,6 +134,7 @@ export class AuthService {
     }).catch((error: any) => {
       window.alert(error)
     })
+    )
   }
 
   /* Setting up user data when sign in with username/password, 
