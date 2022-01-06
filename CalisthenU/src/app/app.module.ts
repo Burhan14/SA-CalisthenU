@@ -38,7 +38,6 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { TestComponent } from './components/test/test.component';
 import { MapComponent } from './components/map/map.component';
 import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
 import { CreateLocationComponent } from './components/location-create/location-create.component';
@@ -59,7 +58,6 @@ import { ReviewService } from './shared/services/review/review.service';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     UserProfileComponent,
-    TestComponent,
     MapComponent,
     MapPointFormComponent,
     CreateLocationComponent,
