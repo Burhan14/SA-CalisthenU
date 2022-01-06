@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { NominatimService } from './services/nominatim-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -32,14 +31,13 @@ import { LocationsComponent } from './components/locations/locations.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFireAuthModule, PERSISTENCE  } from '@angular/fire/compat/auth';
+import { AngularFireAuthModule, PERSISTENCE } from '@angular/fire/compat/auth';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MapComponent } from './components/map/map.component';
-import { MapPointFormComponent } from './components/map-point-form/map-point-form.component';
 import { CreateLocationComponent } from './components/location-create/location-create.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { ReviewComponent } from './components/review/review.component';
@@ -60,7 +58,6 @@ import { LocationAddImagesComponent } from './components/location-add-images/loc
     VerifyEmailComponent,
     UserProfileComponent,
     MapComponent,
-    MapPointFormComponent,
     CreateLocationComponent,
     LocationDetailsComponent,
     ReviewComponent,
@@ -89,7 +86,7 @@ import { LocationAddImagesComponent } from './components/location-add-images/loc
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    
+
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,

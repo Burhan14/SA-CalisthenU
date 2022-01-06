@@ -1,4 +1,3 @@
-import { Location } from 'src/app/shared/services/loc/location';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
@@ -13,10 +12,10 @@ import { Title } from '@angular/platform-browser';
 })
 export class CreateLocationComponent implements OnInit {
 
-  constructor(public authService: AuthService, public locService: LocService, public router: Router, private afStorage: AngularFireStorage, private titleService:Title) {
+  constructor(public authService: AuthService, public locService: LocService, public router: Router, private afStorage: AngularFireStorage, private titleService: Title) {
     //change page title
     this.titleService.setTitle("Calisthen-U | New Location");
-   }
+  }
 
   availableEq: string[] = new Array();
   currentImages: string[] = new Array();
@@ -33,7 +32,7 @@ export class CreateLocationComponent implements OnInit {
     if (navigator.onLine) {
       this.online = true;
     }
-    else{
+    else {
       this.online = false;
     }
     window.addEventListener('online', () => this.online = true);
@@ -59,7 +58,7 @@ export class CreateLocationComponent implements OnInit {
       this.data = this.locService.form.value;
 
       //check if name is empty
-      if (this.data.locationName == "" || this.data.locationName == null){
+      if (this.data.locationName == "" || this.data.locationName == null) {
         document.querySelector(".alertCoord").classList.remove("hide");
         setTimeout(() => {
           let alert = document.querySelector(".alertCoord");
@@ -74,7 +73,7 @@ export class CreateLocationComponent implements OnInit {
       if (this.data.locationCoordinates == "" || this.data.locationCoordinates == null) {
         let coords = <HTMLInputElement>document.getElementById("coordinates");
         this.data.locationCoordinates = coords.value;
-        if (this.data.locationCoordinates == "" || this.data.locationCoordinates == null){
+        if (this.data.locationCoordinates == "" || this.data.locationCoordinates == null) {
           document.querySelector(".alertCoord").classList.remove("hide");
           setTimeout(() => {
             let alert = document.querySelector(".alertCoord");
@@ -100,19 +99,20 @@ export class CreateLocationComponent implements OnInit {
       }
       this.uploadImage();
       // console.log(this.data);
-      this.locService.form.reset();    }
+      this.locService.form.reset();
+    }
     else {
       window.alert("log in to add location")
     }
   }
 
-  updateExs(selected:any){
+  updateExs(selected: any) {
     if (selected.target.checked) {
       console.log(selected.target.value + ' added');
-      this.availableEq.push(selected.target.value);    
+      this.availableEq.push(selected.target.value);
       console.log(this.availableEq);
-    }else{
-      console.log(selected.target.value + ' removed');  
+    } else {
+      console.log(selected.target.value + ' removed');
       this.availableEq.splice(this.availableEq.indexOf(selected.target.value), 1);
       console.log(this.availableEq);
     }
@@ -127,10 +127,10 @@ export class CreateLocationComponent implements OnInit {
   uploadImage() {
     let total = this.paths.length;
     let totalDone = 0;
-    if(this.paths.length <= 0) {
-      this.locService.CreateLocation(this.data).then(()=> this.router.navigate(['dashboard']));
+    if (this.paths.length <= 0) {
+      this.locService.CreateLocation(this.data).then(() => this.router.navigate(['dashboard']));
     }
-    else{
+    else {
       for (let i = 0; i < this.paths.length; i++) {
         this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
           // this.currentImages.push(res.metadata.fullPath);
@@ -141,14 +141,14 @@ export class CreateLocationComponent implements OnInit {
             if (totalDone == total) {
               //current images toevoegen aan firestore...
               this.data.images = this.currentImages;
-  
+
               let lat = this.data.locationCoordinates.split(',')[0]
               let lng = this.data.locationCoordinates.split(',')[1]
-              fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
-              .then(response => response.json())
-              .then(data => {this.data.fullAddress = data.results[0].formatted_address; })
-              .then(()=> this.locService.CreateLocation(this.data))
-              .then(()=>this.router.navigate(['dashboard']));
+              fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyCYA3o-l43alSHU-MDnw9G-dWnd0DAQdZE')
+                .then(response => response.json())
+                .then(data => { this.data.fullAddress = data.results[0].formatted_address; })
+                .then(() => this.locService.CreateLocation(this.data))
+                .then(() => this.router.navigate(['dashboard']));
             }
           })
         })

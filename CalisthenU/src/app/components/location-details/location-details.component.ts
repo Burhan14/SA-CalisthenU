@@ -1,7 +1,6 @@
 import { LocService } from 'src/app/shared/services/loc/loc.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { parseActionCodeURL } from '@firebase/auth';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Title } from '@angular/platform-browser';
 
@@ -12,7 +11,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class LocationDetailsComponent implements OnInit {
 
-  CarrouselImages = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   id: string; //id of this location
   private sub: any;
   location: any
@@ -26,21 +24,18 @@ export class LocationDetailsComponent implements OnInit {
   fullAddress: string;
   avgrating: number;
 
-  fav:HTMLElement = <HTMLElement>document.getElementById("fav");
+  fav: HTMLElement = <HTMLElement>document.getElementById("fav");
 
   currentUserFavs: Array<string> = new Array();
 
+  constructor(private route: ActivatedRoute, private locService: LocService, public authService: AuthService, private titleService: Title) { }
 
-  constructor(private route:ActivatedRoute, private locService:LocService, public authService: AuthService, private titleService:Title) {}
-  
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id']
       this.GetLocation();
       this.GetFavLocations();
     })
-
-
   }
 
   GetFavLocations() {
@@ -58,7 +53,6 @@ export class LocationDetailsComponent implements OnInit {
         }
         this.CheckFav()
       });
-
   }
 
   CheckFav() {
@@ -71,7 +65,7 @@ export class LocationDetailsComponent implements OnInit {
 
   GoBack = () => history.back()
 
-  AddFav () {
+  AddFav() {
     let fav = <HTMLElement>document.getElementById("fav");
     if (fav.classList.contains("far")) { //if not faved, add to favs
       this.locService.AddToFavs(this.authService.userData.uid, this.id).then(res => {
@@ -79,7 +73,7 @@ export class LocationDetailsComponent implements OnInit {
         fav.classList.add("fas");
       })
     }
-    else{ //if faved, remove from favs
+    else { //if faved, remove from favs
       this.locService.RemoveFromFavs(this.authService.userData.uid, this.id).then(res => {
         fav.classList.remove("fas");
         fav.classList.add("far");
@@ -87,33 +81,31 @@ export class LocationDetailsComponent implements OnInit {
     }
   }
 
-
   GetLocation = () => {
     this.locService
-    .GetLocationSingle(this.id)
-    .subscribe(res => {
-      this.location = res.payload.data();
-      if(this.location == undefined) return
-      this.name = this.location.locationName;
-      this.description = this.location.locationDescription;
-      this.coordinates = this.location.locationCoordinates;
-      this.access = this.location.locationAccess;
-      this.images = this.location.images;
-      this.equipments = this.location.equipments;
-      this.createdBy = this.location.createdByDN;
-      this.avgrating = this.location.avgRating;
-      this.fullAddress = this.location.fullAddress;
+      .GetLocationSingle(this.id)
+      .subscribe(res => {
+        this.location = res.payload.data();
+        if (this.location == undefined) return
+        this.name = this.location.locationName;
+        this.description = this.location.locationDescription;
+        this.coordinates = this.location.locationCoordinates;
+        this.access = this.location.locationAccess;
+        this.images = this.location.images;
+        this.equipments = this.location.equipments;
+        this.createdBy = this.location.createdByDN;
+        this.avgrating = this.location.avgRating;
+        this.fullAddress = this.location.fullAddress;
 
-      //change page title
-      this.titleService.setTitle("Calisthen-U | " + this.name);
+        //change page title
+        this.titleService.setTitle("Calisthen-U | " + this.name);
 
-      let root = document.documentElement;
-      root.style.setProperty('--value', this.location.avgRating.toString());
-
-    })
+        let root = document.documentElement;
+        root.style.setProperty('--value', this.location.avgRating.toString());
+      })
   }
 
-  Share(){
+  Share() {
     const title = window.document.title;
     const url = window.document.location.href;
 
@@ -126,6 +118,4 @@ export class LocationDetailsComponent implements OnInit {
         .catch((error) => console.log('Error sharing', error));
     }
   }
-
-
 }

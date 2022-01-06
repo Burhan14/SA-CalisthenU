@@ -16,10 +16,9 @@ export class LocationAddImagesComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.locId = params['id']
     })
-    this.locService.GetLocationSingle(this.locId).subscribe(res =>{
+    this.locService.GetLocationSingle(this.locId).subscribe(res => {
       this.thisLocation = res.payload.data();
       this.imagesFromDB = this.thisLocation.images;
-      // console.log(this.imagesFromDB)
     })
   }
 
@@ -27,7 +26,7 @@ export class LocationAddImagesComponent implements OnInit {
   data: any = {};
   currentImages: string[] = new Array();
   paths: Array<any> = []
-  thisLocation:any;
+  thisLocation: any;
   imagesFromDB: any;
 
   upload($event: any) {
@@ -48,9 +47,7 @@ export class LocationAddImagesComponent implements OnInit {
       else {
         for (let i = 0; i < this.paths.length; i++) {
           this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
-            // this.currentImages.push(res.metadata.fullPath);
             this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
-              // console.log("download url: "+res);
               this.currentImages.push(res);
               totalDone++;
               if (totalDone == total) {

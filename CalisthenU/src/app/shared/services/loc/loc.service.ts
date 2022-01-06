@@ -1,14 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from "../auth/user";
-import { Location } from "../loc/location";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
-import firebase from 'firebase/compat/app';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { textChangeRangeIsUnchanged } from 'typescript';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
@@ -37,25 +31,24 @@ export class LocService {
   }
 
   GetLocationSingle(id: string) {
-    // console.log(id);
     return this.db.collection("locations").doc(id).snapshotChanges();
   }
 
-  GetUsersFavLocs(id: string){
+  GetUsersFavLocs(id: string) {
     return this.db.collection("users").doc(id).collection("favorites").snapshotChanges();
   }
 
-  AddToFavs(uid:string, locId: string){
+  AddToFavs(uid: string, locId: string) {
     return new Promise<any>((resolve, reject) => {
       this.db.collection("users").doc(uid).collection("favorites").doc(locId)
-        .set({locId: locId})
+        .set({ locId: locId })
         .then(res => {
           resolve(res);
         }, err => reject(err));
     })
   }
 
-  RemoveFromFavs(uid: string, locId: string){
+  RemoveFromFavs(uid: string, locId: string) {
     return this.db
       .collection("users")
       .doc(uid)
@@ -96,5 +89,4 @@ export class LocService {
       .doc(docId)
       .update(data);
   }
-  
 }

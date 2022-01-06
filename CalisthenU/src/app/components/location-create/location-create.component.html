@@ -6,7 +6,8 @@
   <form [formGroup]="this.locService.form">
     <div class="form-group">
       <label for="location">Location</label>
-      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" autofocus #name required>
+      <input id="location" placeholder="Name" formControlName="locationName" type="text" class="form-control" autofocus
+        #name required>
     </div>
     <div class="form-group">
       <label for="coordinates">Coordinates</label>
@@ -23,13 +24,15 @@
     </div>
     <div class="form-group" *ngIf="online == true">
       <label for="Images">Images</label>
-      <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple required/>
+      <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple
+        required />
     </div>
     <div class="form-group" *ngIf="online == false">
       <label for="Images">Images</label>
-      <p class="text-center text-uppercase">cannot upload images while offline, connect to internet or upload later in update!</p>
+      <p class="text-center text-uppercase">cannot upload images while offline, connect to internet or upload later in
+        update!</p>
     </div>
-    <div class="form-group">
+    <div class="form-group mt-5">
       <label for="Description">Description</label>
       <textarea placeholder="Tell us more about this place" class="form-control" formControlName="locationDescription"
         id="Description" rows="3" #description required></textarea>
@@ -43,7 +46,8 @@
             <div class="col-sm-6">
               <div class="form-check" *ngFor="let eq of equipmentList ; let i = index;">
                 <div *ngIf="i % 2 == 0">
-                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}" attr.value="{{eq}}">
+                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}"
+                    attr.value="{{eq}}">
                   <label class="form-check-label" attr.for="{{eq}}">{{eq}}</label>
                 </div>
               </div>
@@ -51,42 +55,35 @@
             <div class="col-sm-6">
               <div class="form-check" *ngFor="let eq of equipmentList ; let i = index;">
                 <div *ngIf="i % 2 == 1">
-                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}" attr.value="{{eq}}">
+                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}"
+                    attr.value="{{eq}}">
                   <label class="form-check-label" attr.for="{{eq}}">{{eq}}</label>
                 </div>
               </div>
             </div>
-          </div>         
+          </div>
         </div>
-        <!-- <div class="col-md-1 d-flex justify-content-end  mb-1">
-          <button class="btn btn-custom w-100 text-center p-0 text-white"
-            (click)="addExercise(ex.options[ex.selectedIndex].value)">Add</button>
-        </div> -->
       </div>
     </div>
-    <!-- <div class="form-group">
-      <ul class="customListStyle" *ngFor="let e of availableEx">
-        <li #rmThis><i class="fas fa-times rm" (click)="removeEx(rmThis.innerHTML)" data-toggle="tooltip"
-            data-placement="right" title="click to remove"></i>{{e}}</li>
-      </ul>
-    </div> -->
 
     <div class="form-group">
       <label for="Accesibility">Opening hours</label>
       <div class="input-group">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="value = 'unlimited'">
+          <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1"
+            (click)="value = 'unlimited'">
           <label class="form-check-label" for="inlineRadio1">Always open</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" [checked]="value === 'limited'" (click)="value = 'limited'">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+            [checked]="value === 'limited'" (click)="value = 'limited'">
           <label class="form-check-label" for="inlineRadio2">Limited opening hours</label>
         </div>
       </div>
     </div>
     <div class="form-group" *ngIf="value === 'limited'">
       <textarea placeholder="When can you access this location ?" class="form-control" formControlName="locationAccess"
-      id="Accesibility" rows="2" required></textarea>
+        id="Accesibility" rows="2" required></textarea>
     </div>
 
     <button class="btn btn-custom btn-lg btn-block text-white" (click)="onSubmit()">

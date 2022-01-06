@@ -1,8 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, OnChanges } from '@angular/core';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from "@angular/router";
 
@@ -13,16 +9,11 @@ import { Router } from "@angular/router";
 })
 export class NavigationComponent implements OnChanges {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
   isLoggedIn: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService, public router: Router) {}
 
-  goToProfile(): void{
+  constructor(public authService: AuthService, public router: Router) { }
+
+  goToProfile(): void {
     if (this.authService.userData != undefined) {
       this.router.navigate(['user-profile']);
     } else {

@@ -16,15 +16,12 @@
 
   .card {
     background-color: #3d3d3d;
+    padding: 10px;
+    margin: 1rem 0
   }
 
   .card-body {
     padding: 0.625rem;
-  }
-
-  .card {
-    padding: 10px;
-    margin: 1rem 0
   }
 
   .card-title {
@@ -47,11 +44,11 @@
     height: 40vh;
   }
 
-  .clickable{
+  .clickable {
     cursor: pointer;
   }
 
-  .clickable:hover{
+  .clickable:hover {
     cursor: pointer;
     color: var(--main-color);
   }
@@ -75,75 +72,62 @@
     -webkit-appearance: none;
   }
 
-  
-
-  @media (max-width: 500px) {
-    .rating {
-      --starsize: 2rem;
-    }
-    .title{
-      font-size: 2rem !important;
-    }
-  }
-  @media (max-width: 330px) {
-    .rating {
-      --starsize: 1rem;
-    }
-    .title{
-      font-size: 1.5rem !important;
-    }
-  }
   [dir="rtl"] .rating {
     --dir: left;
   }
+
   .rating::-moz-range-track {
     background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
     block-size: 100%;
     mask: repeat left center/var(--starsize) var(--symbol);
   }
+
   .rating::-webkit-slider-runnable-track {
     background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
     block-size: 100%;
     mask: repeat left center/var(--starsize) var(--symbol);
     -webkit-mask: repeat left center/var(--starsize) var(--symbol);
   }
+
   .rating::-moz-range-thumb {
     height: var(--starsize);
     opacity: 0;
     width: var(--starsize);
   }
+
   .rating::-webkit-slider-thumb {
     height: var(--starsize);
     opacity: 0;
     width: var(--starsize);
     -webkit-appearance: none;
   }
-  .rating, .rating-label {
+
+  .rating,
+  .rating-label {
     display: block;
     font-family: ui-sans-serif, system-ui, sans-serif;
   }
+
   .rating-label {
     margin-block-end: 1rem;
   }
-  
-  /* NO JS */
-  .rating--nojs::-moz-range-track {
-    background: var(--fillbg);
+
+  @media (max-width: 500px) {
+    .rating {
+      --starsize: 2rem;
+    }
+
+    .title {
+      font-size: 2rem !important;
+    }
   }
-  .rating--nojs::-moz-range-progress {
-    background: var(--fill);
-    block-size: 100%;
-    mask: repeat left center/var(--starsize) var(--star);
-  }
-  .rating--nojs::-webkit-slider-runnable-track {
-    background: var(--fillbg);
-  }
-  .rating--nojs::-webkit-slider-thumb {
-    background-color: var(--fill);
-    box-shadow: calc(0rem - var(--w)) 0 0 var(--w) var(--fill);
-    opacity: 1;
-    width: 1px;
-  }
-  [dir="rtl"] .rating--nojs::-webkit-slider-thumb {
-    box-shadow: var(--w) 0 0 var(--w) var(--fill);
+
+  @media (max-width: 330px) {
+    .rating {
+      --starsize: 1rem;
+    }
+
+    .title {
+      font-size: 1.5rem !important;
+    }
   }

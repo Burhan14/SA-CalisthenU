@@ -68,12 +68,13 @@
 }
 
 @media (max-width: 600px) {
-    .txt {
-        font-size: 18px;
-      }
+  .txt {
+    font-size: 18px;
+  }
 }
+
 @media (max-width: 373px) {
-    .txt {
-        font-size: 17px;
-      }
+  .txt {
+    font-size: 17px;
+  }
 }
