@@ -12,7 +12,6 @@
         <div class="d-flex flex-row horizontal-scroll">
           <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.doc.data().images" width="50%">
         </div>
-
         <p class="card-text mt-3">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <label class="rating-label">
           <div class="d-flex">
