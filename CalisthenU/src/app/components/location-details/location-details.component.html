@@ -8,7 +8,7 @@
             <div class="row horizontal-scroll">
                 <div class="d-flex flex-row detail-images"  *ngIf="images != null">
                   <img src="{{img}}" class="mt-4 mb-3 mx-1"
-                    width="100%" *ngFor="let img of images">
+                    width="auto" height="90%" *ngFor="let img of images">
                 </div>
             </div>
             <div class="row">
@@ -30,8 +30,7 @@
                       <h3>This Location has been created by:</h3>
                       <p class="card-text">{{createdBy}}</p>
                       <label class="rating-label">
-                        <h3>Rating: </h3>
-                        
+                        <h3>Rating: </h3>                 
                         <div class="d-flex">
                           <input
                           class="rating"

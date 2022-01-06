@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class LocationDetailsComponent implements OnInit {
 
+  CarrouselImages = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   id: string; //id of this location
   private sub: any;
   location: any

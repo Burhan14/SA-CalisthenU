@@ -20,7 +20,8 @@
           "https://kit.fontawesome.com/1b64e4eed7.js",
           "https://a.tile.openstreetmap.org/*/*/*.png",
           "https://b.tile.openstreetmap.org/*/*/*.png",
-          "https://c.tile.openstreetmap.org/*/*/*.png"
+          "https://c.tile.openstreetmap.org/*/*/*.png",
+          "http://www.w3.org/2000/svg"
         ]
       }
     },
