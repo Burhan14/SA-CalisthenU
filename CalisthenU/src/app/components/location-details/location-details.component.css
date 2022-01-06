@@ -89,6 +89,25 @@
     touch-action: manipulation;
     -webkit-appearance: none;
   }
+
+  
+
+  @media (max-width: 500px) {
+    .rating {
+      --starsize: 2rem;
+    }
+    .title{
+      font-size: 2rem !important;
+    }
+  }
+  @media (max-width: 330px) {
+    .rating {
+      --starsize: 1rem;
+    }
+    .title{
+      font-size: 1.5rem !important;
+    }
+  }
   [dir="rtl"] .rating {
     --dir: left;
   }

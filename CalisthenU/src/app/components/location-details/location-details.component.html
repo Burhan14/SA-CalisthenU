@@ -1,12 +1,12 @@
 <div class="body px-3">
   <div class="d-flex justify-content-between">
-    <h1><i (click)="GoBack()" class="fas fa-chevron-left clickable" style="font-size: 2rem; vertical-align: middle;"></i> {{name}} <i id="fav" (click)="AddFav()" class="far fa-heart ml-3 clickable" style="font-size: 2rem; vertical-align: middle;" data-toggle="tooltip" data-placement="right" title="add to favorites"></i></h1>
-    <h1><i class="fas clickable fa-share-square" style="font-size: 2rem; vertical-align: middle;" (click)="Share()" data-toggle="tooltip" data-placement="left" title="Share"></i></h1>
+    <h1 class="title"><i (click)="GoBack()" class="fas fa-chevron-left clickable" style="font-size: 2rem; vertical-align: middle;"></i> {{name}} <i id="fav" (click)="AddFav()" class="far fa-heart ml-3 clickable" style="font-size: 2rem; vertical-align: middle;" data-toggle="tooltip" data-placement="right" title="add to favorites"></i></h1>
+    <h1 class="title"><i class="fas clickable fa-share-square" style="font-size: 2rem; vertical-align: middle;" (click)="Share()" data-toggle="tooltip" data-placement="left" title="Share"></i></h1>
   </div>
     <div class="row">
         <div class="col-md-7">
             <div class="row horizontal-scroll">
-                <div class="d-flex flex-row detail-images" >
+                <div class="d-flex flex-row detail-images"  *ngIf="images != null">
                   <img src="{{img}}" class="mt-4 mb-3 mx-1"
                     width="100%" *ngFor="let img of images">
                 </div>
@@ -22,7 +22,7 @@
                       <h3>List of available exercises in this location:</h3>
                       <div class="d-flex justify-content-between flex-row">
                         <ul >
-                          <li *ngFor="let ex of exercises" class="card-text">&nbsp; {{ex}}</li>
+                          <li *ngFor="let ex of equipments" class="card-text">&nbsp; {{ex}}</li>
                         </ul>
                       </div>
                       <h3>Opening hours:</h3>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-4">
+        <div class="col-md-4 px-0">
             <div class="card">
               <app-review [locId]="id" ></app-review>
             </div>

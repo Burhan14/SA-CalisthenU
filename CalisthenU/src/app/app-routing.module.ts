@@ -11,6 +11,7 @@ import { CreateLocationComponent } from './components/location-create/location-c
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { LocationEditComponent } from './components/location-edit/location-edit.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { LocationAddImagesComponent } from './components/location-add-images/location-add-images.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'location-create', component: CreateLocationComponent },
   { path: 'location-details/:id', component: LocationDetailsComponent },
   { path: 'location-edit/:id', component: LocationEditComponent },
+  { path: 'location-add-images/:id', component: LocationAddImagesComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];

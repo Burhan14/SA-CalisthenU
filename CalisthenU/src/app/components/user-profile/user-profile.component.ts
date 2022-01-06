@@ -11,14 +11,15 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(public authService: AuthService, public router: Router, private locService: LocService, public titleService:Title) {
+  constructor(public authService: AuthService, public router: Router, private locService: LocService, public titleService: Title) {
     //change page title
     this.titleService.setTitle("Calisthen-U | Profile");
-   }
+  }
 
   myLocationsRAW: any = [];
   myLocations: Array<any> = new Array();
   favLocations: any = [];
+  online: boolean;
 
 
   ngOnInit(): void {
@@ -31,11 +32,29 @@ export class UserProfileComponent implements OnInit {
     this.favLocations = [];
     this.GetFavLocations();
 
+    if (navigator.onLine) {
+      this.online = true
+    }
+    else {
+      this.online = false
+    }
+
+    window.addEventListener('online', () => {
+      this.myLocationsRAW = [];
+      this.myLocations = [];
+      this.online = true
+    });
+    window.addEventListener('offline', () => {
+      this.myLocationsRAW = [];
+      this.myLocations = [];
+      this.online = false
+    });
   }
 
 
-
-  GetMyLocations = () =>
+  GetMyLocations = () => {
+    this.myLocationsRAW = [];
+    this.myLocations = [];
     this.locService
       .GetLocations()
       .subscribe(res => {
@@ -48,6 +67,7 @@ export class UserProfileComponent implements OnInit {
           }
         }
       });
+  }
 
 
   GetFavLocations = () => {
@@ -63,7 +83,7 @@ export class UserProfileComponent implements OnInit {
             this.locService.GetLocationSingle(loc.payload.doc.data().locId)
               .subscribe(res2 => {
                 if (loopCount2 < 1) {
-                  if(res2.type == "removed") return
+                  if (res2.type == "removed") return
                   this.favLocations.push(res2);
                   // console.log(this.favLocations);
                   loopCount2++

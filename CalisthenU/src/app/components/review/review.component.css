@@ -1,61 +1,79 @@
 .shadow-textarea textarea.form-control::placeholder {
-    font-weight: 300;
+  font-weight: 300;
 }
+
 .shadow-textarea textarea.form-control {
-    padding-left: 0.8rem;
+  padding-left: 0.8rem;
 }
 
 .rating {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: start;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
 }
 
 .rating>span {
-    color: #FFD600;
-    position: relative;
-    width: 1em;
-    font-size: 20px;
-    font-weight: 300;
+  color: #FFD600;
+  position: relative;
+  width: 1em;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .rating>input {
-    display: none;
+  display: none;
 }
 
 .rating>label {
-    position: relative;
-    width: 1em;
-    font-size: 30px;
-    font-weight: 300;
-    color: #FFD600;
-    cursor: pointer;
+  position: relative;
+  width: 1em;
+  font-size: 30px;
+  font-weight: 300;
+  color: #FFD600;
+  cursor: pointer;
 }
 
 .rating>label::before {
-    content: "\2605";
-    position: absolute;
-    opacity: 0;
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
 }
 
 .rating>label:hover:before,
 .rating>label:hover~label:before {
-    opacity: 1 !important;
+  opacity: 1 !important;
 }
 
 .rating>input:checked~label:before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .rating:hover>input:checked~label:before {
-    opacity: 0.4;
+  opacity: 0.4;
 }
-.delete:hover{
- cursor: pointer;
- color: white;
- transition: 0.2s ease-in-out;
+
+.delete:hover {
+  cursor: pointer;
+  color: white;
+  transition: 0.2s ease-in-out;
 }
-.delete{
- color: var(--main-color);
- transition: 0.2s ease-in-out;
+
+.delete {
+  color: var(--main-color);
+  transition: 0.2s ease-in-out;
+}
+
+.txt {
+  font-size: 22px;
+}
+
+@media (max-width: 600px) {
+    .txt {
+        font-size: 18px;
+      }
+}
+@media (max-width: 373px) {
+    .txt {
+        font-size: 17px;
+      }
 }

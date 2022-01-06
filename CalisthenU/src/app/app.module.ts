@@ -46,6 +46,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { LocationEditComponent } from './components/location-edit/location-edit.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { ReviewService } from './shared/services/review/review.service';
+import { LocationAddImagesComponent } from './components/location-add-images/location-add-images.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ReviewService } from './shared/services/review/review.service';
     ReviewComponent,
     LocationEditComponent,
     UnauthorizedComponent,
+    LocationAddImagesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,6 @@
+<div class="alert alertCoord alert-danger hide alert-fixed" role="alert">
+  Add a name and coordinates to create location
+</div>
 <div class="container p-5">
   <h2 class="text-center">Create New Location</h2>
   <form [formGroup]="this.locService.form">
@@ -18,9 +21,13 @@
         </span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="online == true">
       <label for="Images">Images</label>
       <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple required/>
+    </div>
+    <div class="form-group" *ngIf="online == false">
+      <label for="Images">Images</label>
+      <p class="text-center text-uppercase">cannot upload images while offline, connect to internet or upload later in update!</p>
     </div>
     <div class="form-group">
       <label for="Description">Description</label>
@@ -29,66 +36,24 @@
     </div>
 
     <div class="form-group">
-      <label for="Exercises">Exercises</label>
+      <label for="Exercises">Equipment</label>
       <div class="form-row">
         <div class="col mb-1">
-          <!-- <select #ex class="form-select form-control form-select-lg" aria-label=".form-select-lg example" required>
-            <option value="null" selected disabled>Select an exercise to add</option>
-            <option value="Pull-up">Pull-up</option>
-            <option value="Chin-up">Chin-up</option>
-            <option value="Australian Pull-up">Australian Pull-up</option>
-            <option value="Incline Push-up">Incline Push-up</option>
-            <option value="Chest-Dips">Chest-Dips</option>
-            <option value="Dips">Dips</option>
-            <option value="L-Sit">L-Sit</option>
-            <option value="Front-Lever">Front-Lever</option>
-            <option value="Flag">Flag</option>
-            <option value="Windshield Wipers">Windshield Wipers</option>
-            <option value="Leg Exercises">Leg Exercises</option>
-          </select> -->
           <div class="row">
-            <div class="col-6">
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Pull-up" value="Pull-up">
-                <label class="form-check-label" for="Pull-up">Pull-up</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Chin-up" value="Chin-up">
-                <label class="form-check-label" for="Chin-up">Chin-up</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Australian Pull-up" value="Australian Pull-up">
-                <label class="form-check-label" for="Australian Pull-up">Australian Pull-up</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Incline Push-up" value="Incline Push-up">
-                <label class="form-check-label" for="Incline Push-up">Incline Push-up</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Dips" value="Dips">
-                <label class="form-check-label" for="Dips">Dips</label>
+            <div class="col-sm-6">
+              <div class="form-check" *ngFor="let eq of equipmentList ; let i = index;">
+                <div *ngIf="i % 2 == 0">
+                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}" attr.value="{{eq}}">
+                  <label class="form-check-label" attr.for="{{eq}}">{{eq}}</label>
+                </div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="L-Sit" value="L-Sit">
-                <label class="form-check-label" for="L-Sit">L-Sit</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Front-Lever" value="Front-Lever">
-                <label class="form-check-label" for="Front-Lever">Front-Lever</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Flag" value="Flag">
-                <label class="form-check-label" for="Flag">Flag</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Windshield Wipers" value="Windshield Wipers">
-                <label class="form-check-label" for="Windshield Wipers">Windshield Wipers</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" (change)="updateExs($event)" type="checkbox" id="Leg Exercises" value="Leg Exercises">
-                <label class="form-check-label" for="Leg Exercises">Leg Exercises</label>
+            <div class="col-sm-6">
+              <div class="form-check" *ngFor="let eq of equipmentList ; let i = index;">
+                <div *ngIf="i % 2 == 1">
+                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}" attr.value="{{eq}}">
+                  <label class="form-check-label" attr.for="{{eq}}">{{eq}}</label>
+                </div>
               </div>
             </div>
           </div>         

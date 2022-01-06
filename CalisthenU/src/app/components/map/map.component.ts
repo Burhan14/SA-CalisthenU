@@ -45,9 +45,9 @@ export class MapComponent implements OnInit {
 
       this.coords = e.latlng.lat + ',' + e.latlng.lng;
       navigator.clipboard.writeText(this.coords);
-      document.querySelector(".alert").classList.remove("hide");
+      document.querySelector(".alertCopy").classList.remove("hide");
       setTimeout(() => {
-        let alert = document.querySelector(".alert");
+        let alert = document.querySelector(".alertCopy");
         if (alert) {
           alert.classList.add("hide");
         }
@@ -142,7 +142,7 @@ export class MapComponent implements OnInit {
   }
 
   PasteCoords() {
-    document.querySelector(".alert").classList.add("hide");
+    document.querySelector(".alertCopy").classList.add("hide");
     // console.log(this.coords);
     setTimeout(() => { let coordsInput = <HTMLInputElement>document.getElementById("coordinates"); coordsInput.focus(); coordsInput.value = this.coords; }, 200);
   }
