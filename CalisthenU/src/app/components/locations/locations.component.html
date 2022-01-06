@@ -12,12 +12,6 @@
         <div class="d-flex flex-row horizontal-scroll">
           <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.doc.data().images" width="50%">
         </div>
-        <!-- <p class="card-text mt-3">{{loc.payload.doc.data().locationDescription}}</p> -->
-        <!-- <div class="d-flex justify-content-between flex-row">
-          <ul>
-            <li class="card-text" *ngFor="let ex of loc.payload.doc.data().exercises">{{ex}} &nbsp;</li>
-          </ul>
-        </div> -->
         <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <label class="rating-label">
           <div class="d-flex">
@@ -31,7 +25,6 @@
           </div>
         </label>
         <p></p>
-        <!-- <small class="text-muted">Added by: {{loc.payload.doc.data().createdByDN}}</small> -->
         <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
         <small class="details"><a class="text-white" [routerLink]="['/location-details', loc.payload.doc.id]">More Details</a></small>
       </div>
