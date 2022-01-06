@@ -56,21 +56,6 @@
     color: var(--main-color);
   }
 
-
-  /* img{
-    min-width: 100%;
-  } */
-
-  /* .rating::-webkit-slider-runnable-track {
-    background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
-    block-size: 100%;
-    mask: repeat left center/var(--starsize) var(--symbol);
-    -webkit-mask: repeat left center/var(--starsize) var(--symbol);
-  }
-  [dir="rtl"] .rating {
-    --dir: left;
-  } */
-
   .rating {
     --dir: right;
     --fill: gold;

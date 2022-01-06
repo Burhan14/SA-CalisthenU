@@ -59,7 +59,7 @@ export class CreateLocationComponent implements OnInit {
       this.data = this.locService.form.value;
 
       //check if name is empty
-      if (this.data.name == "" || this.data.name == null){
+      if (this.data.locationName == "" || this.data.locationName == null){
         document.querySelector(".alertCoord").classList.remove("hide");
         setTimeout(() => {
           let alert = document.querySelector(".alertCoord");
