@@ -21,7 +21,13 @@
           "https://a.tile.openstreetmap.org/*/*/*.png",
           "https://b.tile.openstreetmap.org/*/*/*.png",
           "https://c.tile.openstreetmap.org/*/*/*.png",
-          "http://www.w3.org/2000/svg"
+          "http://www.w3.org/2000/svg",
+          "https://b.tile.openstreetmap.org/13/4195/2748.png",
+          "https://c.tile.openstreetmap.org/13/4194/2747.png",
+          "https://a.tile.openstreetmap.org/13/4195/2747.png",
+          "https://a.tile.openstreetmap.org/13/4194/2748.png",
+          "https://b.tile.openstreetmap.org/13/4194/2749.png",
+          "https://c.tile.openstreetmap.org/13/4195/2749.png"
         ]
       }
     },
