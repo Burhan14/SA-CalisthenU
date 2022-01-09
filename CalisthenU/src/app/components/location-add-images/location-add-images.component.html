@@ -1,0 +1,10 @@
+<div class="container p-5">
+  <form>
+    <div class="form-group">
+      <label for="Images">Images</label>
+      <input class="form-control" id="Images" type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" multiple
+        required />
+    </div>
+    <button class="btn btn-custom" (click)="uploadImage()">Add Images</button>
+  </form>
+</div>

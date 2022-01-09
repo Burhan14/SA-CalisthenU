@@ -3,12 +3,12 @@
   <div class="container">
 
     <ul class="nav nav-tabs d-flex ">
-      <li><a (click)="titleService.setTitle('Calisthen-U | Profile');" class="btn btn-outline-custom mr-1 active" data-toggle="tab"
-          href="#profile">Profile</a></li>
-      <li><a (click)="titleService.setTitle('Calisthen-U | My Locations');" class="btn btn-outline-custom mr-1" data-toggle="tab"
-          href="#locs">My Locations</a></li>
-      <li><a (click)="titleService.setTitle('Calisthen-U | Favorites');" class="btn btn-outline-custom mr-1" data-toggle="tab"
-          href="#favs">Favorites</a></li>
+      <li><a (click)="titleService.setTitle('Calisthen-U | Profile');" class="btn btn-outline-custom mr-1 active"
+          data-toggle="tab" href="#profile">Profile</a></li>
+      <li><a (click)="titleService.setTitle('Calisthen-U | My Locations');" class="btn btn-outline-custom mr-1"
+          data-toggle="tab" href="#locs">My Locations</a></li>
+      <li><a (click)="titleService.setTitle('Calisthen-U | Favorites');" class="btn btn-outline-custom mr-1"
+          data-toggle="tab" href="#favs">Favorites</a></li>
     </ul>
 
     <div class="tab-content ">
@@ -20,34 +20,54 @@
             <p>E-mail: {{this.authService.userData.email}}</p>
           </div>
         </div>
-        <button class="btn btn-logout btn-lg btn-outline-danger btn-block" (click)="authService.SignOut()"><i
-          class="fa fa-sign-out"></i>
-        Logout</button>
+        <button class="btn btn-logout btn-lg btn-outline-custom btn-block" (click)="authService.SignOut()"><i
+            class="fa fa-sign-out"></i>
+          Logout</button>
       </div>
 
       <div id="locs" class="tab-pane fade">
         <div *ngIf="this.authService.userData != undefined " class="container mt-4 center">
           <div class="accordion" id="accordionExample">
             <div class="card" *ngFor="let loc of myLocations">
-              <div class="card-header" [attr.id]="'heading-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID">
+              <div class="card-header"
+                [attr.id]="'heading-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID">
                 <h2 class="mb-0">
-                  <button class="btn btn-block text-left text-uppercase text-center" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID" aria-expanded="true" [attr.aria-controls]="'collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID">
+                  <button class="btn btn-block text-left text-uppercase text-center" type="button"
+                    data-toggle="collapse"
+                    [attr.data-target]="'#collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID"
+                    aria-expanded="true"
+                    [attr.aria-controls]="'collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID">
                     {{loc.payload.doc.data().locationName}}
                   </button>
                 </h2>
               </div>
-              <div [attr.id]="'collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID" data-parent="#accordionExample">
+              <div [attr.id]="'collapse-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID"
+                class="collapse"
+                [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID"
+                data-parent="#accordionExample">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                   <div class="d-flex flex-row horizontal-scroll">
-                    <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.doc.data().images" width="50%">
+                    <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images"
+                      *ngFor="let img of loc.payload.doc.data().images" width="50%">
                   </div>
                   <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
                   <div class="d-flex flex-row justify-content-around w-25">
                     <button class="btn btn-danger" (click)="DeleteLocation(loc.payload.doc.id)">Delete</button>
-                    <button class="btn btn-secondary" (click)="UpdateLocation(loc.payload.doc.id, loc.payload.doc.data().createdByUID)">Update</button>
+                    <button class="btn btn-secondary"
+                      (click)="UpdateLocation(loc.payload.doc.id, loc.payload.doc.data().createdByUID)">Update</button>
+                    <button class="btn btn-success" *ngIf="online"
+                      [routerLink]="['/location-add-images', loc.payload.doc.id]">Add Images</button>
+                    <button class="btn btn-success" *ngIf="!online"
+                      [routerLink]="['/location-add-images', loc.payload.doc.id]" disabled data-toggle="tooltip"
+                      data-placement="top" title="cannot add images without internet connection">Add Images</button>
                   </div>
-                  <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
-                  <small class="details"><a class="text-white" [routerLink]="['/location-details', loc.payload.doc.id]">More Details</a></small>
+                  <small class="external"><a class="text-white"
+                      attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.doc.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.doc.data().locationCoordinates).split(',')[1]}}"
+                      target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top"
+                      title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt"
+                        style="font-size: 0.7rem;"></i></a></small>
+                  <small class="details"><a class="text-white"
+                      [routerLink]="['/location-details', loc.payload.doc.id]">More Details</a></small>
                 </div>
               </div>
             </div>
@@ -59,21 +79,35 @@
         <div *ngIf="this.authService.userData != undefined" class="container mt-4 center">
           <div class="accordion" id="accordionExample">
             <div class="card" *ngFor="let loc of favLocations">
-              <div class="card-header" [attr.id]="'heading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
+              <div class="card-header"
+                [attr.id]="'heading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
                 <h2 class="mb-0">
-                  <button class="btn btn-block text-left text-uppercase text-center" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID" aria-expanded="true" [attr.aria-controls]="'collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
+                  <button class="btn btn-block text-left text-uppercase text-center" type="button"
+                    data-toggle="collapse"
+                    [attr.data-target]="'#collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
+                    aria-expanded="true"
+                    [attr.aria-controls]="'collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
                     {{loc.payload.data().locationName}}
                   </button>
                 </h2>
               </div>
-              <div [attr.id]="'collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID" class="collapse" [attr.aria-labelledby]="'heading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID" data-parent="#accordionExample">
+              <div [attr.id]="'collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
+                class="collapse"
+                [attr.aria-labelledby]="'heading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
+                data-parent="#accordionExample">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                   <div class="d-flex flex-row horizontal-scroll">
-                    <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.data().images" width="50%">
+                    <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.data().images"
+                      width="50%">
                   </div>
                   <p class="card-text">Opening hours: {{loc.payload.data().locationAccess}}</p>
-                  <small class="external" ><a class="text-white" attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.data().locationCoordinates).split(',')[1]}}" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></small>
-                  <small class="details"><a class="text-white" [routerLink]="['/location-details', loc.payload.id]">More Details</a></small>
+                  <small class="external"><a class="text-white"
+                      attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.data().locationCoordinates).split(',')[1]}}"
+                      target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top"
+                      title="Open in Google Maps">Take me there <i class="fas fa-external-link-alt"
+                        style="font-size: 0.7rem;"></i></a></small>
+                  <small class="details"><a class="text-white" [routerLink]="['/location-details', loc.payload.id]">More
+                      Details</a></small>
                 </div>
               </div>
             </div>
@@ -86,5 +120,3 @@
   </div>
 
 </div>
-
-

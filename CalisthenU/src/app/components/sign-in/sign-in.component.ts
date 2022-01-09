@@ -10,13 +10,13 @@ import { AuthService } from "../../shared/services/auth/auth.service";
 
 export class SignInComponent implements OnInit {
 
-  constructor(public authService: AuthService , private titleService:Title) { 
+  constructor(public authService: AuthService, private titleService: Title) {
     //change page title
     this.titleService.setTitle("Calisthen-U | Sign-In");
   }
 
-  ngOnInit() { 
-    
+  ngOnInit() {
+
   }
 
 }

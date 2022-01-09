@@ -1,13 +1,14 @@
-.card{
-    background-color: transparent;
+.card {
+  background-color: transparent;
 }
-.btn{
-    color: white;
+
+.btn {
+  color: white;
 }
 
 /* enable absolute positioning */
-.inner-addon { 
-    position: relative; 
+.inner-addon {
+  position: relative;
 }
 
 /* style icon */
@@ -18,123 +19,131 @@
 }
 
 /* align icon */
-.left-addon .glyphicon  { left:  0px;}
-.right-addon .glyphicon { right: 0px;}
+.left-addon .glyphicon {
+  left: 0px;
+}
+
+.right-addon .glyphicon {
+  right: 0px;
+}
 
 /* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
+.left-addon input {
+  padding-left: 30px;
+}
+
+.right-addon input {
+  padding-right: 30px;
+}
 
 a:hover,
-a:active{
-    color: darkgrey;
-    text-decoration: none;
-    animation: 3s ease-in-out ;
+a:active {
+  color: darkgrey;
+  text-decoration: none;
+  animation: 3s ease-in-out;
 }
+
 .card-body {
-    background-color: rgba(194, 24, 91, 0.5);
-    border-radius: 5px;
-    position: relative;
+  background-color: rgba(194, 24, 91, 0.5);
+  border-radius: 5px;
+  position: relative;
 }
-h2 button:focus{
-    box-shadow: none!important;
-    /* color: rgba(194, 24, 91, 1)!important; */
+
+h2 button:focus {
+  box-shadow: none !important;
 }
+
 h2 button {
-    color: white!important;
-}
-h2 button .collapsed{
-    color: rgba(194, 24, 91, 1)!important;
-}
-.external{
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
+  color: white !important;
 }
 
-.details{
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
+h2 button .collapsed {
+  color: rgba(194, 24, 91, 1) !important;
 }
 
-.horizontal-scroll{
-    overflow: auto;
+.external {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.details {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+}
+
+.horizontal-scroll {
+  overflow: auto;
 }
 
 .rating {
-    --dir: right;
-    --fill: gold;
-    --fillbg: rgba(139, 139, 139, 0.15);
-    --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
-    --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
-    --stars: 5;
-    --starsize: 3rem;
-    --symbol: var(--star);
-    background: none;
-    --w: calc(var(--stars) * var(--starsize));
-    --x: calc(100% * (var(--value) / var(--stars)));
-    block-size: var(--starsize);
-    inline-size: var(--w);
-    position: relative;
-    touch-action: manipulation;
-    -webkit-appearance: none;
-  }
-  [dir="rtl"] .rating {
-    --dir: left;
-  }
-  .rating::-moz-range-track {
-    background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
-    block-size: 100%;
-    mask: repeat left center/var(--starsize) var(--symbol);
-  }
-  .rating::-webkit-slider-runnable-track {
-    background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
-    block-size: 100%;
-    mask: repeat left center/var(--starsize) var(--symbol);
-    -webkit-mask: repeat left center/var(--starsize) var(--symbol);
-  }
-  .rating::-moz-range-thumb {
-    height: var(--starsize);
-    opacity: 0;
-    width: var(--starsize);
-  }
-  .rating::-webkit-slider-thumb {
-    height: var(--starsize);
-    opacity: 0;
-    width: var(--starsize);
-    -webkit-appearance: none;
-  }
-  .rating, .rating-label {
-    display: block;
-    font-family: ui-sans-serif, system-ui, sans-serif;
-  }
-  .rating-label {
-    margin-block-end: 1rem;
-  }
-  
-  /* NO JS */
-  .rating--nojs::-moz-range-track {
-    background: var(--fillbg);
-  }
-  .rating--nojs::-moz-range-progress {
-    background: var(--fill);
-    block-size: 100%;
-    mask: repeat left center/var(--starsize) var(--star);
-  }
-  .rating--nojs::-webkit-slider-runnable-track {
-    background: var(--fillbg);
-  }
-  .rating--nojs::-webkit-slider-thumb {
-    background-color: var(--fill);
-    box-shadow: calc(0rem - var(--w)) 0 0 var(--w) var(--fill);
-    opacity: 1;
-    width: 1px;
-  }
-  [dir="rtl"] .rating--nojs::-webkit-slider-thumb {
-    box-shadow: var(--w) 0 0 var(--w) var(--fill);
-  }
+  --dir: right;
+  --fill: gold;
+  --fillbg: rgba(139, 139, 139, 0.15);
+  --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
+  --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
+  --stars: 5;
+  --starsize: 3rem;
+  --symbol: var(--star);
+  background: none;
+  --w: calc(var(--stars) * var(--starsize));
+  --x: calc(100% * (var(--value) / var(--stars)));
+  block-size: var(--starsize);
+  inline-size: var(--w);
+  position: relative;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+}
 
+@media (max-width: 500px) {
+  .rating {
+    --starsize: 2rem;
+  }
+}
 
+@media (max-width: 330px) {
+  .rating {
+    --starsize: 1rem;
+  }
+}
 
+[dir="rtl"] .rating {
+  --dir: left;
+}
 
+.rating::-moz-range-track {
+  background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+  block-size: 100%;
+  mask: repeat left center/var(--starsize) var(--symbol);
+}
+
+.rating::-webkit-slider-runnable-track {
+  background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+  block-size: 100%;
+  mask: repeat left center/var(--starsize) var(--symbol);
+  -webkit-mask: repeat left center/var(--starsize) var(--symbol);
+}
+
+.rating::-moz-range-thumb {
+  height: var(--starsize);
+  opacity: 0;
+  width: var(--starsize);
+}
+
+.rating::-webkit-slider-thumb {
+  height: var(--starsize);
+  opacity: 0;
+  width: var(--starsize);
+  -webkit-appearance: none;
+}
+
+.rating,
+.rating-label {
+  display: block;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.rating-label {
+  margin-block-end: 1rem;
+}

@@ -2,17 +2,19 @@ Calisthen-U TODO's
 
 IN PROGRESS:
 - redesign profile page ** 
+- redesign sign in sign up page ** 
 - GENERAL DESIGN AND CLEANING CODE ***
-- titles per page
+- next to update, add images (handle separately)
+- Lighthouse Test** (better performances, text compression)
 
 TODO:
-- Cache Data (Service Worker PWA, "location data") *
-- Geocoding gegevens bijhouden in db*
-- Lighthouse Test**
-- login persistence
 - firestore general security check
-
 - Hoe hebben we create location nagekeken om deze niet aan te maken als form leeg is.
+- location details page css aanpassen voor mobile
+
+- DOCUMENTATIE
+
+
 
 OPTIONAL: 
 - Filter on (rating, exercices) 
@@ -22,6 +24,13 @@ PROBLEMS:
 - Image input on phone is DISGUSTANG
 
 DONE:
+- change exercices to equipments + code optimalisation @done
+- check for offline before adding image (do not upload to FireStorage) @done
+- location creation without image error @done
+- Cache Data (Service Worker PWA, "location data") * @done
+- Geocoding gegevens bijhouden in db* @done
+- login persistence @done
+- titles per page @done
 - Share API (share locations) @done
 - Fav locations* @done
 - get coordinates of selected location on map ('double click, copy to clipboard' ok) @done
@@ -45,7 +54,7 @@ DONE:
 - Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie ** --> automatisch ongevuld bij double click op kaart (moet op link drukken in alert) @done
 - firebase Authentication ('+-' ok): when email login set displayname (setter problem) @done
 - probeer straat adres krijgen van coordinaten voor in details: gelukt met google maps geocoding API. VERGEET NIET SUBSCRIBTION TE STOPPEN NA PRESENTATIE @done
-- multiple select in exercises dropdown: select van 0 starten => checkboxes and ng (change) event. @done
+- multiple select in exercises dropdown: select van 0 starten => checkboxes and ng (change) event en naam veranderen (exercices -> equipments) . @done 
 - padding en marging op kaart aanpassen (zeker voor mobile): scrollbar verwijderd voor mobile, padding en margins aangepast @done
 - fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR) @done
 - Redirect to details page on marker popup : niet kunnen doen => popup inhoud leest click event niet (FIXED) @done

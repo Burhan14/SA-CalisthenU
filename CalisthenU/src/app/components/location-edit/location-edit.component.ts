@@ -11,67 +11,74 @@ import { LocService } from 'src/app/shared/services/loc/loc.service';
 })
 export class LocationEditComponent implements OnInit {
 
-  constructor(public locService: LocService, private router: Router,private route:ActivatedRoute, private authService: AuthService, private titleService:Title) {
+  constructor(public locService: LocService, private router: Router, private route: ActivatedRoute, private authService: AuthService, private titleService: Title) {
     //change page title
     this.titleService.setTitle("Calisthen-U | Update Location");
   }
 
   updatedData: any = new Object();;
 
-  availableEx: string[] = new Array();
+  availableEq: string[] = new Array();
   value: string;
-  id:string;
+  id: string;
   private sub: any;
-  location:any
-  locName:string;
-  locDescription:string;
-  locCoordinates:string;
-  locAccess:string;
-  locExercises:any;
-  createdBy:string;
+  location: any
+  locName: string;
+  locDescription: string;
+  locCoordinates: string;
+  locAccess: string;
+  locEquipments: any;
+  createdBy: string;
   fullAddress: string;
   authorId: string;
+  equipmentList: string[] = new Array();
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id']
       this.GetLocation();
     })
+
+    //init list of equipments (if this list is going to be updated, dont forget to manually add selectors at line 133)
+    this.equipmentList = [
+      "Pull-up Bars",
+      "Push-up Bars",
+      "Parallel Bars",
+      "Workout Desk",
+      "Wall Bars",
+      "Abs Benches",
+      "Gym Rings",
+      "Monkey Bars",
+    ]
   }
 
   GetLocation = () => {
-    let loopCount= 0;
+    let loopCount = 0;
     this.locService
-    .GetLocationSingle(this.id)
-    .subscribe(res => {
+      .GetLocationSingle(this.id)
+      .subscribe(res => {
 
-      this.location = res.payload.data();
-      this.locName = this.location.locationName;
-      this.locDescription = this.location.locationDescription;
-      this.locCoordinates = this.location.locationCoordinates;
-      this.locAccess = this.location.locationAccess;
-      this.locExercises = this.location.exercises;
-      this.createdBy = this.location.createdByDN;
-      this.authorId = this.location.createdByUID;
+        this.location = res.payload.data();
+        this.locName = this.location.locationName;
+        this.locDescription = this.location.locationDescription;
+        this.locCoordinates = this.location.locationCoordinates;
+        this.locAccess = this.location.locationAccess;
+        this.locEquipments = this.location.equipments;
+        this.createdBy = this.location.createdByDN;
+        this.authorId = this.location.createdByUID;
+        this.availableEq = this.locEquipments;
 
-      this.availableEx = this.locExercises;
+        if (loopCount < 1) {
 
-      // console.log(this.locName)
+          this.CheckBoxes();
 
-      
-      if(loopCount < 1){
-        
-        this.CheckBoxes();
-        if (this.authorId == this.authService.userData.uid) {
-          // console.log("correct user");
-        } else {
-          // console.log("wrong user");
-          this.router.navigate(["unauthorized"]);
+          //if not author of this location => redirect to unauthorized page
+          if (this.authorId != this.authService.userData.uid) this.router.navigate(["unauthorized"])
+          
+          loopCount++;
         }
-        loopCount++;
-      }
 
-    })
+      })
   }
 
   onSubmit() {
@@ -79,7 +86,7 @@ export class LocationEditComponent implements OnInit {
     let nameUpdate = <HTMLInputElement>document.getElementById('location');
     let coordsUpdate = <HTMLInputElement>document.getElementById('coordinates');
     let descrUpdate = <HTMLInputElement>document.getElementById('description');
-    this.updatedData.exercises = this.availableEx;
+    this.updatedData.equipments = this.availableEq;
     this.updatedData.locationCoordinates = coordsUpdate.value;
     this.updatedData.locationName = nameUpdate.value;
     this.updatedData.locationDescription = descrUpdate.value;
@@ -89,50 +96,37 @@ export class LocationEditComponent implements OnInit {
       this.updatedData.locationAccess = accessUpdate.value;
     }
 
-    // console.log(this.updatedData);
     this.locService.UpdateLocation(this.id, this.updatedData)
     this.router.navigate(["location-details", this.id]);
   }
 
-  updateExs(selected:any){
+  updateEqs(selected: any) {
     if (selected.target.checked) {
-      // console.log(selected.target.value + ' added');
-      this.availableEx.push(selected.target.value);    
-      // console.log(this.availableEx);
-    }else{
-      // console.log(selected.target.value + ' removed');  
-      this.availableEx.splice(this.availableEx.indexOf(selected.target.value), 1);
-      // console.log(this.availableEx);
+      this.availableEq.push(selected.target.value);
+    } else {
+      this.availableEq.splice(this.availableEq.indexOf(selected.target.value), 1);
     }
   }
 
-  CheckBoxes(){
-    let leg = <HTMLInputElement>document.getElementById('Leg');
-    let wipers = <HTMLInputElement>document.getElementById('Wipers');
-    let flag = <HTMLInputElement>document.getElementById('Flag');
-    let lever = <HTMLInputElement>document.getElementById('Lever');
-    let l = <HTMLInputElement>document.getElementById('L');
-    let dips = <HTMLInputElement>document.getElementById('Dips');
-    let incline = <HTMLInputElement>document.getElementById('Incline');
-    let australian = <HTMLInputElement>document.getElementById('Australian');
-    let chin = <HTMLInputElement>document.getElementById('Chin');
-    let pull = <HTMLInputElement>document.getElementById('Pull');
+  CheckBoxes() {
+    let Pull = <HTMLInputElement>document.querySelector(".Pull-up");
+    let Push = <HTMLInputElement>document.querySelector(".Push-up");
+    let Parallel = <HTMLInputElement>document.querySelector(".Parallel");
+    let Workout = <HTMLInputElement>document.querySelector(".Workout");
+    let Wall = <HTMLInputElement>document.querySelector(".Wall");
+    let Abs = <HTMLInputElement>document.querySelector(".Abs");
+    let Gym = <HTMLInputElement>document.querySelector(".Gym");
+    let Monkey = <HTMLInputElement>document.querySelector(".Monkey");
 
-    
-    // console.log(this.availableEx)
-
-    for (let ex of this.locExercises) {
-      if (ex == "Leg Exercises") leg.checked=true;
-      if (ex == "Windshield Wipers") wipers.checked=true;
-      if (ex == "Flag") flag.checked=true;
-      if (ex == "Front-Lever") lever.checked=true;
-      if (ex == "L-Sit") l.checked=true;
-      if (ex == "Dips") dips.checked=true;
-      if (ex == "Incline Push-up") incline.checked=true;
-      if (ex == "Australian Pull-up") australian.checked=true;
-      if (ex == "Chin-up") chin.checked=true;
-      if (ex == "Pull-up") pull.checked=true;
+    for (let eq of this.availableEq) {
+      if (eq == "Pull-up Bars") Pull.checked = true;
+      if (eq == "Push-up Bars") Push.checked = true;
+      if (eq == "Parallel Bars") Parallel.checked = true;
+      if (eq == "Workout Desk") Workout.checked = true;
+      if (eq == "Wall Bars") Wall.checked = true;
+      if (eq == "Abs Benches") Abs.checked = true;
+      if (eq == "Gym Rings") Gym.checked = true;
+      if (eq == "Monkey Bars") Monkey.checked = true;
     }
-      
   }
 }

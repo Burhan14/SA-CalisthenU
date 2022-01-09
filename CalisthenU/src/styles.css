@@ -27,6 +27,7 @@ body {
 .btn-outline-custom {
   border-color: var(--main-color);
   background-color: transparent;
+  color: var(--main-color);
 }
 
 .text-custom {
@@ -39,8 +40,6 @@ body {
 }
 
 h1 {
-  /* font-family: 'Permanent Marker', cursive !important;  */
-  /* font-family: 'Bebas Neue', cursive !important; */
   font-family: 'Saira Condensed', sans-serif !important;
   font-weight: 800 !important;
   font-size: 32px !important;
@@ -60,8 +59,6 @@ h2 {
   height: 5px;
 }
 
-
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(194, 24, 92, 1);
@@ -71,17 +68,19 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(194, 24, 92, .5);
 }
-::-webkit-scrollbar-corner{
-    background: none;
+
+::-webkit-scrollbar-corner {
+  background: none;
 }
 
-.marker{
+.marker {
   transition: 0.2s ease-in-out;
 }
-.marker:hover{
+
+.marker:hover {
   cursor: pointer;
   transition: 0.2s ease-in-out;
-  color: var(--main-color)!important;
+  color: black !important;
 }
 
 

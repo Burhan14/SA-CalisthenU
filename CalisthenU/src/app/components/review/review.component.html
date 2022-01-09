@@ -19,7 +19,6 @@
           <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 3">★★★☆☆</span>
           <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 2">★★☆☆☆</span>
           <span class="d-flex flex-row" *ngIf="rev.payload.doc.data().rating == 1">★☆☆☆☆</span>
-          <!-- <h3>Rating: {{rev.payload.doc.data().rating}} / 5</h3> -->
         </div>
         <label class="" id="comment" rows="4">
           {{rev.payload.doc.data().comment}}
@@ -31,11 +30,15 @@
     </div>
   </div>
 
-  <form class="mt-5" id="review-form">
+  <form class="mt-5" id="review-form" *ngIf="this.authService.userData == undefined">
+    <p class="text-white text-center text-uppercase">login to leave a review !</p>
+  </form>
+
+  <form class="mt-5" id="review-form" *ngIf="authService.userData != undefined">
     <div class="form-group shadow-textarea">
-      <p style="font-size: 22px;" for="commentArea"><i class="fas fa-pencil-alt prefix mr-2"></i> Let us know your
+      <p class="txt" for="commentArea"><i class="fas fa-pencil-alt prefix mr-2"></i> Let us know your
         opinion about this location</p>
-      <div class="rating">
+      <div class="rating inputRating">
         <input type="radio" name="rating" (click)="UpdateRating(5)" value="5" id="5">
         <label for="5">☆</label>
         <input type="radio" name="rating" (click)="UpdateRating(4)" value="4" id="4">

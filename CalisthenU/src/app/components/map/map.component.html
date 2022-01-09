@@ -1,13 +1,9 @@
-<!-- <div #map [style.width]="width" [style.height]="height"></div> -->
-
-<div class="alert alert-primary hide alert-fixed" role="alert">
-    Coordinates copied into clipboard!
-    <br>
-    <a routerLink="/location-create" (click)=PasteCoords()>create a location on this spot</a>
+<div class="alert alertCopy alert-primary hide alert-fixed" role="alert">
+  Coordinates copied into clipboard!
+  <br>
+  <a routerLink="/location-create" (click)=PasteCoords()>create a location on this spot</a>
 </div>
-<div id="map"
-    leaflet
-    (leafletMapReady)="onMapReady($event)"
-    [leafletOptions]="mapOptions">
+<div id="map" leaflet (leafletMapReady)="onMapReady($event)" [leafletOptions]="mapOptions">
 </div>
-<button id="locate-position" class="btn btn-light" (click)="GetGeoLocation()"><img src="../../../assets/icons/my_location_black_24dp.svg" alt=""></button>
+<button id="locate-position" class="btn btn-light" (click)="GetGeoLocation()" name="locate position button"><img
+    src="../../../assets/icons/my_location_black_24dp.svg" width="24px" height="24px" alt="geolocation icon"></button>

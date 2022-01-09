@@ -11,8 +11,8 @@ import { AuthService } from "../../shared/services/auth/auth.service";
 export class ForgotPasswordComponent implements OnInit {
 
   constructor(
-    public authService: AuthService, private titleService:Title
-  ) { 
+    public authService: AuthService, private titleService: Title
+  ) {
     //change page title
     this.titleService.setTitle("Calisthen-U | Forgot Password");
   }

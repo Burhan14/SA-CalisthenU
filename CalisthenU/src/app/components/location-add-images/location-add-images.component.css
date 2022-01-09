@@ -1,0 +1,14 @@
+input[type="file"] {
+  -webkit-appearance: none;
+  text-align: left;
+  float: left;
+  -webkit-rtl-ordering: left;
+  cursor: pointer;
+}
+
+input[type="file"]:-webkit-file-upload-button {
+  -webkit-appearance: none;
+  float: right;
+  border: 0px;
+  cursor: pointer;
+}
