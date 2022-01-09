@@ -6,7 +6,7 @@
   padding-left: 0.8rem;
 }
 
-.rating {
+.inputRating {
   display: flex;
   flex-direction: row-reverse;
   justify-content: start;

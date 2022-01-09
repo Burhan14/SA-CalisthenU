@@ -27,6 +27,7 @@ body {
 .btn-outline-custom {
   border-color: var(--main-color);
   background-color: transparent;
+  color: var(--main-color);
 }
 
 .text-custom {

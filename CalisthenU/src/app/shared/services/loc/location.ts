@@ -3,6 +3,6 @@ export interface Location {
     coordinates: string;
     author: string;
     description: string;
-    exercises: string[];
+    equipments: string[];
     
 }

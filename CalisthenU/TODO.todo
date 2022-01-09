@@ -54,7 +54,7 @@ DONE:
 - Copy to clipboard aanpassen naar localstorage en automatisch invullen bij het aanmaken van een locatie ** --> automatisch ongevuld bij double click op kaart (moet op link drukken in alert) @done
 - firebase Authentication ('+-' ok): when email login set displayname (setter problem) @done
 - probeer straat adres krijgen van coordinaten voor in details: gelukt met google maps geocoding API. VERGEET NIET SUBSCRIBTION TE STOPPEN NA PRESENTATIE @done
-- multiple select in exercises dropdown: select van 0 starten => checkboxes and ng (change) event. @done
+- multiple select in exercises dropdown: select van 0 starten => checkboxes and ng (change) event en naam veranderen (exercices -> equipments) . @done 
 - padding en marging op kaart aanpassen (zeker voor mobile): scrollbar verwijderd voor mobile, padding en margins aangepast @done
 - fix location creation form (MUST FILL IN ALL INPUTS, SPECIALLY COORD OR ELSE LEAFLET ERROR) @done
 - Redirect to details page on marker popup : niet kunnen doen => popup inhoud leest click event niet (FIXED) @done
