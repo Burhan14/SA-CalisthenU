@@ -46,7 +46,7 @@
             <div class="col-sm-6">
               <div class="form-check" *ngFor="let eq of equipmentList ; let i = index;">
                 <div *ngIf="i % 2 == 0">
-                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}"
+                  <input class="form-check-input" (change)="updateEqs($event)" type="checkbox" attr.id="{{eq}}"
                     attr.value="{{eq}}">
                   <label class="form-check-label" attr.for="{{eq}}">{{eq}}</label>
                 </div>
@@ -55,7 +55,7 @@
             <div class="col-sm-6">
               <div class="form-check" *ngFor="let eq of equipmentList ; let i = index;">
                 <div *ngIf="i % 2 == 1">
-                  <input class="form-check-input" (change)="updateExs($event)" type="checkbox" attr.id="{{eq}}"
+                  <input class="form-check-input" (change)="updateEqs($event)" type="checkbox" attr.id="{{eq}}"
                     attr.value="{{eq}}">
                   <label class="form-check-label" attr.for="{{eq}}">{{eq}}</label>
                 </div>

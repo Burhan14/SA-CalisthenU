@@ -98,7 +98,6 @@ export class CreateLocationComponent implements OnInit {
         }
       }
       this.uploadImage();
-      // console.log(this.data);
       this.locService.form.reset();
     }
     else {
@@ -106,15 +105,11 @@ export class CreateLocationComponent implements OnInit {
     }
   }
 
-  updateExs(selected: any) {
+  updateEqs(selected: any) {
     if (selected.target.checked) {
-      console.log(selected.target.value + ' added');
       this.availableEq.push(selected.target.value);
-      console.log(this.availableEq);
     } else {
-      console.log(selected.target.value + ' removed');
       this.availableEq.splice(this.availableEq.indexOf(selected.target.value), 1);
-      console.log(this.availableEq);
     }
   }
 
@@ -133,9 +128,7 @@ export class CreateLocationComponent implements OnInit {
     else {
       for (let i = 0; i < this.paths.length; i++) {
         this.afStorage.upload("Images/" + Math.random() + "-" + this.paths[i].name, this.paths[i]).then(res => {
-          // this.currentImages.push(res.metadata.fullPath);
           this.afStorage.storage.ref(res.metadata.fullPath).getDownloadURL().then(res => {
-            // console.log("download url: "+res);
             this.currentImages.push(res);
             totalDone++;
             if (totalDone == total) {
