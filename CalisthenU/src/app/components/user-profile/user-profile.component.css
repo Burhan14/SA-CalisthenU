@@ -69,7 +69,7 @@ h2 button .collapsed {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid var(--main-color);
+  border-bottom: none;
 }
 
 .btn-outline-custom:hover {

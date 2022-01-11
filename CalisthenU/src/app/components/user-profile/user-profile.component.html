@@ -2,12 +2,12 @@
 
   <div class="container">
 
-    <ul class="nav nav-tabs d-flex ">
-      <li><a (click)="titleService.setTitle('Calisthen-U | Profile');" class="btn btn-outline-custom mr-1 active"
+    <ul class="nav nav-tabs d-flex row justify-content-center">
+      <li class=" col-md-4"><a (click)="titleService.setTitle('Calisthen-U | Profile');" class="btn btn-lg btn-outline-custom mt-1 active w-100"
           data-toggle="tab" href="#profile">Profile</a></li>
-      <li><a (click)="titleService.setTitle('Calisthen-U | My Locations');" class="btn btn-outline-custom mr-1"
+      <li class=" col-md-4"><a (click)="titleService.setTitle('Calisthen-U | My Locations');" class="btn btn-lg btn-outline-custom mt-1 w-100"
           data-toggle="tab" href="#locs">My Locations</a></li>
-      <li><a (click)="titleService.setTitle('Calisthen-U | Favorites');" class="btn btn-outline-custom mr-1"
+      <li class=" col-md-4"><a (click)="titleService.setTitle('Calisthen-U | Favorites');" class="btn btn-lg btn-outline-custom mt-1 w-100"
           data-toggle="tab" href="#favs">Favorites</a></li>
     </ul>
 
@@ -50,7 +50,7 @@
                     <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images"
                       *ngFor="let img of loc.payload.doc.data().images" width="50%">
                   </div>
-                  <p class="card-text">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
+                  <p class="card-text mt-4">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
                   <div class="d-flex flex-row justify-content-around w-25">
                     <button class="btn btn-danger" (click)="DeleteLocation(loc.payload.doc.id)">Delete</button>
                     <button class="btn btn-secondary"
@@ -100,7 +100,7 @@
                     <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.data().images"
                       width="50%">
                   </div>
-                  <p class="card-text">Opening hours: {{loc.payload.data().locationAccess}}</p>
+                  <p class="card-text mt-4">Opening hours: {{loc.payload.data().locationAccess}}</p>
                   <small class="external"><a class="text-white"
                       attr.href="https://www.google.com/maps/search/?api=1&query={{(loc.payload.data().locationCoordinates).split(',')[0]}}%2C{{(loc.payload.data().locationCoordinates).split(',')[1]}}"
                       target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top"
