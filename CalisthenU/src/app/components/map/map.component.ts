@@ -88,7 +88,9 @@ export class MapComponent implements OnInit {
       .subscribe(res => {
         if (this.loopSubscribe == 0) {
           this.locations = res;
-          this.addMarkers();
+          try {
+            this.addMarkers();
+          } catch (error) {}
           this.loopSubscribe = 1
         }
       });

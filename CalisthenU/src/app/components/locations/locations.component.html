@@ -20,7 +20,7 @@
           <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.doc.data().images"
             width="50%">
         </div>
-        <p class="card-text mt-3">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
+        <p class="card-text mt-4">Opening hours: {{loc.payload.doc.data().locationAccess}}</p>
         <label class="rating-label">
           <div class="d-flex">
             <input class="rating" max="5" step="0.25" attr.style="--value:{{loc.payload.doc.data().avgRating}}"
