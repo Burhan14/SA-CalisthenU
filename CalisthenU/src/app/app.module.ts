@@ -24,6 +24,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //Dependecy Injection - Services
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LocService } from "./shared/services/loc/loc.service";
+import { ReviewService } from "./shared/services/review/review.service";
 
 //Components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -43,7 +44,6 @@ import { LocationDetailsComponent } from './components/location-details/location
 import { ReviewComponent } from './components/review/review.component';
 import { LocationEditComponent } from './components/location-edit/location-edit.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-import { ReviewService } from './shared/services/review/review.service';
 import { LocationAddImagesComponent } from './components/location-add-images/location-add-images.component';
 
 @NgModule({
