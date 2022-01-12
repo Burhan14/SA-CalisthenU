@@ -34,8 +34,6 @@ export class MapComponent implements OnInit {
   onMapReady(map: Map) {
     this.map = map;
     map.on('dblclick', <LeafletMouseEvent>(e: { latlng: any; }) => {
-      console.log(e.latlng);
-      navigator.clipboard.writeText(e.latlng);
       this.coords = e.latlng.lat + ',' + e.latlng.lng;
       navigator.clipboard.writeText(this.coords);
       document.querySelector(".alertCopy").classList.remove("hide");
@@ -47,7 +45,6 @@ export class MapComponent implements OnInit {
       }, 4000);
     });
     map.doubleClickZoom.disable();
-
   }
 
   private initializeMapOptions() {
