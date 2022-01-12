@@ -57,9 +57,9 @@ export class LocService {
       .delete();
   }
 
-  GetUser(id: any) {
-    return this.db.collection("users").doc(id).snapshotChanges();
-  }
+  // GetUser(id: any) {
+  //   return this.db.collection("users").doc(id).snapshotChanges();
+  // }
 
   CreateLocation(data: any) {
     //add extra field to data to know who created the location (currently logged in user) and when it is created
@@ -83,6 +83,7 @@ export class LocService {
       .doc(docId)
       .delete();
   }
+
   UpdateLocation(docId: string, data: any) {
     return this.db
       .collection("locations")

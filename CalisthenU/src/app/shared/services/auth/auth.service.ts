@@ -1,6 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from "./user";
-// import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
@@ -55,7 +54,6 @@ export class AuthService {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.SendVerificationMail();
-        // result.user.displayName = username;
         this.SetUserData(result.user, username);
         this.UpdateUser(username);
       }).catch((error: { message: any; }) => {
