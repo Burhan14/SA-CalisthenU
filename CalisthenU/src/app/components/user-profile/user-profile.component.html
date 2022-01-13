@@ -46,7 +46,7 @@
                 [attr.aria-labelledby]="'heading-'+loc.payload.doc.data().creationDate+loc.payload.doc.data().createdByUID"
                 data-parent="#accordionExample">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                  <div class="d-flex flex-row horizontal-scroll justify-content-center">
+                  <div class="d-flex flex-row horizontal-scroll">
                     <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images"
                       *ngFor="let img of loc.payload.doc.data().images" width="50%">
                   </div>
@@ -77,26 +77,26 @@
 
       <div id="favs" class="tab-pane fade">
         <div *ngIf="this.authService.userData != undefined" class="container mt-4 center">
-          <div class="accordion" id="accordionExample">
+          <div class="accordion" id="accordionExampleFAV">
             <div class="card" *ngFor="let loc of favLocations">
               <div class="card-header"
-                [attr.id]="'heading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
+                [attr.id]="'favheading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
                 <h2 class="mb-0">
                   <button class="btn btn-block text-left text-uppercase text-center" type="button"
                     data-toggle="collapse"
-                    [attr.data-target]="'#collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
+                    [attr.data-target]="'#favcollapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
                     aria-expanded="true"
-                    [attr.aria-controls]="'collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
+                    [attr.aria-controls]="'favcollapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID">
                     {{loc.payload.data().locationName}}
                   </button>
                 </h2>
               </div>
-              <div [attr.id]="'collapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
+              <div [attr.id]="'favcollapse-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
                 class="collapse"
-                [attr.aria-labelledby]="'heading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
-                data-parent="#accordionExample">
+                [attr.aria-labelledby]="'favheading-'+loc.payload.data().creationDate+loc.payload.data().createdByUID"
+                data-parent="#accordionExampleFAV">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                  <div class="d-flex flex-row horizontal-scroll justify-content-center">
+                  <div class="d-flex flex-row horizontal-scroll">
                     <img attr.src="{{img}}" class="mt-4 mb-3 mx-1 images" *ngFor="let img of loc.payload.data().images"
                       width="50%">
                   </div>
